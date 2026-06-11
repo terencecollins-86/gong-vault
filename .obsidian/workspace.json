@@ -11,12 +11,14 @@
             "id": "c8f4153ce54f8c49",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Assets/me.jpeg"
+                "file": "Resources/HR/Gong Onboarding.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "me"
+              "icon": "lucide-file",
+              "title": "Gong Onboarding"
             }
           }
         ]
@@ -197,10 +199,18 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
+    "Assets/Screenshot 2026-05-07 at 17.27.23.png",
+    "Assets/Screenshot 2026-05-07 at 17.16.23.png",
+    "Assets/Screenshot 2026-05-07 at 17.15.54.png",
+    "Assets/me.jpeg",
+    "Resources/HR/Gong Onboarding.md",
+    "Inbox/Screenshot 2026-05-07 at 17.16.23.png",
+    "Inbox/Screenshot 2026-05-07 at 17.15.54.png",
+    "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
+    "Inbox/slack from rebecca.md",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Resources/HR/TravelHub Benefits.md",
     "Inbox/_README.md",
-    "Assets/me.jpeg",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Resources/Work",
     "Resources/HR",
