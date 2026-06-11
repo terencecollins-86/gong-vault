@@ -11,30 +11,17 @@
             "id": "c8f4153ce54f8c49",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Welcome.md",
-                "mode": "source",
-                "source": false
+                "file": "Canvas/Project Architecture.canvas",
+                "viewState": {
+                  "x": -167.7754902166794,
+                  "y": 442.92006252152567,
+                  "zoom": 0.45376790364583347
+                }
               },
-              "icon": "lucide-file",
-              "title": "Welcome"
-            }
-          }
-        ]
-      },
-      {
-        "id": "111477ae1810a675",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "799cfe3a5b5b6339",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-layout-dashboard",
+              "title": "Project Architecture"
             }
           }
         ]
@@ -209,11 +196,38 @@
       "bases:Create new base": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:New drawing": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "1be79787120fda11",
+  "active": "0bf3a8d71e4e5e3f",
   "lastOpenFiles": [
-    "Welcome.md"
+    "Architecture/_dashboard.md",
+    "Canvas/Project Architecture.canvas",
+    "Goals & Growth/_dashboard.md",
+    "Inbox/_README.md",
+    "Meetings/_dashboard.md",
+    "Research/_dashboard.md",
+    "Tasks/_board.md",
+    "Home.md",
+    "Engineering/_dashboard.md",
+    "Welcome.md",
+    "_templates/inbox-item.md",
+    "_templates/win-note.md",
+    "_templates/research-spike.md",
+    "_templates/meeting-note.md",
+    "_templates/meeting-note.md.tmp.36.6bffa5eb911b",
+    "_templates/architecture-adr.md",
+    "_templates/engineering-note.md",
+    "_templates/daily-note.md",
+    "Assets",
+    "_templates",
+    "Canvas",
+    "Tasks",
+    "Goals & Growth/Wins",
+    "Goals & Growth/End-of-Term",
+    "Goals & Growth",
+    "Research/Spikes",
+    "Research"
   ]
 }

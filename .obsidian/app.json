@@ -1,1 +1,9 @@
-{}
+{
+  "newFileLocation": "current",
+  "newFileFolderPath": "",
+  "attachmentFolderPath": "Assets",
+  "dailyNotesFolder": "Daily Notes",
+  "dailyNotesFormat": "YYYY-MM-DD",
+  "enabledCssSnippets": ["vault-colours"],
+  "templateFolder": "_templates"
+}
