@@ -11,17 +11,14 @@
             "id": "c8f4153ce54f8c49",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Canvas/Project Architecture.canvas",
-                "viewState": {
-                  "x": -167.7754902166794,
-                  "y": 442.92006252152567,
-                  "zoom": 0.45376790364583347
-                }
+                "file": "Daily Notes/2026-06-11.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Project Architecture"
+              "icon": "lucide-file",
+              "title": "2026-06-11"
             }
           }
         ]
@@ -183,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 628.5
+    "width": 211.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,16 +197,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0bf3a8d71e4e5e3f",
+  "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
-    "Architecture/_dashboard.md",
+    "Home.md",
+    "Daily Notes/2026-06-11.md",
     "Canvas/Project Architecture.canvas",
+    "Architecture/_dashboard.md",
     "Goals & Growth/_dashboard.md",
     "Inbox/_README.md",
     "Meetings/_dashboard.md",
     "Research/_dashboard.md",
     "Tasks/_board.md",
-    "Home.md",
     "Engineering/_dashboard.md",
     "Welcome.md",
     "_templates/inbox-item.md",

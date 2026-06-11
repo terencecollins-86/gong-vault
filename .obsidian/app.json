@@ -4,6 +4,6 @@
   "attachmentFolderPath": "Assets",
   "dailyNotesFolder": "Daily Notes",
   "dailyNotesFormat": "YYYY-MM-DD",
-  "enabledCssSnippets": ["vault-colours"],
-  "templateFolder": "_templates"
+  "templateFolder": "_templates",
+  "openBehavior": "daily"
 }
