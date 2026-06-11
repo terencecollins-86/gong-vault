@@ -11,14 +11,12 @@
             "id": "c8f4153ce54f8c49",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Daily Notes/2026-06-11.md",
-                "mode": "source",
-                "source": false
+                "file": "Assets/me.jpeg"
               },
-              "icon": "lucide-file",
-              "title": "2026-06-11"
+              "icon": "lucide-image",
+              "title": "me"
             }
           }
         ]
@@ -180,7 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.5
+    "width": 471.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,12 +197,23 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
-    "Home.md",
+    "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
+    "Resources/HR/TravelHub Benefits.md",
+    "Inbox/_README.md",
+    "Assets/me.jpeg",
+    "Resources/Work/EMEA Customer Story Team Assignments.pptx",
+    "Resources/Work",
+    "Resources/HR",
+    "Resources",
+    "Inbox/me.jpeg",
+    "Inbox/EMEA Customer Story Team Assignments.pptx",
+    "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
+    "Inbox/HR Tips.md",
     "Daily Notes/2026-06-11.md",
+    "Home.md",
     "Canvas/Project Architecture.canvas",
     "Architecture/_dashboard.md",
     "Goals & Growth/_dashboard.md",
-    "Inbox/_README.md",
     "Meetings/_dashboard.md",
     "Research/_dashboard.md",
     "Tasks/_board.md",
@@ -219,13 +228,6 @@
     "_templates/engineering-note.md",
     "_templates/daily-note.md",
     "Assets",
-    "_templates",
-    "Canvas",
-    "Tasks",
-    "Goals & Growth/Wins",
-    "Goals & Growth/End-of-Term",
-    "Goals & Growth",
-    "Research/Spikes",
-    "Research"
+    "_templates"
   ]
 }
