@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Resources/HR/Gong Onboarding.md",
+                "file": "Daily Notes/2026-06-12.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Gong Onboarding"
+              "title": "2026-06-12"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -199,6 +200,9 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
+    "Daily Notes/2026-06-11.md",
+    "Daily Notes/2026-06-12.md",
+    "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
     "Assets/Screenshot 2026-05-07 at 17.15.54.png",
@@ -219,7 +223,6 @@
     "Inbox/EMEA Customer Story Team Assignments.pptx",
     "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Inbox/HR Tips.md",
-    "Daily Notes/2026-06-11.md",
     "Home.md",
     "Canvas/Project Architecture.canvas",
     "Architecture/_dashboard.md",
