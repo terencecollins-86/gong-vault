@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Inbox/Tips.md",
+                "file": "Inbox/Comms Capture Maven Modules.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tips"
+              "title": "Comms Capture Maven Modules"
             }
           }
         ]
@@ -199,8 +199,12 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
-    "Daily Notes/2026-06-12.md",
     "Inbox/Tips.md",
+    "Inbox/Comms Capture Maven Modules.md",
+    "Home.md",
+    "Tasks/_board.md",
+    "Resources/HR/TravelHub Benefits.md",
+    "Daily Notes/2026-06-12.md",
     "Daily Notes/2026-06-11.md",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
@@ -213,7 +217,6 @@
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
     "Inbox/slack from rebecca.md",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
-    "Resources/HR/TravelHub Benefits.md",
     "Inbox/_README.md",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Resources/Work",
@@ -223,13 +226,11 @@
     "Inbox/EMEA Customer Story Team Assignments.pptx",
     "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Inbox/HR Tips.md",
-    "Home.md",
     "Canvas/Project Architecture.canvas",
     "Architecture/_dashboard.md",
     "Goals & Growth/_dashboard.md",
     "Meetings/_dashboard.md",
     "Research/_dashboard.md",
-    "Tasks/_board.md",
     "Engineering/_dashboard.md",
     "Welcome.md",
     "_templates/inbox-item.md",
