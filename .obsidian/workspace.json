@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/2026-06-12.md",
+                "file": "Inbox/Tips.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-12"
+              "title": "Tips"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -200,8 +199,9 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
-    "Daily Notes/2026-06-11.md",
     "Daily Notes/2026-06-12.md",
+    "Inbox/Tips.md",
+    "Daily Notes/2026-06-11.md",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
