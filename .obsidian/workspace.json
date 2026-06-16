@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/2026-06-16.md",
+                "file": "Inbox/Developer Data Gateway Spec - R&D.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-16"
+              "title": "Developer Data Gateway Spec - R&D"
             }
           }
         ]
@@ -199,14 +199,20 @@
   },
   "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
+    "Clippings/Developer Data Gateway Spec - R&D.md",
+    "Inbox/Developer Data Gateway Spec - R&D.md",
+    "Inbox/Lightrun - R&D.md",
+    "Clippings/Lightrun - R&D 1.md",
+    "Inbox/_README.md",
+    "Inbox/Gong Architecture.png",
+    "Inbox/Connecting to Production DB via Bastion Host - R&D.md",
+    "Daily Notes/2026-06-16.md",
     "Research/Spikes/Metrics in Gong - the complete guide - R&D.md",
     "Resources/Work/Tips.md",
     "Engineering/Notes/Comms Capture Maven Modules.md",
     "Research/Spikes/Software Defined Modules - R&D.md",
     "Research/Spikes/Adjustable Logging - R&D.md",
     "Daily Notes/2026-06-15.md",
-    "Daily Notes/2026-06-16.md",
-    "Inbox/_README.md",
     "Inbox/Software Defined Modules - R&D.md",
     "Inbox/Metrics in Gong - the complete guide - R&D.md",
     "Home.md",
@@ -218,7 +224,6 @@
     "Inbox/Comms Capture Maven Modules.md",
     "Inbox/Tips.md",
     "Resources/HR/TravelHub Benefits.md",
-    "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
     "Assets/Screenshot 2026-05-07 at 17.15.54.png",
@@ -238,11 +243,6 @@
     "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Inbox/HR Tips.md",
     "Canvas/Project Architecture.canvas",
-    "Architecture/_dashboard.md",
-    "Goals & Growth/_dashboard.md",
-    "Meetings/_dashboard.md",
-    "Research/_dashboard.md",
-    "Engineering/_dashboard.md",
     "_templates/meeting-note.md.tmp.36.6bffa5eb911b",
     "Assets"
   ]
