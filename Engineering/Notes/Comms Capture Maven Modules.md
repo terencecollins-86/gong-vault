@@ -135,3 +135,4 @@ InviteHandlerWebhooksServer
 
 - [[comms-capture-service-map]]
 - [[gong-architecture-overview]]
+- [[Software Defined Modules - R&D]] — YAML descriptor system that governs module resource declarations

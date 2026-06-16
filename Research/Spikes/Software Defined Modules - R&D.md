@@ -7,6 +7,8 @@ created: 2026-06-16
 description:
 tags:
   - "clippings"
+  - "learning"
+  - "architecture"
 ---
 ## Software Defined Modules
 
@@ -172,7 +174,6 @@ at com.honeyfy.testutilweb.WebAppYamlTest.lambda$temp$6(WebAppYamlTest.java:157)
 - Communicating changes to **devops**:  
 	Whatever necessary for a functioning environment, as described in the yaml above.  
 	WIP
-![](https://media-cdn.atlassian.com/file/73df62d5-5d95-4d2e-88e9-406fb837954b/image/cdn?allowAnimated=true&client=b73064ee-c850-4e4e-b54a-8a9d83b742bb&collection=contentId-1999372521&height=125&max-age=2592000&mode=full-fit&source=mediaCard&token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNzMwNjRlZS1jODUwLTRlNGUtYjU0YS04YTlkODNiNzQyYmIiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpjb2xsZWN0aW9uOmNvbnRlbnRJZC0xOTk5MzcyNTIxIjpbInJlYWQiXX0sImV4cCI6MTc4MTYwNTU4OCwibmJmIjoxNzgxNjAyNzA4LCJhYUlkIjoiNzEyMDIwOmQ0YjBlYzA4LTY5OWMtNGYxNy04ZGQyLTA1OWU5Mzk2ZmU0MyIsImh0dHBzOi8vaWQuYXRsYXNzaWFuLmNvbS9hcHBBY2NyZWRpdGVkIjpmYWxzZSwiYXV0aFR5cGUiOiJzZXNzaW9uIn0.xx2K5iUP45SojFbd1tfvRgiXeyL31PjdxK-Wvs1AQpo&width=680#media-blob-url=true&id=73df62d5-5d95-4d2e-88e9-406fb837954b&clientId=b73064ee-c850-4e4e-b54a-8a9d83b742bb&contextId=contentId-1999372521&collection=contentId-1999372521)
 - **Db Roles Migrator** for devtest  
 	Integrated into: Flyway:migrate, mvn install, installerCli.dbMigrator.  
 	DONE
@@ -200,3 +201,9 @@ SoftwareDefinedTopology module - a common module that contains SPIs
 
 Cannot infer required resources from Mongo and S3 accessors.  
 We need to decide if and how to split the accessors into different beans.
+
+---
+
+## Related Notes
+
+- [[Comms Capture Maven Modules]] — concrete list of modules this descriptor system governs

@@ -7,6 +7,8 @@ created: 2026-06-16
 description:
 tags:
   - "clippings"
+  - "learning"
+  - "engineering"
 ---
 ## Metrics in Gong - the complete guide
 
@@ -24,7 +26,7 @@ For your convenience, many of the headers below are direct links to the time in 
 - Metrics allow us to:
 	- Monitor the behavior, performance and health of our production system
 		- Measure the behavior of critical components in our production environment
-		- Track the behavior of our system in the long run and identify anomalies / misbehavior - this can be done by graphing a metric value over time and checking the graph’s behavior
+		- Track the behavior of our system in the long run and identify anomalies / misbehavior - this can be done by graphing a metric value over time and checking the graph's behavior
 		- Set up alerts when a metric value crosses a predefined threshold
 
 ## Metric Dimensions
@@ -33,12 +35,12 @@ For your convenience, many of the headers below are direct links to the time in 
 
 - Sometimes you want to analyze the same metric according to several criteria, e.g numberOfDroppedEvents in WebFrontEnd vs. Orchestrator.
 - In this example the metric is the same metric but you want to separate the count by Context.
-- For this, metrics could have dimensions - in our example the dimension is called Context and its value may be any of our deployable modules’ names
+- For this, metrics could have dimensions - in our example the dimension is called Context and its value may be any of our deployable modules' names
 
 ### Metric Dimensions - How It Works
 
 - When you define a metric you can define a set of dimensions for it, each with various options
-- When you report such metric you report a different metric value for each dimension, e.g. the numberOfDroppedEvents for WebFrontEnd is 25 and for Orchestrator it’s 723
+- When you report such metric you report a different metric value for each dimension, e.g. the numberOfDroppedEvents for WebFrontEnd is 25 and for Orchestrator it's 723
 - If you think about it a metric with one dimension that can have 7 options is actually 7 different metrics that have the same name
 - Even more - if the same metric has two dimensions one with 5 options and one with 3 options, there are 5 \* 3 combinations of dimensions which may result in 15 different actual metrics being reported
 
@@ -59,7 +61,7 @@ In this example although the overall number of possible dimensions is 6\*3=18 on
 - The metrics we collect can be categorized into two categories:
 	- Monitored metrics are metrics you plan to set up alerts for as the expected behavior is within a certain range and it is important for us to know when the value is outside the expected range
 		- Explorative metrics are metrics for which there is no need to setup an alert but might be useful to track patterns and helpful to troubleshoot incidents specifically trying to correlate historical trends to an issue
-- When you create a metric you define if you want it to be monitored by setting *isMonitored* to *true* otherwise it’s explorative
+- When you create a metric you define if you want it to be monitored by setting *isMonitored* to *true* otherwise it's explorative
 - In our environment monitored metrics are collected in both DD and ES while explorative metrics are collected only in ES
 - Since DD has better graphing and dashboarding capabilities people sometimes choose to define their metric as monitored although there is no alert set for it
 - Similarly, when people want to graph an explorative metric along with a monitored metric in the same dashboard they tend to make it monitored too
@@ -67,7 +69,7 @@ In this example although the overall number of possible dimensions is 6\*3=18 on
 ## Naming a Metric
 
 - A metric name should be a dot separated string
-- Since all metrics are collected in the same container we need a convention that will keep our metrics’ names unique
+- Since all metrics are collected in the same container we need a convention that will keep our metrics' names unique
 - To assure that, use the dotted notation of the class owning the metric for the name prefix.
 - Then continue with dot separated hierarchical name
 - For example the count of total events in the `libbeat` output stats defined in class `FileBeatMetrics` will be called: `com.honeyfy.datadog.filebeat.FileBeatMetrics.stats.libbeat.output.events.total`
@@ -77,7 +79,7 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 ## Pricing: Datadog vs. OpenSearch
 
-- The average cost of a metric in DD is about $0.1 while in ES it’s about $0.0000015 (1:67,000 ratio)
+- The average cost of a metric in DD is about $0.1 while in ES it's about $0.0000015 (1:67,000 ratio)
 - Datadog pricing is also based on the number of **used combinations of dimensions** - each combination is considered another metric
 - Try to avoid defining a metric as monitored if its only use is explorative
 - For monitored metrics try to avoid the usage of high cardinality dimensions, with explorative metrics feel free to use as many dimensions and dimension values as you need
@@ -89,7 +91,7 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 ### The DropWizard Library
 
-- The preferred way for collecting and reporting Metrics’ values is to use the DropWizard metrics library with the Gong wrappers
+- The preferred way for collecting and reporting Metrics' values is to use the DropWizard metrics library with the Gong wrappers
 - The DropWizard library supports 5 types of metrics: **Counter**, **Meter**, **Gauge**, **Timer** and **Histogram**.
 - DropWizard hosts your metrics values in memory (in what they call the Metrics Registry) the Gong wrapper is running a scheduled task once a minute that collects the values of all the metrics and reports them via Kafka to ES and DD
 - `HoneyfyMetricsRegistry` - is the Gong wrapper to the DropWizard registry and provides methods for registering and unregistering metrics
@@ -106,8 +108,8 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 - Each type of metric has its own method(s) for updating its value, e.g. Counter metric has `inc()` and `dec()` methods to increment/decrement its value
 - Calling these methods when the appropriate event occurs allows you to collect the data you need
-- All the updates are done in memory and the result is sampled every minute and sent to DD and ES (that’s why they’re called aggregated)
-- You can update the metric as long as it’s opened once you close it the metric should not be updated any more
+- All the updates are done in memory and the result is sampled every minute and sent to DD and ES (that's why they're called aggregated)
+- You can update the metric as long as it's opened once you close it the metric should not be updated any more
 
 ### Closing a Metric
 
@@ -122,7 +124,7 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 ### Choose the Right Metric For Your Needs
 
-- Although Dropwizard supports 5 types of metrics we’ll discuss only four of them here.
+- Although Dropwizard supports 5 types of metrics we'll discuss only four of them here.
 - For discussion about Histogram as well as more elaborated info about other metrics please refer to the [Dropwizard documentation](https://metrics.dropwizard.io/4.2.0/manual/core.html "https://metrics.dropwizard.io/4.2.0/manual/core.html")
 
 ### The Gong Periodic Counter
@@ -148,10 +150,10 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 ### Dropwizard Meter
 
-- A meter is mainly used to measure the **rate** of events per time unit - in our setup it’s events per second.
+- A meter is mainly used to measure the **rate** of events per time unit - in our setup it's events per second.
 - A meter has only one method: *mark()*, which marks the occurrence of the event that its occurrence rate is measured
 - For meter, Dropwizard calculates 4 fields:
-	- *count* - the overall number of calls to mark() since the meter’s creation
+	- *count* - the overall number of calls to mark() since the meter's creation
 		- *1MinuteRate* - the rate per second of calling mark() over the last minute
 		- *5MinuteRate* - the rate per second of calling mark() over the last 5 minutes
 		- *15MinuteRate* - the rate per second of calling mark() over the last 15 minutes
@@ -171,7 +173,7 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 
 - A gauge is actually a callback method implemented by you that returns a number
 - The callback is called by `Dropwizard` and its Gong wrapper every minutes and its return value is reported to both ES and DD
-- The gauge’s *value* is the only field and could be found in both ES and DD
+- The gauge's *value* is the only field and could be found in both ES and DD
 - Use `HoneyfyMetricsRegistry.autoCloseableGauge()` to create your gauges
 - Gauges are shown with type GAUGE in OpenSearch
 
@@ -182,7 +184,7 @@ To solve this, prefer hard-coding the metric name as a string (full class name i
 - In such cases you may want to use:
 	- `DimensionalCountersCache`*,* `DimensionalMetersCache` or `DimensionalTimersCache` for dynamic dimensions with limited lifetime
 - For each one of them you can select (by choosing the appropriate constructor) if you want to limit the cache and what policy to use for cache eviction
-- Upon eviction from the cache the metric’s *close()* method is automatically called
+- Upon eviction from the cache the metric's *close()* method is automatically called
 
 #### Code sample (size limited counters cache)
 
@@ -267,9 +269,9 @@ class SomeBeanClass implements AutoCloseable {
 	- `KafkaNonMonitoredMetricsConsumer` - reports your metrics only to OpenSearch
 		- `KafkaMonitoredMetricsConsumer` - reports your metrics to both OpenSearch and Datadog
 		- `KafkaMetricsConsumer` - metric is treated as either monitored or non-monitored according to some complicated legacy logic
-- There are additional `MetricsConsumer` implementations, please refrain from using them unless you understand exactly what you’re doing
+- There are additional `MetricsConsumer` implementations, please refrain from using them unless you understand exactly what you're doing
 - To report your metrics through `MetricsConsumer` you should collect them in a list of structure called Measurement and pass the list to `sendBlocking()`
-- The whole list of measurements you provide is sent, **immediately**, to Kafka and from there it’s transmitted by `MetricsStreamer` to OpenSearch and Datadog
+- The whole list of measurements you provide is sent, **immediately**, to Kafka and from there it's transmitted by `MetricsStreamer` to OpenSearch and Datadog
 - The metric value you provide is reported as is to ES and DD
 - Metrics reported by `MetricsConsumer` are shown with type MEASUREMENT in OpenSearch
 
@@ -301,3 +303,9 @@ Click on the link to listen to the training
 ## Metrics in Coralogix
 
 Metrics are also making their way into Coralogix (instead of OpenSearch previously).
+
+---
+
+## Related Notes
+
+- [[Adjustable Logging - R&D]] — log levels and adjustable logging system
