@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Inbox/Comms Capture Maven Modules.md",
+                "file": "Clippings/Adjustable Logging - R&D.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Comms Capture Maven Modules"
+              "title": "Adjustable Logging - R&D"
             }
           }
         ]
@@ -197,15 +197,18 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c8f4153ce54f8c49",
+  "active": "8b6fdac0c36fca53",
   "lastOpenFiles": [
-    "Inbox/Tips.md",
-    "Inbox/Comms Capture Maven Modules.md",
-    "Home.md",
-    "Tasks/_board.md",
-    "Resources/HR/TravelHub Benefits.md",
+    "Daily Notes/2026-06-15.md",
+    "Clippings/Adjustable Logging - R&D.md",
+    "Clippings",
     "Daily Notes/2026-06-12.md",
     "Daily Notes/2026-06-11.md",
+    "Tasks/_board.md",
+    "Home.md",
+    "Inbox/Comms Capture Maven Modules.md",
+    "Inbox/Tips.md",
+    "Resources/HR/TravelHub Benefits.md",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
@@ -241,7 +244,6 @@
     "_templates/architecture-adr.md",
     "_templates/engineering-note.md",
     "_templates/daily-note.md",
-    "Assets",
-    "_templates"
+    "Assets"
   ]
 }
