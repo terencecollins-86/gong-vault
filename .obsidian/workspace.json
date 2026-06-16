@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Clippings/Adjustable Logging - R&D.md",
+                "file": "Inbox/Metrics in Gong - the complete guide - R&D.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Adjustable Logging - R&D"
+              "title": "Metrics in Gong - the complete guide - R&D"
             }
           }
         ]
@@ -199,13 +199,15 @@
   },
   "active": "8b6fdac0c36fca53",
   "lastOpenFiles": [
+    "Home.md",
+    "Inbox/Metrics in Gong - the complete guide - R&D.md",
+    "Inbox/_README.md",
+    "Inbox/Adjustable Logging - R&D.md",
     "Daily Notes/2026-06-15.md",
-    "Clippings/Adjustable Logging - R&D.md",
     "Clippings",
     "Daily Notes/2026-06-12.md",
     "Daily Notes/2026-06-11.md",
     "Tasks/_board.md",
-    "Home.md",
     "Inbox/Comms Capture Maven Modules.md",
     "Inbox/Tips.md",
     "Resources/HR/TravelHub Benefits.md",
@@ -220,7 +222,6 @@
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
     "Inbox/slack from rebecca.md",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
-    "Inbox/_README.md",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Resources/Work",
     "Resources/HR",
@@ -243,7 +244,6 @@
     "_templates/meeting-note.md.tmp.36.6bffa5eb911b",
     "_templates/architecture-adr.md",
     "_templates/engineering-note.md",
-    "_templates/daily-note.md",
     "Assets"
   ]
 }
