@@ -11,14 +11,14 @@
             "id": "c8f4153ce54f8c49",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Inbox/Web application performance metrics and how to use them - R&D.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Inbox/AI4Dev Use Cases - R&D.md",
+                "bFile": "Inbox/AI4Dev Use Cases - R&D.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Web application performance metrics and how to use them - R&D"
+              "icon": "diff",
+              "title": "Diff: AI4Dev Use Cases - R&D  (Working Tree)"
             }
           }
         ]
@@ -197,9 +197,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "8b6fdac0c36fca53",
+  "active": "c8f4153ce54f8c49",
   "lastOpenFiles": [
     "Daily Notes/2026-06-17.md",
+    "Inbox/AI4Dev Use Cases - R&D.md",
+    "Inbox/Getting started with Claude Code - R&D.md",
     "Inbox/Web application performance metrics and how to use them - R&D.md",
     "Daily Notes/2026-06-16.md",
     "Inbox/Developer Data Gateway Spec - R&D.md",
@@ -225,12 +227,10 @@
     "Tasks/_board.md",
     "Inbox/Comms Capture Maven Modules.md",
     "Inbox/Tips.md",
-    "Resources/HR/TravelHub Benefits.md",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
     "Assets/Screenshot 2026-05-07 at 17.15.54.png",
     "Assets/me.jpeg",
-    "Resources/HR/Gong Onboarding.md",
     "Inbox/Screenshot 2026-05-07 at 17.16.23.png",
     "Inbox/Screenshot 2026-05-07 at 17.15.54.png",
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
