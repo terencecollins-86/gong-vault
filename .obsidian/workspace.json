@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Inbox/Developer Data Gateway Spec - R&D.md",
+                "file": "Inbox/Web application performance metrics and how to use them - R&D.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Developer Data Gateway Spec - R&D"
+              "title": "Web application performance metrics and how to use them - R&D"
             }
           }
         ]
@@ -197,16 +197,18 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c8f4153ce54f8c49",
+  "active": "8b6fdac0c36fca53",
   "lastOpenFiles": [
-    "Clippings/Developer Data Gateway Spec - R&D.md",
+    "Daily Notes/2026-06-17.md",
+    "Inbox/Web application performance metrics and how to use them - R&D.md",
+    "Daily Notes/2026-06-16.md",
     "Inbox/Developer Data Gateway Spec - R&D.md",
+    "Clippings/Developer Data Gateway Spec - R&D.md",
     "Inbox/Lightrun - R&D.md",
     "Clippings/Lightrun - R&D 1.md",
     "Inbox/_README.md",
     "Inbox/Gong Architecture.png",
     "Inbox/Connecting to Production DB via Bastion Host - R&D.md",
-    "Daily Notes/2026-06-16.md",
     "Research/Spikes/Metrics in Gong - the complete guide - R&D.md",
     "Resources/Work/Tips.md",
     "Engineering/Notes/Comms Capture Maven Modules.md",
@@ -232,7 +234,6 @@
     "Inbox/Screenshot 2026-05-07 at 17.16.23.png",
     "Inbox/Screenshot 2026-05-07 at 17.15.54.png",
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
-    "Inbox/slack from rebecca.md",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Resources/Work",
@@ -241,7 +242,6 @@
     "Inbox/me.jpeg",
     "Inbox/EMEA Customer Story Team Assignments.pptx",
     "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
-    "Inbox/HR Tips.md",
     "Canvas/Project Architecture.canvas",
     "_templates/meeting-note.md.tmp.36.6bffa5eb911b",
     "Assets"
