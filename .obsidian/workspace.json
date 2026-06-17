@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ac68f5aa2cbb16f2",
+        "id": "f388324095e0d92e",
         "type": "tabs",
         "children": [
           {
-            "id": "c8f4153ce54f8c49",
+            "id": "86fceb2e6b567717",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "Inbox/AI4Dev Use Cases - R&D.md",
-                "bFile": "Inbox/AI4Dev Use Cases - R&D.md",
-                "aRef": ""
+                "file": "gong-java-cheat-sheet.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: AI4Dev Use Cases - R&D  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "gong-java-cheat-sheet"
             }
           }
         ]
@@ -197,8 +197,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c8f4153ce54f8c49",
+  "active": "86fceb2e6b567717",
   "lastOpenFiles": [
+    "gong-java-cheat-sheet.md",
     "Daily Notes/2026-06-17.md",
     "Inbox/AI4Dev Use Cases - R&D.md",
     "Inbox/Getting started with Claude Code - R&D.md",
@@ -226,7 +227,6 @@
     "Daily Notes/2026-06-11.md",
     "Tasks/_board.md",
     "Inbox/Comms Capture Maven Modules.md",
-    "Inbox/Tips.md",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
     "Assets/Screenshot 2026-05-07 at 17.15.54.png",
