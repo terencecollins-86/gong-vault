@@ -38,14 +38,14 @@ Cloud recording retrieval via provider webhooks (Zoom, Webex).
 ### [[gong-ingestion]]
 Email (Gmail / O365) and calendar (Google / O365) ingestion.
 
-| Module | Role |
-|---|---|
-| `GoogleMailProcessingServer` | Gmail ingestion |
-| `GoogleCalendarIngester` | Google Calendar sync |
-| `OfficeCalendarIngester` | O365 Calendar sync |
-| `IngesterCalendarSupervisor` | Supervises calendar ingestion workers |
-| `MeetingsIndexer` | Indexes meeting records |
-| *(4 additional modules — check root `pom.xml`)* | |
+| Module                                          | Role                                  |
+| ----------------------------------------------- | ------------------------------------- |
+| `GoogleMailProcessingServer`                    | Gmail ingestion                       |
+| `GoogleCalendarIngester`                        | Google Calendar sync                  |
+| `OfficeCalendarIngester`                        | O365 Calendar sync                    |
+| `IngesterCalendarSupervisor`                    | Supervises calendar ingestion workers |
+| `MeetingsIndexer`                               | Indexes meeting records               |
+| *(4 additional modules — check root `pom.xml`)* |                                       |
 
 ### [[gong-email-digestion]]
 Downstream email processing pipeline (indexing, classification, privacy).
