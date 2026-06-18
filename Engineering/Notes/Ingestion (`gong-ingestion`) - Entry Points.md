@@ -1,0 +1,1 @@
+Claude Task: define all the entry points to the gong-ingestion group and the steps, method and payloads to trigger the services. 

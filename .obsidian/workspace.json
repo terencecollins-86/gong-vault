@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engineering/Notes/gong-module-run How To.md",
+                "file": "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gong-module-run How To"
+              "title": "Ingestion (`gong-ingestion`) - Entry Points"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
+                "file": "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline of Ingestion (`gong-ingestion`) - Entry Points"
             }
           },
           {
@@ -197,10 +197,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "fe447a10db5ea898",
+  "active": "0bf3a8d71e4e5e3f",
   "lastOpenFiles": [
-    "Engineering/Notes/Comms Capture Maven Modules.md",
+    "Engineering/Notes/Comms Capture - gong-module-run Runbook.md",
+    "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
     "Engineering/Notes/gong-module-run How To.md",
+    "Engineering/Notes/Comms Capture - gong-module-run Runbook.md.tmp.42.dda047643c00",
+    "Engineering/Notes/Comms Capture Maven Modules.md",
+    "Acronyms.md",
+    "Daily Notes/2026-06-18.md",
     "Engineering/Notes/Import Prod Data - Calls.md",
     "Daily Notes/2026-06-17.md",
     "Research/Spikes/Software Defined Modules - R&D.md",
@@ -222,10 +227,6 @@
     "Inbox/_README.md",
     "Inbox/Gong Architecture.png",
     "Inbox/Connecting to Production DB via Bastion Host - R&D.md",
-    "Daily Notes/2026-06-15.md",
-    "Inbox/Software Defined Modules - R&D.md",
-    "Inbox/Metrics in Gong - the complete guide - R&D.md",
-    "Home.md",
     "Clippings",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
@@ -243,7 +244,6 @@
     "Inbox/EMEA Customer Story Team Assignments.pptx",
     "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Canvas/Project Architecture.canvas",
-    "_templates/meeting-note.md.tmp.36.6bffa5eb911b",
-    "Assets"
+    "_templates/meeting-note.md.tmp.36.6bffa5eb911b"
   ]
 }
