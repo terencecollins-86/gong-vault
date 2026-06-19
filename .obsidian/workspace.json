@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Telephony Systems/06 - Runbook & Troubleshooting.md",
+                "file": "Telephony Systems/Tasks/GONG-137502-plan.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06 - Runbook & Troubleshooting"
+              "title": "GONG-137502-plan"
             }
           }
         ]
@@ -199,17 +199,26 @@
   },
   "active": "fe447a10db5ea898",
   "lastOpenFiles": [
+    "Telephony Systems/Tasks/GONG-104205 - Long meeting ID will not be indexed.md",
+    "Telephony Systems/Tasks/GONG-141661 - Unable to disconnect from Groove.md",
+    "Telephony Systems/Tasks/GONG-105545 - Chorus S3 upload retry.md",
+    "Telephony Systems/Tasks/Coms Capture - Telephony Team — Open Backlog.md",
+    "Telephony Systems/Tasks/GONG-137502.md",
+    "Telephony Systems/Tasks/GONG-137502-plan.md",
+    "Telephony Systems/_dashboard.md",
+    "Telephony Systems/Tasks",
+    "Telephony Systems/01 - Architecture & Modules.md",
+    "coms-capture-backlog.md",
+    "Telephony Systems/Open Tasks for Telephony System.md",
+    "Telephony Systems/02 - Data Flows.md",
+    "Telephony Systems/06 - Runbook & Troubleshooting.md",
+    "Telephony Systems/07 - Onboarding Checklist.md",
     "Telephony Systems/05 - Observability.md",
     "Telephony Systems/04 - Providers & Dialers.md",
     "Telephony Systems/03 - Services Reference.md",
-    "Telephony Systems/02 - Data Flows.md",
-    "Telephony Systems/01 - Architecture & Modules.md",
     "Canvas/Project Architecture.canvas",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
     "Telephony Systems/00 - Overview.md",
-    "Telephony Systems/07 - Onboarding Checklist.md",
-    "Telephony Systems/06 - Runbook & Troubleshooting.md",
-    "Telephony Systems/_dashboard.md",
     "Daily Notes/2026-06-19.md",
     "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Engineering/Runbooks/Comms Capture/Call Orchestration.md",
@@ -228,16 +237,9 @@
     "Engineering/Runbooks/Comms Capture/Processors.md",
     "Engineering/Runbooks/Comms Capture/Ingestion.md",
     "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
-    "Engineering/Runbooks/Comms Capture/Comms Capture Architecture Overview.md",
-    "Engineering/Runbooks/Comms Capture/Communication Compliance.md",
-    "Engineering/Runbooks/Comms Capture/Communications Publisher.md",
     "Engineering/Runbooks/Comms Capture/Communications Publisher.md.tmp.42.3d37a2f64e6b",
-    "Engineering/Runbooks/Comms Capture/Webconf Streaming.md",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.md.tmp.42.9ab57bf2ae74",
-    "Engineering/Runbooks/Comms Capture/Conversations.md",
     "Engineering/Runbooks/Comms Capture/Conversations.md.tmp.42.b9f21eb7071a",
-    "Engineering/Runbooks/Comms Capture/In-Meeting Experience.md",
-    "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
     "Engineering/Runbooks/Comms Capture",
     "Engineering/Runbooks",
     "Engineering/Notes/Comms Capture - gong-module-run Runbook.md.tmp.42.dda047643c00",
@@ -251,7 +253,6 @@
     "Inbox/Screenshot 2026-05-07 at 17.15.54.png",
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
-    "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Inbox/me.jpeg"
   ]
 }
