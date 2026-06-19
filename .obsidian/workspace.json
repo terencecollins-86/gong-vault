@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engineering/Swagger Pages.md",
+                "file": "Architecture/Troubleshoot Endpoints.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Swagger Pages"
+              "title": "Troubleshoot Endpoints"
             }
           }
         ]
@@ -199,6 +199,9 @@
   },
   "active": "fe447a10db5ea898",
   "lastOpenFiles": [
+    "Engineering/Swagger Pages.md",
+    "Architecture/Troubleshoot Endpoints.md",
+    "Architecture/Troubleshoot Endpoints.md.tmp.41.c55eced1e668",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
     "Engineering/Runbooks/Comms Capture/Recorders.canvas",
@@ -209,7 +212,6 @@
     "Engineering/Runbooks/Comms Capture/Conversations.canvas",
     "Engineering/Runbooks/Comms Capture/Communications Publisher.canvas",
     "Engineering/Runbooks/Comms Capture/Communication Compliance.canvas",
-    "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Engineering/Runbooks/Comms Capture/Processors.md",
     "Engineering/Runbooks/Comms Capture/Ingestion.md",
     "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
@@ -240,7 +242,6 @@
     "Engineering/Notes/Comms Capture - gong-module-run Runbook.md.tmp.42.dda047643c00",
     "Engineering/Notes/Comms Capture Maven Modules.md",
     "Acronyms.md",
-    "Engineering/Notes/Import Prod Data - Calls.md",
     "Inbox/Gong Architecture.png",
     "Clippings",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
@@ -252,7 +253,6 @@
     "Inbox/Screenshot 2026-05-07 at 17.27.23.png",
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
-    "Resources/Work",
     "Inbox/me.jpeg"
   ]
 }
