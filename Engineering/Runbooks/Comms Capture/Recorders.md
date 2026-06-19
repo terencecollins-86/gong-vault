@@ -21,6 +21,11 @@ Bot-based call recording: records live meetings by joining as a bot participant 
 
 > ⚠️ Swagger URLs are derived from the documented VIP pattern (see [[Swagger Pages]]); the pattern is confirmed but individual service URLs are not all verified live.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Recorders.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -37,6 +42,22 @@ gong-module-run down --subsystem-names gong-recorders --remote
 # Core recording only (append --remote for remote)
 gong-module-run up --image-names recorder,recordingsupervisor,recorderapiserver
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names recorderapiserver --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `recorderapiserver` | [troubleshooter](https://recorderapiserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `globalrecordingsupervisorapiserver` | [troubleshooter](https://globalrecordingsupervisorapiserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> `recorder` / `recordingsupervisor` / `recordingstreamer` are non-HTTP (no troubleshooter UI) — drive them via the recorder API above or scheduler-triggered bot deployment. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

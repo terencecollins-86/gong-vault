@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"svc2","type":"text","text":"**callpipelineexecutor**\nExecutes pipeline steps\n*worker / non-HTTP*","x":0,"y":130,"width":300,"height":110,"color":"2"},
+		{"id":"conv","type":"text","text":"**honeyfy.public.call**\nconvergence table (RDS)","x":360,"y":260,"width":300,"height":80,"color":"1"},
+		{"id":"ctx","type":"text","text":"# Call Orchestration\n`gong-orchestration`","x":210,"y":-240,"width":300,"height":100,"color":"6"},
+		{"id":"svc1","type":"text","text":"**orchestrator**\nCentral orchestrator\n*worker / non-HTTP*","x":520,"y":-40,"width":300,"height":80,"color":"2"},
+		{"id":"svc0","type":"text","text":"**callaiorchestrationserver**\nAI orchestration\n*HTTP — troubleshooter UI*","x":-180,"y":-60,"width":300,"height":100,"color":"4"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"econv","fromNode":"ctx","fromSide":"bottom","toNode":"conv","toSide":"top","label":"writes"}
+	]
+}

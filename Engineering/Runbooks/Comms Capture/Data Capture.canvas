@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"ctx","type":"text","text":"# Data Capture\n`gong-data-capture`","x":180,"y":-240,"width":300,"height":80,"color":"6"},
+		{"id":"svc0","type":"text","text":"**meetingfrontend**\nMeeting join page\n*HTTP — troubleshooter UI*","x":-300,"y":-40,"width":300,"height":100,"color":"4"},
+		{"id":"svc1","type":"text","text":"**consentwebapi**\nConsent WebAPI\n*HTTP — troubleshooter UI*","x":600,"y":-40,"width":300,"height":100,"color":"4"},
+		{"id":"svc3","type":"text","text":"**dcpchangemanager**\nDCP change events\n*worker / non-HTTP*","x":520,"y":180,"width":300,"height":100,"color":"2"},
+		{"id":"svc2","type":"text","text":"**recordingconsentapiserver**\nConsent API backend\n*HTTP — troubleshooter UI*","x":180,"y":120,"width":300,"height":110,"color":"4"},
+		{"id":"svc4","type":"text","text":"**recordingconsenttasks**\nAsync consent tasks\n*worker / non-HTTP*","x":-260,"y":230,"width":300,"height":90,"color":"2"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"e3","fromNode":"ctx","fromSide":"bottom","toNode":"svc3","toSide":"top"},
+		{"id":"e4","fromNode":"ctx","fromSide":"bottom","toNode":"svc4","toSide":"top"}
+	]
+}

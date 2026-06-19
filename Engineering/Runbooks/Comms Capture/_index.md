@@ -23,6 +23,14 @@ gong-module-run down --subsystem-names <subsystem> --remote   # remote stop
 
 ---
 
+## Overview Diagram
+
+End-to-end capture flow across all 13 bounded contexts, grouped by stage and converging on `honeyfy.public.call`. Each node links to its runbook — open in Obsidian Canvas and click through.
+
+![[Comms Capture Overview.canvas]]
+
+---
+
 ## Bounded Contexts
 
 | # | Context | Subsystem | Runbook |

@@ -19,6 +19,11 @@ Compliance enforcement over captured communications: compliance API backend, bro
 
 > ⚠️ Swagger URLs are derived from the documented VIP pattern (see [[Swagger Pages]]); the pattern is confirmed but individual service URLs are not all verified live.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Communication Compliance.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -32,6 +37,23 @@ gong-module-run down --subsystem-names gong-communication-compliance
 gong-module-run up --subsystem-names gong-communication-compliance --remote
 gong-module-run down --subsystem-names gong-communication-compliance --remote
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names communicationcomplianceapiserver --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `communicationcomplianceapiserver` | [troubleshooter](https://communicationcomplianceapiserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `communicationcompliancewebapi` | [troubleshooter](https://communicationcompliancewebapi-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `communicationcomplianceserver` | [troubleshooter](https://communicationcomplianceserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> All three services expose HTTP. Drive a compliance check via the API server's troubleshooter, or feed a captured communication through the pipeline. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

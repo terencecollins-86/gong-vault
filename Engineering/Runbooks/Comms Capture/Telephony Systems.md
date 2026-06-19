@@ -23,6 +23,11 @@ Captures calls made through third-party dialers (RingCentral, Groove, ConnectAnd
 >
 > ℹ️ `gong-connect` modules (`GongConnectWebApi`, `GongConnectWebhooksServer`, `GongConnectTasks`, `GongConnectMessagingServer`) ship in their own repo and are not part of the `gong-telephony-systems` subsystem — run them separately if needed.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Telephony Systems.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -36,6 +41,22 @@ gong-module-run down --subsystem-names gong-telephony-systems
 gong-module-run up --subsystem-names gong-telephony-systems --remote
 gong-module-run down --subsystem-names gong-telephony-systems --remote
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names telephonysystemswebapi --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `telephonysystemswebapi` | [troubleshooter](https://telephonysystemswebapi-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `telephonysystemstroubleshooters` | [troubleshooter](https://telephonysystemstroubleshooters-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> `ingestertelephonysystemssupervisor` / `textindexer` are non-HTTP (no troubleshooter UI) — drive them via a dialer call upload or the WebAPI above. `telephonysystemstroubleshooters` is purpose-built for diagnostics. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

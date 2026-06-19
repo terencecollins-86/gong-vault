@@ -21,6 +21,11 @@ Recording consent management and Data Capture Profile (DCP) change tracking — 
 
 > ⚠️ Swagger URLs are derived from the documented VIP pattern (see [[Swagger Pages]]); the pattern is confirmed but individual service URLs are not all verified live.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Data Capture.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -37,6 +42,23 @@ gong-module-run down --subsystem-names gong-data-capture --remote
 # Consent services only (append --remote for remote)
 gong-module-run up --image-names recordingconsentapiserver,recordingconsenttasks,consentwebapi
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names recordingconsentapiserver --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `recordingconsentapiserver` | [troubleshooter](https://recordingconsentapiserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `consentwebapi` | [troubleshooter](https://consentwebapi-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+| `meetingfrontend` | [troubleshooter](https://meetingfrontend-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> `dcpchangemanager` / `recordingconsenttasks` are non-HTTP (no troubleshooter UI) — exercise them via their upstream events or the consent API above. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

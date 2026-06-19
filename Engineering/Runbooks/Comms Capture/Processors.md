@@ -21,6 +21,11 @@ Call-processing jobs and workflow execution: runs the core processor, launches K
 
 > ⚠️ Swagger URLs are derived from the documented VIP pattern (see [[Swagger Pages]]); the pattern is confirmed but individual service URLs are not all verified live.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Processors.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -37,6 +42,21 @@ gong-module-run down --subsystem-names gong-processors --remote
 # Workflow runner only (append --remote for remote)
 gong-module-run up --image-names callprocessingworkflowrunner,callprocessingworkflowcoordinator
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names kubernetesjoblauncherapiserver --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `kubernetesjoblauncherapiserver` | [troubleshooter](https://kubernetesjoblauncherapiserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> `processor` / `processorjobsupervisor` / `callprocessingworkflowrunner` / `callprocessingworkflowcoordinator` are non-HTTP workers — no troubleshooter UI. Drive them via a queued processing job or a Temporal workflow trigger. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"svc4","type":"text","text":"**callprocessingworkflowcoordinator**\nCoordinates wf\n*worker / non-HTTP*","x":0,"y":260,"width":300,"height":115,"color":"2"},
+		{"id":"ctx","type":"text","text":"# Processors\n`gong-processors`","x":260,"y":-180,"width":200,"height":100,"color":"6"},
+		{"id":"svc1","type":"text","text":"**processorjobsupervisor**\nSupervises jobs\n*worker / non-HTTP*","x":800,"y":20,"width":300,"height":85,"color":"2"},
+		{"id":"svc3","type":"text","text":"**callprocessingworkflowrunner**\nRuns Temporal wf\n*worker / non-HTTP*","x":760,"y":235,"width":300,"height":130,"color":"2"},
+		{"id":"conv","type":"text","text":"**honeyfy.public.call**\nconvergence table (RDS)","x":310,"y":460,"width":300,"height":80,"color":"1"},
+		{"id":"svc0","type":"text","text":"**kubernetesjoblauncherapiserver**\nLaunches K8s jobs\n*HTTP — troubleshooter UI*","x":-440,"y":-22,"width":300,"height":85,"color":"4"},
+		{"id":"svc2","type":"text","text":"**processor**\nCore call processor\n*worker / non-HTTP*","x":-280,"y":140,"width":300,"height":85,"color":"2"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"e3","fromNode":"ctx","fromSide":"bottom","toNode":"svc3","toSide":"top"},
+		{"id":"e4","fromNode":"ctx","fromSide":"bottom","toNode":"svc4","toSide":"top"},
+		{"id":"econv","fromNode":"ctx","fromSide":"bottom","toNode":"conv","toSide":"top","label":"writes"}
+	]
+}

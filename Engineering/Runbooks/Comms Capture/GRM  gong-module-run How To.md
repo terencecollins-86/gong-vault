@@ -5,6 +5,7 @@ tags:
 - module-run
 - deployment
 - onboarding
+aliases: [gong-module-run How To]
 created: 2026-06-17
 ---
 
@@ -167,6 +168,66 @@ These solve different problems:
 | `descriptor.app.yaml` + `/infra` | Provision IAM roles and datasource permissions in production environments | Adding a new module or new datasource access to an existing one |
 
 `gong-module-run` runs code. The infra pipeline provisions network/auth permissions. A new service needs both.
+
+---
+
+## Debugging with Breakpoints
+
+Every module launched by `gong-module-run` starts with a **JDWP remote-debug agent already enabled** — you don't pass a flag to turn it on. The JVM runs with:
+
+```
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+```
+
+So the debugger listens on container port **5005**; you attach your IDE to it and set breakpoints in the running service.
+
+### 1. Find the debug port (local)
+
+`gong-module-run` maps container `5005` to a host port and **prints it on startup** next to the web/JMX ports, e.g.:
+
+```
+recorderapiserver   8123 ► 8080, 38123 ► 5005, 48123 ► 9012
+                                  ^^^^^ host debug port
+```
+
+If not overridden, the host debug port is computed as `30000 + (web_port % 10000)`. Override or disable it with flags on the `up` verb:
+
+| Flag | Effect |
+|------|--------|
+| `--debug-port <port>` | Pin the host debug port to a fixed value |
+| `--debug-port none` | Disable the debug port mapping for that module |
+| `--debug-suspend` | Start the JVM **suspended** — it waits for your debugger to attach before running (use to catch startup-time code) |
+| `--jmx-port <port>` | Host port mapped to JMX `9012` (`none` to disable) |
+
+### 2. Attach your IDE
+
+**IntelliJ**: Run → Edit Configurations → **+ → Remote JVM Debug** → host `localhost`, port = the printed host debug port → Debug.
+(`gong-module-run remote --generate-run-configurations` can generate Maven run configs for you.)
+
+Then set breakpoints in the module's source as usual.
+
+### 3. Trigger the breakpoint via the troubleshooter endpoints
+
+Each HTTP-exposing service publishes a **troubleshooter Swagger UI** — calling an endpoint there drives the code path into your breakpoint without needing a full browser flow:
+
+```
+https://<service-name>-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html
+```
+
+Requires VPN + the `troubleshootersAuthJWT` cookie (get it from the Developer Data Gateway portal — see [[Swagger Pages]]). The plain `…/swagger-ui/index.html` (no `/troubleshooter`) serves the service's regular API; the `/troubleshooter/` path serves the diagnostic/trigger endpoints.
+
+**Workflow**: start the module with `--debug-suspend` (or just leave it running) → attach IDE to the printed debug port → set your breakpoint → invoke the relevant troubleshooter endpoint → execution stops at the breakpoint.
+
+### Remote (`--remote`) debugging
+
+The host-port mapping above is for **local** runs. For modules deployed to your remote namespace with `--remote`, route traffic to locally-running code via Telepresence instead of a port map:
+
+```bash
+gong-module-run remote --intercept <module>     # route remote traffic to your local instance
+gong-module-run remote --leave <module>          # stop intercepting
+```
+
+Run the intercepted module locally (debug agent on 5005) and attach your IDE to it as above.
 
 ---
 

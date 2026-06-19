@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"svc1","type":"text","text":"**globalinvitehandlerwebhooksserver**\nGlobal invite webhooks\n*HTTP — troubleshooter UI*","x":360,"y":0,"width":300,"height":130,"color":"4"},
+		{"id":"ctx","type":"text","text":"# Call Scheduling\n`gong-call-schedulers`","x":180,"y":-280,"width":300,"height":100,"color":"6"},
+		{"id":"svc0","type":"text","text":"**invitehandlerwebhooksserver**\nInvite webhooks\n*HTTP — troubleshooter UI*","x":-120,"y":-80,"width":300,"height":100,"color":"4"},
+		{"id":"svc2","type":"text","text":"**callscheduler**\nSchedules calls\n*worker / non-HTTP*","x":60,"y":160,"width":300,"height":110,"color":"2"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"}
+	]
+}

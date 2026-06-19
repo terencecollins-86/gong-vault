@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"conv","type":"text","text":"**honeyfy.public.call**\nconvergence table (RDS)","x":180,"y":430,"width":300,"height":80,"color":"1"},
+		{"id":"ctx","type":"text","text":"# Recorders\n`gong-recorders`","x":180,"y":-180,"width":300,"height":84,"color":"6"},
+		{"id":"svc1","type":"text","text":"**globalrecordingsupervisorapiserver**\nGlobal supervisor API\n*HTTP — troubleshooter UI*","x":760,"y":0,"width":300,"height":115,"color":"4"},
+		{"id":"svc3","type":"text","text":"**recordingsupervisor**\nRecorder lifecycle\n*worker / non-HTTP*","x":640,"y":200,"width":300,"height":85,"color":"2"},
+		{"id":"svc0","type":"text","text":"**recorderapiserver**\nRecorder control API\n*HTTP — troubleshooter UI*","x":-400,"y":-22,"width":300,"height":85,"color":"4"},
+		{"id":"svc2","type":"text","text":"**recorder**\nCore recording process\n*worker / non-HTTP*","x":-280,"y":160,"width":300,"height":85,"color":"2"},
+		{"id":"svc4","type":"text","text":"**recordingstreamer**\nStreams raw A/V\n*worker / non-HTTP*","x":-200,"y":390,"width":300,"height":85,"color":"2"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"e3","fromNode":"ctx","fromSide":"bottom","toNode":"svc3","toSide":"top"},
+		{"id":"e4","fromNode":"ctx","fromSide":"bottom","toNode":"svc4","toSide":"top"},
+		{"id":"econv","fromNode":"ctx","fromSide":"bottom","toNode":"conv","toSide":"top","label":"writes"}
+	]
+}

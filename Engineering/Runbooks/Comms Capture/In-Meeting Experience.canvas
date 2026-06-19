@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"svc0","type":"text","text":"**zoomappwebapi**\nZoom app WebAPI\n*HTTP — troubleshooter UI*","x":0,"y":0,"width":300,"height":100,"color":"4"},
+		{"id":"svc1","type":"text","text":"**liveawstranscription**\nLive AWS transcription\n*worker / non-HTTP*","x":360,"y":0,"width":300,"height":100,"color":"2"},
+		{"id":"ctx","type":"text","text":"# In-Meeting Experience\n`gong-inmeeting-experience`","x":150,"y":-220,"width":330,"height":120,"color":"6"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"}
+	]
+}

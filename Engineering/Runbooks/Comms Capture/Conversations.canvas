@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"ctx","type":"text","text":"# Conversations\n`gong-conversations`","x":150,"y":-240,"width":300,"height":100,"color":"6"},
+		{"id":"svc0","type":"text","text":"**conversationresearcherapiserver**\nResearch queries API\n*HTTP — troubleshooter UI*","x":-280,"y":-40,"width":300,"height":100,"color":"4"},
+		{"id":"svc1","type":"text","text":"**translationapiserver**\nTranscript translation\n*HTTP — troubleshooter UI*","x":680,"y":-40,"width":300,"height":100,"color":"4"},
+		{"id":"svc3","type":"text","text":"**omnisearchdigester**\nOmni-search digester\n*worker / non-HTTP*","x":530,"y":100,"width":300,"height":130,"color":"2"},
+		{"id":"svc4","type":"text","text":"**conversationsummary**\nCall summaries\n*worker / non-HTTP*","x":150,"y":260,"width":300,"height":100,"color":"2"},
+		{"id":"svc2","type":"text","text":"**calldataapiserver**\nCall data retrieval\n*HTTP — troubleshooter UI*","x":-220,"y":230,"width":300,"height":110,"color":"4"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"e3","fromNode":"ctx","fromSide":"bottom","toNode":"svc3","toSide":"top"},
+		{"id":"e4","fromNode":"ctx","fromSide":"bottom","toNode":"svc4","toSide":"top"}
+	]
+}

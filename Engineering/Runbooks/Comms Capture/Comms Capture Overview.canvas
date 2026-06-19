@@ -1,0 +1,41 @@
+{
+	"nodes":[
+		{"id":"grp3","type":"group","x":760,"y":0,"width":300,"height":880,"label":"Capture / Recording"},
+		{"id":"grp6","type":"group","x":2380,"y":0,"width":300,"height":635,"label":"Post-Call & Publishing"},
+		{"id":"grp4","type":"group","x":1440,"y":0,"width":300,"height":235,"label":"Processing"},
+		{"id":"grp0","type":"group","x":-920,"y":0,"width":300,"height":140,"label":"Consent (cross-cutting)"},
+		{"id":"grp1","type":"group","x":-360,"y":0,"width":300,"height":140,"label":"Ingestion"},
+		{"id":"grp2","type":"group","x":160,"y":0,"width":300,"height":140,"label":"Scheduling"},
+		{"id":"grp5","type":"group","x":1880,"y":370,"width":300,"height":140,"label":"Convergence"},
+		{"id":"ctx-call-orchestration","type":"text","text":"[[Call Orchestration]]\n`gong-orchestration`","x":1460,"y":50,"width":260,"height":70,"color":"3"},
+		{"id":"ctx-processors","type":"text","text":"[[Processors]]\n`gong-processors`","x":1460,"y":145,"width":260,"height":70,"color":"3"},
+		{"id":"ctx-data-capture","type":"text","text":"[[Data Capture]]\n`gong-data-capture`","x":-900,"y":50,"width":260,"height":70,"color":"6"},
+		{"id":"ctx-ingestion","type":"text","text":"[[Ingestion]]\n`gong-ingestion`","x":-340,"y":50,"width":260,"height":70,"color":"2"},
+		{"id":"ctx-call-scheduling","type":"text","text":"[[Call Scheduling]]\n`gong-call-schedulers`","x":180,"y":50,"width":260,"height":70,"color":"2"},
+		{"id":"ctx-recorders","type":"text","text":"[[Recorders]]\n`gong-recorders`","x":780,"y":50,"width":260,"height":70,"color":"4"},
+		{"id":"ctx-in-meeting-experience","type":"text","text":"[[In-Meeting Experience]]\n`gong-inmeeting-experience`","x":780,"y":720,"width":260,"height":100,"color":"4"},
+		{"id":"ctx-webconf-streaming","type":"text","text":"[[Webconf Streaming]]\n`gong-webconf-streaming`","x":780,"y":600,"width":260,"height":70,"color":"4"},
+		{"id":"ctx-cloud-recorders","type":"text","text":"[[Cloud Recorders]]\n`gong-cloud-recorders`","x":780,"y":420,"width":260,"height":70,"color":"4"},
+		{"id":"ctx-telephony-systems","type":"text","text":"[[Telephony Systems]]\n`gong-telephony-systems`","x":780,"y":260,"width":260,"height":70,"color":"4"},
+		{"id":"ctx-conversations","type":"text","text":"[[Conversations]]\n`gong-conversations`","x":2400,"y":96,"width":260,"height":135,"color":"5"},
+		{"id":"ctx-communications-publisher","type":"text","text":"[[Communications Publisher]]\n`gong-communications-publisher`","x":2400,"y":279,"width":260,"height":135,"color":"5"},
+		{"id":"ctx-communication-compliance","type":"text","text":"[[Communication Compliance]]\n`gong-communication-compliance`","x":2400,"y":462,"width":260,"height":135,"color":"5"},
+		{"id":"conv","type":"text","text":"**honeyfy.public.call**\nconvergence table (RDS)","x":1900,"y":420,"width":260,"height":70,"color":"1"}
+	],
+	"edges":[
+		{"id":"oe0","fromNode":"ctx-data-capture","fromSide":"right","toNode":"ctx-ingestion","toSide":"left","label":"consent gates"},
+		{"id":"oe1","fromNode":"ctx-ingestion","fromSide":"right","toNode":"ctx-call-scheduling","toSide":"left","label":"meetings"},
+		{"id":"oe2","fromNode":"ctx-call-scheduling","fromSide":"right","toNode":"ctx-recorders","toSide":"left","label":"deploy bot"},
+		{"id":"oe3","fromNode":"ctx-call-scheduling","fromSide":"right","toNode":"ctx-cloud-recorders","toSide":"left"},
+		{"id":"oe4","fromNode":"ctx-webconf-streaming","fromSide":"top","toNode":"ctx-cloud-recorders","toSide":"bottom","label":"stream"},
+		{"id":"oe5","fromNode":"ctx-recorders","fromSide":"right","toNode":"ctx-call-orchestration","toSide":"left"},
+		{"id":"oe6","fromNode":"ctx-cloud-recorders","fromSide":"right","toNode":"ctx-call-orchestration","toSide":"left"},
+		{"id":"oe7","fromNode":"ctx-telephony-systems","fromSide":"right","toNode":"ctx-call-orchestration","toSide":"left"},
+		{"id":"oe8","fromNode":"ctx-call-orchestration","fromSide":"bottom","toNode":"ctx-processors","toSide":"top"},
+		{"id":"oe9","fromNode":"ctx-processors","fromSide":"right","toNode":"conv","toSide":"left","label":"writes"},
+		{"id":"oe10","fromNode":"ctx-in-meeting-experience","fromSide":"right","toNode":"conv","toSide":"left","label":"live"},
+		{"id":"oe11","fromNode":"conv","fromSide":"right","toNode":"ctx-conversations","toSide":"left","label":"post-call"},
+		{"id":"oe12","fromNode":"conv","fromSide":"right","toNode":"ctx-communications-publisher","toSide":"left"},
+		{"id":"oe13","fromNode":"ctx-communications-publisher","fromSide":"bottom","toNode":"ctx-communication-compliance","toSide":"top"}
+	]
+}

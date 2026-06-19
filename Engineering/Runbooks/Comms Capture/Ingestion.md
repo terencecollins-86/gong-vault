@@ -27,6 +27,11 @@ Provider connectivity plus the email (Gmail / O365) and calendar (Google / O365)
 
 > ⚠️ Swagger URLs are derived from the documented VIP pattern (see [[Swagger Pages]]); the pattern is confirmed but individual service URLs are not all verified live. Most ingestion services are workers/supervisors/listeners and do not expose HTTP.
 
+## Diagram
+Bounded-context map — services (green = HTTP/troubleshooter, orange = worker) and convergence point. Open in Obsidian Canvas:
+
+![[Ingestion.canvas]]
+
 ## Run — Local
 ```bash
 # Full subsystem
@@ -48,6 +53,21 @@ gong-module-run up --image-names ingestermailsupervisor,ingestermailworker,maili
 # Calendar pipeline only
 gong-module-run up --image-names ingestercalendarsupervisor,googlecalendaringester,officecalendaringester,meetingsindexer
 ```
+
+## Debug — Breakpoints
+Full attach/suspend workflow: [[GRM  gong-module-run How To#Debugging with Breakpoints]]. JDWP is always on (container `5005` → host port printed at startup).
+
+```bash
+# Run just the service you want to debug, suspended until your IDE attaches
+gong-module-run up --image-names googlemailprocessingserver --debug-suspend
+```
+Attach IntelliJ *Remote JVM Debug* to `localhost:<printed debug port>`, set a breakpoint, then trigger it via this context's troubleshooter UI:
+
+| Service | Troubleshooter UI |
+|---------|-------------------|
+| `googlemailprocessingserver` | [troubleshooter](https://googlemailprocessingserver-vip.prod.gongio.net/troubleshooter/swagger-ui/index.html) |
+
+> Most ingestion services (`providerconnectivity`, the mail/calendar supervisors, ingesters, listeners, `meetingsindexer`) are non-HTTP workers — no troubleshooter UI. Drive them via their upstream provider events / cursor polls, or breakpoint the worker and replay a Kafka message. Troubleshooter URLs are derived from the documented pattern (see [[Swagger Pages]]); requires VPN + `troubleshootersAuthJWT`.
 
 ## Links
 - [[GRM  gong-module-run How To]] — CLI reference & prerequisites

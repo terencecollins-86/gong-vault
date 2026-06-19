@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"conv","type":"text","text":"**honeyfy.public.call**\nconvergence table (RDS)","x":180,"y":300,"width":300,"height":80,"color":"1"},
+		{"id":"ctx","type":"text","text":"# Cloud Recorders\n`gong-cloud-recorders`","x":180,"y":-260,"width":300,"height":100,"color":"6"},
+		{"id":"svc0","type":"text","text":"**globalzoomwebhooksserver**\nZoom webhook receiver\n*HTTP — troubleshooter UI*","x":-200,"y":-40,"width":300,"height":100,"color":"4"},
+		{"id":"svc1","type":"text","text":"**webexwebhooksserver**\nWebex webhook receiver\n*HTTP — troubleshooter UI*","x":520,"y":-50,"width":300,"height":120,"color":"4"},
+		{"id":"svc2","type":"text","text":"**cloudrecorder**\nCloud bot recorder\n*worker / non-HTTP*","x":-80,"y":140,"width":300,"height":110,"color":"2"}
+	],
+	"edges":[
+		{"id":"e0","fromNode":"ctx","fromSide":"bottom","toNode":"svc0","toSide":"top"},
+		{"id":"e1","fromNode":"ctx","fromSide":"bottom","toNode":"svc1","toSide":"top"},
+		{"id":"e2","fromNode":"ctx","fromSide":"bottom","toNode":"svc2","toSide":"top"},
+		{"id":"econv","fromNode":"ctx","fromSide":"bottom","toNode":"conv","toSide":"top","label":"writes"}
+	]
+}
