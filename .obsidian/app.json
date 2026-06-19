@@ -6,5 +6,6 @@
   "dailyNotesFormat": "YYYY-MM-DD",
   "templateFolder": "_templates",
   "openBehavior": "daily",
-  "readableLineLength": false
+  "readableLineLength": false,
+  "alwaysUpdateLinks": true
 }

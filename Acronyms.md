@@ -25,7 +25,7 @@ Quick-reference glossary of acronyms used across these notes. Each entry links d
 ### AWS
 **Amazon Web Services** — Gong's primary cloud provider. Profiles used internally: `prod`, `devtest`, `internal`.
 → [[Import Prod Data - Calls#Prerequisites]]
-→ [[gong-module-run How To#Prerequisites]]
+→ [[GRM  gong-module-run How To#Prerequisites]]
 
 ---
 
@@ -111,7 +111,7 @@ Quick-reference glossary of acronyms used across these notes. Each entry links d
 
 ### IAM
 **Identity and Access Management** — AWS service that controls permissions for services, roles, and resources. Referenced in the module run how-to when provisioning new service access via `descriptor.app.yaml`.
-→ [[gong-module-run How To#Relationship to descriptor.app.yaml / /infra]]
+→ [[GRM  gong-module-run How To#Relationship to descriptor.app.yaml / /infra]]
 
 ### IDE
 **Integrated Development Environment** — the primary IDE at Gong is **IntelliJ IDEA**. Lightrun and Claude Code both integrate directly with it.
@@ -127,7 +127,7 @@ Quick-reference glossary of acronyms used across these notes. Each entry links d
 
 ### JVM
 **Java Virtual Machine** — the runtime for all Gong Java services. `gong-module-run` sets JVM options (heap size, debug port, JMX) per container via `JAVA_OPTS`.
-→ [[gong-module-run How To#Core Commands]]
+→ [[GRM  gong-module-run How To#Core Commands]]
 
 ---
 
@@ -147,7 +147,7 @@ Quick-reference glossary of acronyms used across these notes. Each entry links d
 
 ### MCP
 **Model Context Protocol** — the open protocol that connects AI assistants (Claude) to external tools and data sources. Gong runs an MCP gateway (`MCPGatewayWebApi`, `MCPServer`).
-→ [[gong-module-run How To#Bounded Contexts]]
+→ [[GRM  gong-module-run How To#Bounded Contexts]]
 
 ### MDC
 **Mapped Diagnostic Context** — SLF4J's mechanism for attaching key-value pairs (e.g. `cid` = company ID) to log entries. Used in Lightrun snapshot conditions to filter by tenant.

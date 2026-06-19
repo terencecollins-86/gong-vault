@@ -11,14 +11,14 @@
             "id": "fe447a10db5ea898",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "Daily Notes/2026-06-18.md",
-                "bFile": "Daily Notes/2026-06-18.md",
-                "aRef": ""
+                "file": "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 2026-06-18  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "GRM  gong-module-run How To"
             }
           }
         ]
@@ -199,10 +199,32 @@
   },
   "active": "fe447a10db5ea898",
   "lastOpenFiles": [
-    "Daily Notes/2026-06-19.md",
-    "Daily Notes/2026-06-18.md",
+    "Engineering/Runbooks/Comms Capture/Call Orchestration.md",
     "Canvas/Project Architecture.canvas",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
+    "Engineering/Runbooks/Comms Capture/_index.md",
+    "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
+    "Engineering/Runbooks/Comms Capture/Comms Capture Architecture Overview.md",
+    "Engineering/Runbooks/Comms Capture/Comms Capture Maven Modules.md",
+    "Engineering/Runbooks/Comms Capture/Communication Compliance.md",
+    "Engineering/Runbooks/Comms Capture/Communications Publisher.md",
+    "Engineering/Runbooks/Comms Capture/Communications Publisher.md.tmp.42.3d37a2f64e6b",
+    "Engineering/Runbooks/Comms Capture/Webconf Streaming.md",
+    "Engineering/Runbooks/Comms Capture/Webconf Streaming.md.tmp.42.9ab57bf2ae74",
+    "Engineering/Runbooks/Comms Capture/Conversations.md",
+    "Engineering/Runbooks/Comms Capture/Conversations.md.tmp.42.b9f21eb7071a",
+    "Engineering/Runbooks/Comms Capture/In-Meeting Experience.md",
+    "Engineering/Runbooks/Comms Capture/Processors.md",
+    "Engineering/Runbooks/Comms Capture/Ingestion.md",
+    "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
+    "Engineering/Runbooks/Comms Capture/Call Scheduling.md",
+    "Engineering/Runbooks/Comms Capture/Cloud Recorders.md",
+    "Engineering/Runbooks/Comms Capture/Recorders.md",
+    "Engineering/Runbooks/Comms Capture/Data Capture.md",
+    "Engineering/Runbooks/Comms Capture",
+    "Engineering/Runbooks",
+    "Daily Notes/2026-06-19.md",
+    "Daily Notes/2026-06-18.md",
     "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
     "Engineering/Notes/Comms Capture - gong-module-run Runbook.md",
     "Engineering/Notes/gong-module-run How To.md",
@@ -210,24 +232,6 @@
     "Engineering/Notes/Comms Capture Maven Modules.md",
     "Acronyms.md",
     "Engineering/Notes/Import Prod Data - Calls.md",
-    "Daily Notes/2026-06-17.md",
-    "Research/Spikes/Software Defined Modules - R&D.md",
-    "Resources/Work/Tips.md",
-    "Engineering/Notes/Comms Capture Architecture Overview.md",
-    "Research/Spikes/Metrics in Gong - the complete guide - R&D.md",
-    "Research/Spikes/Adjustable Logging - R&D.md",
-    "Goals & Growth/_dashboard.md",
-    "Engineering/Swagger Pages.md",
-    "Engineering/Notes/gong-java-cheat-sheet.md",
-    "Inbox/AI4Dev Use Cases - R&D.md",
-    "Inbox/Getting started with Claude Code - R&D.md",
-    "Inbox/Web application performance metrics and how to use them - R&D.md",
-    "Daily Notes/2026-06-16.md",
-    "Inbox/Developer Data Gateway Spec - R&D.md",
-    "Clippings/Developer Data Gateway Spec - R&D.md",
-    "Inbox/Lightrun - R&D.md",
-    "Clippings/Lightrun - R&D 1.md",
-    "Inbox/_README.md",
     "Inbox/Gong Architecture.png",
     "Clippings",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
@@ -240,11 +244,6 @@
     "Resources/HR/Gong TravelHub Bikes and Tickets Flyer.pdf",
     "Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "Resources/Work",
-    "Resources/HR",
-    "Resources",
-    "Inbox/me.jpeg",
-    "Inbox/EMEA Customer Story Team Assignments.pptx",
-    "Inbox/Gong TravelHub Bikes and Tickets Flyer.pdf",
-    "_templates/meeting-note.md.tmp.36.6bffa5eb911b"
+    "Inbox/me.jpeg"
   ]
 }

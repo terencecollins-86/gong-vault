@@ -187,4 +187,4 @@ These solve different problems:
 - [[Comms Capture Maven Modules]] — module breakdown per service if you're working in comms capture
 - [[Comms Capture Architecture Overview]] — which services own which capture domain
 - [[Import Prod Data - Calls]] — getting real call data into your local databases for testing
-- [[Comms Capture - gong-module-run Runbook]] — all bounded contexts, services, and ready-to-run commands for the Comms Capture team
+- [[_index|Comms Capture Runbooks]] — all bounded contexts, services, and ready-to-run commands for the Comms Capture team
