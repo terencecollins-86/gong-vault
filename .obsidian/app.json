@@ -5,5 +5,6 @@
   "dailyNotesFolder": "Daily Notes",
   "dailyNotesFormat": "YYYY-MM-DD",
   "templateFolder": "_templates",
-  "openBehavior": "daily"
+  "openBehavior": "daily",
+  "readableLineLength": false
 }

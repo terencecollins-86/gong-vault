@@ -29,12 +29,12 @@
 		{"id":"messaging","type":"text","x":-300,"y":640,"width":320,"height":100,"text":"**Kafka / MSK**\nEvent streaming backbone"}
 	],
 	"edges":[
-		{"id":"e1","fromNode":"gong-core","toNode":"ai-pipeline","label":"signals"},
-		{"id":"e2","fromNode":"ai-pipeline","toNode":"data-stores","label":"reads/writes"},
-		{"id":"e3","fromNode":"integrations","toNode":"gong-core","label":"events"},
-		{"id":"e4","fromNode":"gong-core","toNode":"data-stores","label":"persist"},
-		{"id":"e5","fromNode":"messaging","toNode":"gong-core","label":"async"},
-		{"id":"e6","fromNode":"messaging","toNode":"ai-pipeline","label":"async"},
+		{"id":"e1","fromNode":"gong-core","toNode":"ai-pipeline","label":"signals","fromSide":"right","toSide":"left"},
+		{"id":"e2","fromNode":"ai-pipeline","toNode":"data-stores","label":"reads/writes","fromSide":"left","toSide":"top"},
+		{"id":"e3","fromNode":"integrations","toNode":"gong-core","label":"events","fromSide":"top","toSide":"right"},
+		{"id":"e4","fromNode":"gong-core","toNode":"data-stores","label":"persist","fromSide":"bottom","toSide":"top"},
+		{"id":"e5","fromNode":"messaging","toNode":"gong-core","label":"async","fromSide":"top","toSide":"bottom"},
+		{"id":"e6","fromNode":"messaging","toNode":"ai-pipeline","label":"async","fromSide":"top","toSide":"bottom"},
 		{"id":"e7","fromNode":"my-team","toNode":"ai-pipeline","label":"owns","fromSide":"left","toSide":"right"}
 	]
 }
