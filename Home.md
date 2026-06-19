@@ -4,7 +4,7 @@ cssclasses: []
 
 # 🏠 Gong PKM — Home
 
-> Quick nav: [[Engineering/_dashboard|🟦 Engineering]] · [[Architecture/_dashboard|🟩 Architecture]] · [[Meetings/_dashboard|🟥 Meetings]] · [[Research/_dashboard|🟣 Research]] · [[Goals & Growth/_dashboard|🌟 Growth]] · [[Tasks/_board|📋 Tasks]]
+> Quick nav: [[Engineering/_dashboard|🟦 Engineering]] · [[Architecture/_dashboard|🟩 Architecture]] · [[Meetings/_dashboard|🟥 Meetings]] · [[Research/_dashboard|🟣 Research]] · [[Goals & Growth/_dashboard|🌟 Growth]] · [[Tasks/_board|📋 Tasks]] · [[Telephony Systems/_dashboard|☎️ Telephony Systems]]
 
 ---
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/Troubleshoot Endpoints.md",
-                "mode": "source",
+                "file": "Telephony Systems/06 - Runbook & Troubleshooting.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Troubleshoot Endpoints"
+              "title": "06 - Runbook & Troubleshooting"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 323.5
+    "width": 345.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -199,8 +199,25 @@
   },
   "active": "fe447a10db5ea898",
   "lastOpenFiles": [
-    "Engineering/Swagger Pages.md",
+    "Telephony Systems/05 - Observability.md",
+    "Telephony Systems/04 - Providers & Dialers.md",
+    "Telephony Systems/03 - Services Reference.md",
+    "Telephony Systems/02 - Data Flows.md",
+    "Telephony Systems/01 - Architecture & Modules.md",
+    "Canvas/Project Architecture.canvas",
+    "Canvas/IngesterMailSupervisor Data Flow.canvas",
+    "Telephony Systems/00 - Overview.md",
+    "Telephony Systems/07 - Onboarding Checklist.md",
+    "Telephony Systems/06 - Runbook & Troubleshooting.md",
+    "Telephony Systems/_dashboard.md",
+    "Daily Notes/2026-06-19.md",
+    "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
+    "Engineering/Runbooks/Comms Capture/Call Orchestration.md",
+    "Engineering/Runbooks/Comms Capture/_index.md",
+    "Engineering/Runbooks/Comms Capture/Comms Capture Maven Modules.md",
+    "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Architecture/Troubleshoot Endpoints.md",
+    "Engineering/Swagger Pages.md",
     "Architecture/Troubleshoot Endpoints.md.tmp.41.c55eced1e668",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
@@ -208,17 +225,10 @@
     "Engineering/Runbooks/Comms Capture/Processors.canvas",
     "Engineering/Runbooks/Comms Capture/Ingestion.canvas",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
-    "Engineering/Runbooks/Comms Capture/Data Capture.canvas",
-    "Engineering/Runbooks/Comms Capture/Conversations.canvas",
-    "Engineering/Runbooks/Comms Capture/Communications Publisher.canvas",
-    "Engineering/Runbooks/Comms Capture/Communication Compliance.canvas",
     "Engineering/Runbooks/Comms Capture/Processors.md",
     "Engineering/Runbooks/Comms Capture/Ingestion.md",
     "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
-    "Engineering/Runbooks/Comms Capture/Call Orchestration.md",
-    "Engineering/Runbooks/Comms Capture/_index.md",
     "Engineering/Runbooks/Comms Capture/Comms Capture Architecture Overview.md",
-    "Engineering/Runbooks/Comms Capture/Comms Capture Maven Modules.md",
     "Engineering/Runbooks/Comms Capture/Communication Compliance.md",
     "Engineering/Runbooks/Comms Capture/Communications Publisher.md",
     "Engineering/Runbooks/Comms Capture/Communications Publisher.md.tmp.42.3d37a2f64e6b",
@@ -228,20 +238,9 @@
     "Engineering/Runbooks/Comms Capture/Conversations.md.tmp.42.b9f21eb7071a",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.md",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
-    "Engineering/Runbooks/Comms Capture/Call Scheduling.md",
-    "Engineering/Runbooks/Comms Capture/Cloud Recorders.md",
-    "Engineering/Runbooks/Comms Capture/Recorders.md",
-    "Engineering/Runbooks/Comms Capture/Data Capture.md",
     "Engineering/Runbooks/Comms Capture",
     "Engineering/Runbooks",
-    "Daily Notes/2026-06-19.md",
-    "Daily Notes/2026-06-18.md",
-    "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
-    "Engineering/Notes/Comms Capture - gong-module-run Runbook.md",
-    "Engineering/Notes/gong-module-run How To.md",
     "Engineering/Notes/Comms Capture - gong-module-run Runbook.md.tmp.42.dda047643c00",
-    "Engineering/Notes/Comms Capture Maven Modules.md",
-    "Acronyms.md",
     "Inbox/Gong Architecture.png",
     "Clippings",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
