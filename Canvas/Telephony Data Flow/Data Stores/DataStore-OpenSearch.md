@@ -58,6 +58,7 @@ Run the service: `gong-module-run --debug up --subsystem-names gong-telephony-sy
 
 > **External repo.** The index reader/writer framework (`MetaClientIndexWriter`, `ElasticsearchIndexWriter`, the `audits`/`person`/`troubleshooting-ts` index beans + schemas) lives in `Honeyfy/ElasticSearch`, `Honeyfy/TroubleshootingTs`, `Honeyfy/AppCommon` — **not mounted here**. The breakpoints below are on **our side of the boundary** — the write/read call sites in this repo.
 
+
 | Where | File : line | Why |
 |---|---|---|
 | **TS index write (per call)** | `Dialers/.../importcalls/SdrSyncWithPipelineEnqueueService.java:619` | `troubleshootingTsService.send(...)` — writes a `troubleshooting-ts` doc during sync |

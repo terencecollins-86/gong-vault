@@ -4,21 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "b2ec17d39bd48d94",
+        "id": "2aa82fe11e5f68b3",
         "type": "tabs",
         "children": [
           {
-            "id": "ca171a63552875e9",
+            "id": "f20544a1e1bc1e5f",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "canvas",
               "state": {
-                "aFile": "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
-                "bFile": "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
-                "aRef": ""
+                "file": "Canvas/Telephony Systems - External Data Flow.canvas",
+                "viewState": {
+                  "x": 615.2957571653459,
+                  "y": 141.31816604231662,
+                  "zoom": -2.6937781249879547
+                }
               },
-              "icon": "diff",
-              "title": "Diff: GongConnectWebhooksServer  (Working Tree)"
+              "icon": "lucide-layout-dashboard",
+              "title": "Telephony Systems - External Data Flow"
             }
           }
         ]
@@ -41,7 +44,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -78,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5,
-    "collapsed": true
+    "width": 468.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -198,36 +200,36 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "ca171a63552875e9",
+  "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
-    "Canvas/Telephony Data Flow/Outbound Topics/CALL-PROCESSING-INBOUND-LOW-PRIORITY.md",
-    "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
-    "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
     "Canvas/Project Architecture.canvas",
-    "Canvas/Telephony Data Flow/Web - REST/PBX-Recording-Import.md",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md",
-    "Canvas/Telephony Data Flow/Web - REST/CallData-Provider-Controller.md",
     "Canvas/Telephony Data Flow/Web - REST/CallData-Controller.md",
-    "Canvas/Telephony Data Flow/Providers/Zoom-Phone.md",
-    "Canvas/Telephony Data Flow/Providers/Ytel.md",
     "Canvas/Telephony Data Flow/Providers/Vonage-VBC.md",
-    "Canvas/Telephony Data Flow/Providers/Salesloft.md",
     "Canvas/Telephony Data Flow/Providers/RingCentral.md",
-    "Canvas/Telephony Data Flow/Providers/RingCentral-Engage.md",
-    "Canvas/Telephony Data Flow/Providers/Outreach.md",
-    "Canvas/Telephony Data Flow/Providers/Dialpad.md",
     "Canvas/Telephony Data Flow/Providers/Aircall.md",
-    "Canvas/Telephony Data Flow/Outbound Topics/WEBCONFERENCE-CALL-EVENTS.md",
-    "Canvas/Telephony Data Flow/Outbound Topics/TEXTS-INGESTED.md",
     "Canvas/Telephony Data Flow/Outbound Topics/GONG-CONNECT-CALL-INGESTED.md",
-    "Canvas/Telephony Data Flow/Outbound Topics/DIALER-CALLS-UPDATES.md",
     "Canvas/Telephony Data Flow/Outbound Topics/COMMENT-UPDATE.md",
-    "Canvas/Telephony Data Flow/Outbound Topics/CALL-PROCESSING-INBOUND.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/LOW-PRIORITY-DIALER-EVENTS.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-DIALER-EVENTS.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-CALL-EVENT.md",
     "Canvas/Telephony Data Flow/Inbound Topics/EXTERNAL-RECORDINGS-IMPORT-REQUESTS.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-DIALER-EVENTS.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/LOW-PRIORITY-DIALER-EVENTS.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-CALL-EVENT.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/ASSOCIATION-UPDATED.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/APP-USER-CHANGES.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/ProcessorJobSupervisor-Status.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/GongConnect-WebApi-Tasks.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/FrontEndApi-WebFrontEnd.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/EnableWebApi-PublicApiServer.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/CrmAssociator.md",
+    "Canvas/Telephony Data Flow/Inbound Producers/BackofficeManager.md",
+    "Canvas/Telephony Data Flow/Downstream Consumers/TextIndexer.md",
+    "Canvas/Telephony Data Flow/Downstream Consumers/ProspectingManager.md",
+    "Canvas/Telephony Data Flow/Downstream Consumers/ProcessorJobSupervisor.md",
+    "Canvas/Telephony Data Flow/Downstream Consumers/CrmEnricher.md",
+    "Canvas/Telephony Data Flow/Downstream Consumers/CommunicationsSyncServer.md",
+    "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
     "Canvas/Telephony Data Flow/Outbound Topics",
