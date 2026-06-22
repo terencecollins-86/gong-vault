@@ -11,14 +11,17 @@
             "id": "fe447a10db5ea898",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Telephony Systems/Entrypoints Within the Telephony System.md",
-                "mode": "source",
-                "source": false
+                "file": "Canvas/Telephony Systems - External Data Flow.canvas",
+                "viewState": {
+                  "x": 290.0825201511974,
+                  "y": -75.78114264072934,
+                  "zoom": -1.63394775390625
+                }
               },
-              "icon": "lucide-file",
-              "title": "Entrypoints Within the Telephony System"
+              "icon": "lucide-layout-dashboard",
+              "title": "Telephony Systems - External Data Flow"
             }
           }
         ]
@@ -78,7 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 345.5
+    "width": 468.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -199,9 +202,10 @@
   },
   "active": "fe447a10db5ea898",
   "lastOpenFiles": [
+    "Telephony Systems/Entrypoints Within the Telephony System.md",
+    "Canvas/Telephony Systems - External Data Flow.canvas",
     "Backups/db_seed.sql.md",
     "Backups/db_seed.sql",
-    "Telephony Systems/Entrypoints Within the Telephony System.md",
     "Backups/Ingester Telephony Systems Supervisor.postman_collection.json",
     "Backups",
     "Daily Notes/2026-06-22.md",
@@ -239,7 +243,6 @@
     "Engineering/Runbooks/Comms Capture/Recorders.canvas",
     "Engineering/Runbooks/Comms Capture/Processors.canvas",
     "Engineering/Runbooks/Comms Capture/Ingestion.canvas",
-    "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
     "Engineering/Runbooks/Comms Capture/Communications Publisher.md.tmp.42.3d37a2f64e6b",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.md.tmp.42.9ab57bf2ae74",
     "Engineering/Runbooks/Comms Capture/Conversations.md.tmp.42.b9f21eb7071a",
