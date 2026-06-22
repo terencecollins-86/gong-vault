@@ -15,9 +15,9 @@
               "state": {
                 "file": "Canvas/Telephony Systems - External Data Flow.canvas",
                 "viewState": {
-                  "x": 33.652382875824024,
-                  "y": -818.482840975995,
-                  "zoom": -0.2832356770833332
+                  "x": -40,
+                  "y": 112.99502429333361,
+                  "zoom": -1.3532922657966975
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -81,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5
+    "width": 468.5,
+    "collapsed": true
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
