@@ -12,14 +12,14 @@ A concrete ramp for a new engineer joining Telephony Systems.
 
 ## Day 1 — orient
 
-- [ ] Read [[00 - Overview]] and [[01 - Architecture & Modules]].
-- [ ] Skim [[02 - Data Flows]] — internalise the **4 entry-point classes**.
-- [ ] Clone & build the repo (see the repo `README.md`):
-      ```bash
-      git clone https://github.com/Honeyfy/gong-telephony-systems.git
-      cd gong-telephony-systems
-      ./mvnw -T1C clean install -DskipTests
-      ```
+- [x] Read [[00 - Overview]] and [[01 - Architecture & Modules]].
+- [x] Skim [[02 - Data Flows]] — internalise the **4 entry-point classes**.
+- [x] Clone & build the repo (see the repo `README.md`):
+	```bash
+	git clone https://github.com/Honeyfy/gong-telephony-systems.git
+	cd gong-telephony-systems
+	./mvnw -T1C clean install -DskipTests
+	```
 - [ ] Get access: GitHub `Honeyfy`, VPN, Datadog, Coralogix, Sentry (team `telephony-systems`), Jira `GONG`.
 - [ ] Open the project in IntelliJ; note the `.run/` configs for the 3 initializers.
 

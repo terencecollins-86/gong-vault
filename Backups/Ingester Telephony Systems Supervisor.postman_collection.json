@@ -1,0 +1,1203 @@
+{
+  "info": {
+    "_postman_id": "8cb0d4d8-f7cb-4e86-93d0-3c20035f0033",
+    "name": "Ingester Telephony Systems Supervisor",
+    "description": "Local debugging collection for IngesterTelephonySystemsSupervisor.\n\nEntry points are triggered over HTTP against the running service (default local port 8097, Local profile, no context path).\n\nAUTH: This service is internal-only (publicFacing: False). No application-level auth filter is present locally — requests need no token/header.\n\nENTRY-POINT COVERAGE:\n\n- HTTP troubleshooters: triggered directly (this is what they are).\n    \n- Pull (scheduled sync / initial-import / SQS monitors / S3 cleaners): POST /troubleshooting/tasks/{taskId}/run. NOTE: ScheduledTask beans register only under DEV/PROD profiles, NOT Local. To use the tasks folder, run the service with -Dspring.profiles.active=DEV.\n    \n- Push (telephony-call-event consumer): process-one-event endpoint invokes the same dialerService.processCallEvent(...).\n    \n- Push (other 7 Kafka consumers): NO dedicated HTTP trigger. See the 'Kafka Consumers (reference)' folder — breakpoint accept() and produce to the topic, or breakpoint the downstream service.\n    \n\nFor the exhaustive endpoint list on a running instance, use Swagger: {{baseUrl}}/swagger-ui/index.html or {{baseUrl}}/v3/api-docs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56033112",
+    "_collection_link": "https://go.postman.co/collection/56033112-8cb0d4d8-f7cb-4e86-93d0-3c20035f0033?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Health / Discovery",
+      "item": [
+        {
+          "name": "Home",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI docs (JSON)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v3/api-docs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v3",
+                "api-docs"
+              ]
+            },
+            "description": "Authoritative live list of every endpoint + params. If 404, try /swagger-ui/index.html."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pull — Scheduled Tasks (DEV/PROD profile only)",
+      "item": [
+        {
+          "name": "List registered tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/tasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List currently running tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/tasks/run",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "tasks",
+                "run"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Run task now (blocks until complete)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/tasks/{{taskId}}/run",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "tasks",
+                "{{taskId}}",
+                "run"
+              ]
+            },
+            "description": "Set {{taskId}} to a registered id, e.g.: gongconnect-import, aircall-import, zoomphone-import, five9-import, ts-backfill-marked-users, ts-monitor-ts-sqs-high-priority-sync-broken-chain, delete-old-s3-metadata, heartbeat. Breakpoint the work method (DialerServicesManager.importCalls / SdrSyncCoordinatorService.syncSdrTasks)."
+          },
+          "response": []
+        },
+        {
+          "name": "Is task running?",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/tasks/{{taskId}}/run",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "tasks",
+                "{{taskId}}",
+                "run"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Suspend task execution",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/tasks/{{taskId}}/suspend?duration=PT1H",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "tasks",
+                "{{taskId}}",
+                "suspend"
+              ],
+              "query": [
+                {
+                  "key": "duration",
+                  "value": "PT1H",
+                  "description": "ISO-8601 duration"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Triggers the scheduled sync / initial-import / monitor / S3-cleanup entry points on demand. Backed by TroubleshootingScheduledTaskController. Tasks register only under DEV/PROD — empty list under Local."
+    },
+    {
+      "name": "Push — Telephony Call Events",
+      "item": [
+        {
+          "name": "Process one telephony call event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_comment\": \"Replace with a valid TelephonyCallEvent payload (com.honeyfy.kafka.events.call.external.dialer.TelephonyCallEvent). Check the class for required fields.\",\n  \"companyId\": 0,\n  \"providerName\": \"gong-connect\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-call-events/generic/telephony-call-event/process-one-event?integration-flavor={{integrationFlavor}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-call-events",
+                "generic",
+                "telephony-call-event",
+                "process-one-event"
+              ],
+              "query": [
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}"
+                }
+              ]
+            },
+            "description": "Breakpoint: TelephonyCallEventsTroubleshooter.java:50, or step into dialerService.processCallEvent(...). To exercise the Kafka wrapper itself (accept()), produce to topic DIALER_EVENTS instead."
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Datadog issues",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-call-events/generic/telephony-call-event/generate-datadog-issues?companyId={{companyId}}&integrationId={{integrationId}}&integration-flavor={{integrationFlavor}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-call-events",
+                "generic",
+                "telephony-call-event",
+                "generate-datadog-issues"
+              ],
+              "query": [
+                {
+                  "key": "companyId",
+                  "value": "{{companyId}}"
+                },
+                {
+                  "key": "integrationId",
+                  "value": "{{integrationId}}"
+                },
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clear company events",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-call-events/generic/telephony-call-event/clear-events?company-id={{companyId}}&integration-flavor={{integrationFlavor}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-call-events",
+                "generic",
+                "telephony-call-event",
+                "clear-events"
+              ],
+              "query": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}"
+                },
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}"
+                },
+                {
+                  "key": "from-date",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "to-date",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "TelephonyCallEventsTroubleshooter. process-one-event drives the SAME path as the telephony-call-event Kafka consumer (dialerService.processCallEvent), but with CallOrigin.TROUBLESHOOTER."
+    },
+    {
+      "name": "HTTP — PCI-Compliant Troubleshooter",
+      "item": [
+        {
+          "name": "Backfill marked TSs (SFDC) — zero-arg, good breakpoint smoke test",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/backfill/backfillMarkedTSs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "backfill",
+                "backfillMarkedTSs"
+              ]
+            },
+            "description": "Breakpoint: IngesterTelephonySystemsTroubleshooter.java:291. No params — fires immediately."
+          },
+          "response": []
+        },
+        {
+          "name": "Mark changed users (SFDC)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/backfill/markChangedUsers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "backfill",
+                "markChangedUsers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Set backfill status",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/backfill/setBackfillStatus?company-id={{companyId}}&integration-id={{integrationId}}&shouldSetBackfill=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "backfill",
+                "setBackfillStatus"
+              ],
+              "query": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}"
+                },
+                {
+                  "key": "integration-id",
+                  "value": "{{integrationId}}"
+                },
+                {
+                  "key": "shouldSetBackfill",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Set sync time — single company",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setSyncTime/single-company?company-id={{companyId}}&integration-id={{integrationId}}&is-initial-sync=true&sync-date-from=2024-01-01&sync-date-to=2024-01-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "company",
+                "sync",
+                "setSyncTime",
+                "single-company"
+              ],
+              "query": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}"
+                },
+                {
+                  "key": "integration-id",
+                  "value": "{{integrationId}}"
+                },
+                {
+                  "key": "is-initial-sync",
+                  "value": "true"
+                },
+                {
+                  "key": "sync-date-from",
+                  "value": "2024-01-01"
+                },
+                {
+                  "key": "sync-date-to",
+                  "value": "2024-01-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Set sync time — multiple companies by provider",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setSyncTime/multiple-companies?integration-flavor={{integrationFlavor}}&is-initial-sync=true&sync-date-from=2024-01-01&companyIds={{companyId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "company",
+                "sync",
+                "setSyncTime",
+                "multiple-companies"
+              ],
+              "query": [
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}"
+                },
+                {
+                  "key": "is-initial-sync",
+                  "value": "true"
+                },
+                {
+                  "key": "sync-date-from",
+                  "value": "2024-01-01"
+                },
+                {
+                  "key": "companyIds",
+                  "value": "{{companyId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sync one call",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/syncOneCall?company-id={{companyId}}&integration-id={{integrationId}}&providerCallId={{providerCallId}}&callDate=2024-01-01T00:00:00Z",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "syncOneCall"
+              ],
+              "query": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}"
+                },
+                {
+                  "key": "integration-id",
+                  "value": "{{integrationId}}"
+                },
+                {
+                  "key": "providerCallId",
+                  "value": "{{providerCallId}}"
+                },
+                {
+                  "key": "callDate",
+                  "value": "2024-01-01T00:00:00Z"
+                },
+                {
+                  "key": "callUrl",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Breakpoint: IngesterTelephonySystemsTroubleshooter.java:478."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete call_provider_data (allow reimport)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "gongCallIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "callsPerBatch",
+                  "value": "100",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/deleteCallProviderDataRecords",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "deleteCallProviderDataRecords"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mask calls (allow reimport)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "from",
+                  "value": "2024-01-01",
+                  "type": "text"
+                },
+                {
+                  "key": "to",
+                  "value": "2024-01-31",
+                  "type": "text"
+                },
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}",
+                  "type": "text"
+                },
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/maskIds",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "maskIds"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unmask calls",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}",
+                  "type": "text"
+                },
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/maskIdsRevert",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "maskIdsRevert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Insert call ids (add call_provider_data)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "integration-flavor",
+                  "value": "{{integrationFlavor}}",
+                  "type": "text"
+                },
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "integration-id",
+                  "value": "{{integrationId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/insertCallIds",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "insertCallIds"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Redo existing call (redo title)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "callIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "associateCalls",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "updateTitles",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "priority",
+                  "value": "MEDIUM",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/redoExistingCall",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "redoCalls",
+                "redoExistingCall"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change call owner",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "company-id",
+                  "value": "{{companyId}}",
+                  "type": "text"
+                },
+                {
+                  "key": "new-owner-id",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "callIds",
+                  "value": "{{callIds}}",
+                  "type": "text"
+                },
+                {
+                  "key": "callIdsFile",
+                  "type": "file",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-system-pci-compliant/generic/calls/changeCallOwner",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-system-pci-compliant",
+                "generic",
+                "calls",
+                "changeCallOwner"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "IngesterTelephonySystemsTroubleshooter — base path troubleshooting/telephony-system-pci-compliant. The most-used operational endpoints."
+    },
+    {
+      "name": "HTTP — Other Troubleshooters (base paths)",
+      "item": [
+        {
+          "name": "Integrations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/integrations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "integrations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Salesforce",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/salesforce",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "salesforce"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dialpad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/dialpad",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "dialpad"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/sms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "sms"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Telephony Systems SMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/telephony-systems-sms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "telephony-systems-sms"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SFTP",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/sftp",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "sftp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SSH Public Key",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/ssh-public-key",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "ssh-public-key"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CRM Info Retrieval",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/crm-info-retrieval",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "crm-info-retrieval"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Call Activity Store Ingestion",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/call-activity-store-ingestion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "call-activity-store-ingestion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Provider Data Access",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/provider-data-access",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "provider-data-access"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Defined Phone Numbers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/user-defined-phone-numbers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "user-defined-phone-numbers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Front (integration front)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/front",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "front"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Time-Based Events Sync Infra",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/time-based-events-sync-infra",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "time-based-events-sync-infra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recording Interceptor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/recording-interceptor",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "recording-interceptor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Public API Basic Auth Credentials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/public-api-basic-auth-credentials",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "public-api-basic-auth-credentials"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calls Workspace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/calls-workspace",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "calls-workspace"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MS Teams Numonix",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/ms-teams-numonix",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "ms-teams-numonix"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "S3",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/s3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "s3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "S3 Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/s3-events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "s3-events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Integration Failure",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/troubleshooting/integration/failure",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "troubleshooting",
+                "integration",
+                "failure"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "One stub per remaining troubleshooter controller. Append the specific operation path (see Swagger for exact sub-paths and params)."
+    },
+    {
+      "name": "Kafka Consumers (reference — NO direct HTTP trigger)",
+      "item": [],
+      "description": "These push entry points have NO dedicated troubleshooting HTTP endpoint. To hit them: set a breakpoint on the consumer's accept(ConsumerRecord) and produce a message to the topic, OR breakpoint the downstream service method.\n\n| Consumer | Topic | Cluster |\n|---|---|---|\n| TelephonyCallEventConsumer | gong-connect-dialer-events (KafkaTopics.DIALER_EVENTS) | TELEPHONY_SYSTEMS — has HTTP twin (process-one-event) |\n| LowPriorityTelephonyCallEventConsumer | low-priority-dialer-events | TELEPHONY_SYSTEMS |\n| GongConnectCallEventConsumer | gong-connect-call-event | TELEPHONY_SYSTEMS |\n| CompanyUpdatedConsumer | app-user-changes (APP_USER) | — |\n| MsTeamsAppUserChangesConsumer | app-user-changes | APP_USER |\n| CrmAssociationRetryConsumer | (retry topic) | — |\n| TelephonySystemsAssociationUpdatedConsumer | association-updated | ACTIVITY_CRM_ASSOCIATIONS |\n| TsNonRecordedCallsProcessingStatusConsumer | call-processing-status-event | CALL_PROCESSOR |\n\nBreakpoint target for all: the consumer's accept(...) method (e.g. TelephonyCallEventConsumerAbstract.java:46)."
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8097"
+    },
+    {
+      "key": "companyId",
+      "value": ""
+    },
+    {
+      "key": "integrationId",
+      "value": ""
+    },
+    {
+      "key": "integrationFlavor",
+      "value": "GONG_CONNECT_API"
+    },
+    {
+      "key": "providerCallId",
+      "value": ""
+    },
+    {
+      "key": "callIds",
+      "value": ""
+    },
+    {
+      "key": "taskId",
+      "value": "heartbeat"
+    }
+  ]
+}

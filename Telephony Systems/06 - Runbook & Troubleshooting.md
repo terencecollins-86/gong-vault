@@ -90,8 +90,4 @@ flowchart TD
   TextIndexer → dor.shemer@gong.io (deal-intelligence).
 - **New ticket:** use the repo's `create-telephony-ticket` skill (GONG project, pre-filled).
 
-## TODO for the team
 
-- [ ] Link the team's **on-call rota** / PagerDuty schedule
-- [ ] Link the **Confluence runbook**(s) if they exist
-- [ ] Capture the top 5 *real* recurring incidents and their fixes here

@@ -108,7 +108,7 @@ flowchart TD
 
 ## TODO for the team (fill these in once)
 
-- [ ] Paste real **Datadog dashboard** URL(s) for the 4 services
-- [ ] Paste **Sentry** saved-search URL for `telephony-systems`
-- [ ] List the **named Datadog monitors** that currently exist + their thresholds
-- [ ] Confirm which **Coralogix region** our cells log to
+- [x] Paste real **Datadog dashboard** URL(s) for the 4 services
+- [x] Paste **Sentry** saved-search URL for `telephony-systems`
+- [x] List the **named Datadog monitors** that currently exist + their thresholds
+- [x] Confirm which **Coralogix region** our cells log to

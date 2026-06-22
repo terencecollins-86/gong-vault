@@ -13,7 +13,7 @@ cssclasses: []
 ```dataview
 TASK
 WHERE !completed AND (due = date(today) OR !due)
-AND file.folder != "_templates"
+AND file.folder != "_templates" 
 SORT due ASC
 LIMIT 10
 ```
