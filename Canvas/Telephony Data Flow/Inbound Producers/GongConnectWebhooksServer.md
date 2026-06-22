@@ -21,16 +21,16 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, gong-connect]
 
 ## What it is
 
-| | |
-|---|---|
-| **Role** | Upstream producer — webhook receiver that emits dialer call events |
-| **Produces topic** | `gong-connect-dialer-events`, cluster `TELEPHONY_SYSTEMS` |
-| **Message type** | `TelephonyCallEvent` (`com.honeyfy.kafka.events.call.external.dialer.TelephonyCallEvent`) |
-| **Producer code** | In the **GongConnectWebhooksServer** repo (not mounted here) |
-| **Our consumer** | `TelephonyCallEventConsumer` → handler `TelephonyCallEventConsumerAbstract.accept(...)` |
-| **Consumer cluster const** | `KafkaClusterDetails.TELEPHONY_SYSTEMS_KAFKA_CLUSTER` |
-| **Downstream of consumer** | `dialerService.processCallEvent(event, CallOrigin.PUSH)` → full ingestion |
-| **Service id (logs/metrics)** | `ingestertelephonysystemssupervisor` |
+|                               |                                                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------- |
+| **Role**                      | Upstream producer — webhook receiver that emits dialer call events                        |
+| **Produces topic**            | `gong-connect-dialer-events`, cluster `TELEPHONY_SYSTEMS`                                 |
+| **Message type**              | `TelephonyCallEvent` (`com.honeyfy.kafka.events.call.external.dialer.TelephonyCallEvent`) |
+| **Producer code**             | In the **GongConnectWebhooksServer** repo (not mounted here)                              |
+| **Our consumer**              | `TelephonyCallEventConsumer` → handler `TelephonyCallEventConsumerAbstract.accept(...)`   |
+| **Consumer cluster const**    | `KafkaClusterDetails.TELEPHONY_SYSTEMS_KAFKA_CLUSTER`                                     |
+| **Downstream of consumer**    | `dialerService.processCallEvent(event, CallOrigin.PUSH)` → full ingestion                 |
+| **Service id (logs/metrics)** | `ingestertelephonysystemssupervisor`                                                      |
 
 ---
 
