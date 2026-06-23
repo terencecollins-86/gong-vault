@@ -39,6 +39,9 @@ tags: [telephony-systems, downstream, consumer, kafka, oncall]
 Neither side of `comment-update` is the telephony Supervisor: the **producer** is `CommentService` in FrontEndCommon, the **consumer** is CrmEnricher (logs under **`crmenricher`**). The cross-boundary health signal is **consumer lag on `comment-update`**.
 
 **Coralogix (DataPrime)** — the consumer side (CrmEnricher):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'crmenricher'

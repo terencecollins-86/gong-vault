@@ -40,6 +40,9 @@ tags: [telephony-systems, downstream, consumer, kafka, oncall, call-processing]
 The consumer runs in the **ProcessorJobSupervisor** service, so its consume logs are under **`processorjobsupervisor`** — not us. From our side, watch the **produce** and the **downstream consumer lag** as the cross-boundary health signal.
 
 **Coralogix (DataPrime)** — our produce log line (`DialerCallsUpdatesProducer.java:31`, DEBUG) on the Supervisor side:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

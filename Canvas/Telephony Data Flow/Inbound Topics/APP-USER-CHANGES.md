@@ -39,6 +39,9 @@ tags: [telephony-systems, kafka, inbound, oncall, ms-teams]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the handler's per-type debug lines (`MsTeamsAppUserChangesConsumer.java:86` email, `:108` status/settings):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

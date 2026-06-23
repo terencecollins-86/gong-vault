@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, inbound, oncall, gong-connect]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the only signal this consumer emits is its single info line (`GongConnectCallEventConsumer.java:27`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

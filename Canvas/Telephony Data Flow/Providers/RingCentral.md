@@ -38,6 +38,9 @@ tags: [telephony-systems, dialer, external-provider, ringcentral, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — RC sync activity for one company (download + list-calls debug lines, `RingCentralDialerService.java:308`/`:391`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

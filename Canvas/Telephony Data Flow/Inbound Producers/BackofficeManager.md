@@ -38,6 +38,9 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, app-user, msteams]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consumer logs handling of each change type at DEBUG (`MsTeamsAppUserChangesConsumer.java:86,108`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

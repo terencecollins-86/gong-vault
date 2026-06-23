@@ -38,6 +38,9 @@ tags: [telephony-systems, provider, dialer, sftp, pull-sync, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the per-day file listing + `-all` suffix handling:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

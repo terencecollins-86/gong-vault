@@ -39,10 +39,13 @@ tags: [telephony-systems, kafka, inbound, oncall, call-processing]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the "events consumed" and "Sending ingestion events" debug lines (`TsNonRecordedCallsProcessingStatusConsumer.java:60` and `:64`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
-| filter $d.body.contains("'call processing status' events consumed") || $d.body.contains('Sending ingestion events')
+| filter $d.body.contains('call processing status') || $d.body.contains('Sending ingestion events')
 | limit 200
 ```
 Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`. The "No 'call processing status' events consumed" line (`:57`) means a batch arrived but none of the 4 relevant outcomes were present.

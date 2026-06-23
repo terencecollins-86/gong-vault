@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, outbound, oncall, sms]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — both producers log INFO `"Sending textIngestedEvent="` before the send (`SmsSyncService.java:155` / `ZoomPhoneSmsService.java:428`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

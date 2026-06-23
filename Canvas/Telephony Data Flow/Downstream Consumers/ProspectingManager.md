@@ -41,6 +41,9 @@ tags: [telephony-systems, downstream, consumer, kafka, oncall]
 The consumer runs in **ProspectingManager**, so its consume logs are under **`prospectingmanager`** — not us. From our side, watch the **produce** log + **downstream consumer lag** as the cross-boundary health signal.
 
 **Coralogix (DataPrime)** — our produce log line (`KafkaUtils.java:22`, DEBUG, shared util) on the Supervisor side:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

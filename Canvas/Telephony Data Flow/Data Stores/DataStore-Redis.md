@@ -37,6 +37,9 @@ tags: [telephony-systems, redis, locks, data-store, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — lock acquire attempts (`DialersConnectService.getSyncLock` logs at INFO):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

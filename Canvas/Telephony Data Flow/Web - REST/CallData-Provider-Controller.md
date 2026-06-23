@@ -39,6 +39,9 @@ tags: [telephony-systems, rest, inbound, feign, call-data, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the oversize error line (`TelephonySystemsCallDataProviderController.java:32`, `"List of callIds is too large"`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

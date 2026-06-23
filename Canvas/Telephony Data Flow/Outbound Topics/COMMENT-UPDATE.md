@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, outbound, oncall, crm]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the produce itself is logged by the `frontendcommon` sender; our side logs the association-update handling that precedes it. Watch both via the topic name and the association consumer:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

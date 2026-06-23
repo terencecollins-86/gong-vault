@@ -37,6 +37,9 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, gong-connect, recor
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — topic A (the no-op consumer logs at INFO, `GongConnectCallEventConsumer.java:27`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
@@ -44,6 +47,9 @@ source logs
 | limit 200
 ```
 Topic B (recording-import requests land in the importer, `ExternalRecordingsImportRequestsConsumer.java:31`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'telephonysystemsrecordingsimporter'

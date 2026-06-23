@@ -42,6 +42,9 @@ tags: [telephony-systems, downstream, consumer, kafka, opensearch, oncall]
 TextIndexer is **in this repo** but its logs run under its own service id **`textindexer`**, and its exceptions route to Sentry team **`deal-intelligence`**.
 
 **Coralogix (DataPrime)** — the consume log line (`TextIngestedConsumer.java:41`, DEBUG):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'textindexer'

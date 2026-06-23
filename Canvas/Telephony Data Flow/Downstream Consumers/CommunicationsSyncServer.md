@@ -40,6 +40,9 @@ tags: [telephony-systems, downstream, consumer, kafka, oncall]
 The consumer runs in **CommunicationsSyncServer**, so its consume logs are under **`communicationssyncserver`** and its exceptions land in Sentry team **`mail-cal-ingestion`** — not us. From our side, watch the **produce** logs + **downstream consumer lag** as the cross-boundary health signal.
 
 **Coralogix (DataPrime)** — our produce log lines (`DialerCallsUpdatesProducer.java:31` / `WebConfCallsUpdatesProducer.java:32`, both DEBUG) on the Supervisor side:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

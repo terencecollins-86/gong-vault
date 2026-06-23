@@ -39,6 +39,9 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, recordings, low-pri
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — topic B shares the main consumer's log line (`TelephonyCallEventConsumerAbstract.java:48`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
@@ -46,6 +49,9 @@ source logs
 | limit 200
 ```
 Topic A (recordings importer, `ExternalRecordingsImportRequestsConsumer.java:31`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'telephonysystemsrecordingsimporter'

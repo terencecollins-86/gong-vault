@@ -38,6 +38,9 @@ tags: [telephony-systems, postgresql, rds, data-store, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — query/connection errors for this service:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

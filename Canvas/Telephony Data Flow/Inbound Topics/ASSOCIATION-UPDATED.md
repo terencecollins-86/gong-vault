@@ -39,6 +39,9 @@ tags: [telephony-systems, kafka, inbound, oncall, crm-association]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consume + finish lines (`TelephonySystemsAssociationUpdatedConsumer.java:104` and `:114`), plus retry scheduling (`CrmAssociationRetryService.java:51`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

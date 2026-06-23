@@ -41,6 +41,9 @@ tags: [telephony-systems, kafka, outbound, oncall, call-processing]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the actual send log line (`WebConfCallsUpdatesProducer.java:32`, DEBUG `"Sent ... event to kafka"`) and the GDM façade success (`GdmCallEventSender.java:45`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

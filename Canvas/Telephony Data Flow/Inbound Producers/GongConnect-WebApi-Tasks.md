@@ -35,6 +35,9 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, gong-connect]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consumer logs each received event at TRACE (`TelephonyCallEventConsumerAbstract.java:48`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

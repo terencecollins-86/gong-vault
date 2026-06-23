@@ -39,6 +39,9 @@ tags: [telephony-systems, rest, inbound, pbx, recording-import, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — successful import (`PbxRecordingImportService.java:186` debug `"Successfully import call"`) and the GDM-send failure path (`:137` error `"Failed to send call to GDM"`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

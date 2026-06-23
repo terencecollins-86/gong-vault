@@ -44,6 +44,9 @@ tags: [telephony-systems, rest, inbound, feign, call-data, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the controller's timer debug lines (`"listCallsMetadata(long, Set) completed"` @57, `"getCallMetadata(long, Long) completed"` @76) and the oversize error (`:42`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

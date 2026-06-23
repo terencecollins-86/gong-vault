@@ -37,6 +37,9 @@ tags: [telephony-systems, mongodb, crm-mirror, data-store, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the enrichment read counts / not-wired warn:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

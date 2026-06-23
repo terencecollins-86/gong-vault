@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, inbound, oncall, call-ingestion]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — handler trace line (`TelephonyCallEventConsumerAbstract.java:48`) and drops (`:53`). Both consumers share the abstract class, so scope by topic/lag in Datadog to tell them apart; logs are identical text:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

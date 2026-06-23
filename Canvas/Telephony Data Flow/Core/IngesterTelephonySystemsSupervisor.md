@@ -60,6 +60,9 @@ How calls / events enter the Supervisor. Walkthroughs, payloads, and exact break
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — all Supervisor logs; narrow by message or company:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

@@ -42,6 +42,9 @@ HTTP twin (same `processCallEvent` core, no Kafka): `process-one-event` — see 
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consumer trace line (`TelephonyCallEventConsumerAbstract.java:48`, TRACE) and any "non supported Dialer" drop (`:53`, ERROR):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

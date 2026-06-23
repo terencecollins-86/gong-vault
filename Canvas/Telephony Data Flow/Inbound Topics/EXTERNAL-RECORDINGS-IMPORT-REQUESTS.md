@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, inbound, oncall, recordings-import]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consumer's per-event line (`ExternalRecordingsImportRequestsConsumer.java:31`, INFO `"got event=…"`). Note: that line is emitted by the **RecordingsImporter** service, so filter its application name:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

@@ -51,10 +51,13 @@ tags: [telephony-systems, rest, inbound, dialpad, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — Dialpad controller + advice activity (the advice logs `DialpadDialerException` at warn, `DialpadRestControllerAdvice.java:22`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
-| filter $d.body.contains('DialpadDialerException') || $l.subsystemName.contains('Dialpad')
+| filter $d.body.contains('DialpadDialerException')
 | limit 200
 ```
 Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: add `| filter $m.severity == ERROR`.

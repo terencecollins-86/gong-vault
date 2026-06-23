@@ -38,10 +38,13 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, call-processing, fe
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the consumer logs consumed/sent counts at DEBUG (`TsNonRecordedCallsProcessingStatusConsumer.java:60,64`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
-| filter $d.body.contains("'call processing status' events consumed") || $d.body.contains('Sending ingestion events')
+| filter $d.body.contains('call processing status') || $d.body.contains('Sending ingestion events')
 | limit 200
 ```
 Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.

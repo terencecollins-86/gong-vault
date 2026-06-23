@@ -40,6 +40,9 @@ tags: [telephony-systems, kafka, outbound, oncall, gong-connect]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — the send is wrapped by `KafkaUtils.sendKafkaEventWithRetries` (logs on failure/retry). Filter for the topic name and any send failures:
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'

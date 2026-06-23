@@ -38,6 +38,9 @@ tags: [telephony-systems, dialer, external-provider, zoom-phone, oncall]
 ## 👀 See it working
 
 **Coralogix (DataPrime)** — Zoom list-calls for one company (legacy `"Listing calls"` `:541` / new `"Listing call history"` `:717`):
+> [!tip] Run in Coralogix US-01
+> [Open in Coralogix](https://gong-prod-gge-use1.app.coralogix.us/) — paste the query below into the DataPrime tab.
+
 ```text
 source logs
 | filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
