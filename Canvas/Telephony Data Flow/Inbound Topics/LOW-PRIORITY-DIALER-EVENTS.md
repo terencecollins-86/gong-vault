@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, inbound, oncall, call-ingestion]
 **Coralogix (DataPrime)** — handler trace line (`TelephonyCallEventConsumerAbstract.java:48`) and drops (`:53`). Both consumers share the abstract class, so scope by topic/lag in Datadog to tell them apart; logs are identical text:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Received telephony call event') || $m.message.contains('non supported Dialer')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Received telephony call event') || $d.body.contains('non supported Dialer')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch **consumer lag on `low-priority-dialer-events`** specifically (vs the main topic). Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

@@ -42,13 +42,13 @@ tags: [telephony-systems, kafka, outbound, oncall, sms]
 **Coralogix (DataPrime)** — both producers log INFO `"Sending textIngestedEvent="` before the send (`SmsSyncService.java:155` / `ZoomPhoneSmsService.java:428`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Sending textIngestedEvent') || $m.message.contains('Failed to send ingested event')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Sending textIngestedEvent') || $d.body.contains('Failed to send ingested event')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. For the **consumer** side (indexing), switch `applicationName` to `'textindexer'` and look for `"Received TextIngested events"` (`TextIngestedConsumer.java:41`).
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. For the **consumer** side (indexing), switch `applicationName` to `'textindexer'` and look for `"Received TextIngested events"` (`TextIngestedConsumer.java:41`).
 
-- Errors only: `| filter $m.message.contains('Failed to send ingested event')` (the `error` log at `SmsSyncService.java:159` / `ZoomPhoneSmsService.java:432`).
+- Errors only: `| filter $d.body.contains('Failed to send ingested event')` (the `error` log at `SmsSyncService.java:159` / `ZoomPhoneSmsService.java:432`).
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch the Supervisor SMS-sync metrics + **Kafka consumer lag on `texts-ingested`** (TextIndexer backing up). Filter `service:ingestertelephonysystemssupervisor` (produce) or `service:textindexer` (index) + your `g-cell`.

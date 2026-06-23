@@ -62,11 +62,11 @@ How calls / events enter the Supervisor. Walkthroughs, payloads, and exact break
 **Coralogix (DataPrime)** — all Supervisor logs; narrow by message or company:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.severity == 'ERROR'
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $m.severity == ERROR
 | limit 200
 ```
-Scope one company with `| filter $d.cid == '<companyId>'`; follow one call by its `trace_id` / call id in the MDC. Guided: *"use the coralogix-debug-expert"* or the `observability:coralogix-logs` skill.
+Scope one company with `| filter $d.mdc.cid == '<companyId>'`; follow one call by its `trace_id` / call id in the MDC. Guided: *"use the coralogix-debug-expert"* or the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). The #1 health signal is **Kafka consumer lag** on `gong-connect-dialer-events` / `*-recordings-import-requests`, plus outbound `feign.*` and `kubernetes.*` (pod restarts / HPA). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

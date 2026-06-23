@@ -20,12 +20,12 @@ A concrete ramp for a new engineer joining Telephony Systems.
 	cd gong-telephony-systems
 	./mvnw -T1C clean install -DskipTests
 	```
-- [ ] Get access: GitHub `Honeyfy`, VPN, Datadog, Coralogix, Sentry (team `telephony-systems`), Jira `GONG`.
-- [ ] Open the project in IntelliJ; note the `.run/` configs for the 3 initializers.
+- [x] Get access: GitHub `Honeyfy`, VPN, Datadog, Coralogix, Sentry (team `telephony-systems`), Jira `GONG`.
+- [x] Open the project in IntelliJ; note the `.run/` configs for the 3 initializers.
 
 ## Week 1 — go deep
 
-- [ ] Read [[03 - Services Reference]] and pick the **Supervisor** as your home base.
+- [x] Read [[03 - Services Reference]] and pick the **Supervisor** as your home base.
 - [ ] Trace **Flow A (recording ingestion)** end-to-end in the code, consumer → activity.
 - [ ] Read [[04 - Providers & Dialers]] and open one provider in `Dialers/importcalls/`.
 - [ ] Do an [[05 - Observability]] tour: run a Coralogix query, find the service in Datadog,

@@ -43,13 +43,13 @@ tags: [telephony-systems, kafka, outbound, oncall, call-processing]
 **Coralogix (DataPrime)** — the actual send log line (`WebConfCallsUpdatesProducer.java:32`, DEBUG `"Sent ... event to kafka"`) and the GDM façade success (`GdmCallEventSender.java:45`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('WebConferenceCallEvent') || $m.message.contains('call creation event to GDM')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('WebConferenceCallEvent') || $d.body.contains('call creation event to GDM')
 | limit 200
 ```
-Scope to one call by adding `| filter $d.cid == '<companyId>'` or filtering on the `callId` in the MDC. (The producer logs `event.getClass().getSimpleName()`, so `WebConferenceCallEvent` distinguishes these from dialer sends on the shared façade line.)
+Scope to one call by adding `| filter $d.mdc.cid == '<companyId>'` or filtering on the `callId` in the MDC. (The producer logs `event.getClass().getSimpleName()`, so `WebConferenceCallEvent` distinguishes these from dialer sends on the shared façade line.)
 
-- Errors / drops: `| filter $m.message.contains('Failed sending')` (producer warn at `:29`) or `| filter $m.severity == 'ERROR'`.
+- Errors / drops: `| filter $d.body.contains('Failed sending')` (producer warn at `:29`) or `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch **Kafka consumer lag on `webconference-call-events`** + the Supervisor producer error rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

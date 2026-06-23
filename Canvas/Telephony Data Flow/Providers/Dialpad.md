@@ -40,12 +40,12 @@ tags: [telephony-systems, dialer, external-provider, dialpad, oncall]
 **Coralogix (DataPrime)** — Dialpad list-calls for one company (OAuth `DialpadOAuthDialerService.java:290`; legacy `DialPadDialerService.java:282`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $d.cid == '<companyId>'
-| filter $m.message.contains('Listing calls')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.mdc.cid == '<companyId>'
+| filter $d.body.contains('Listing calls')
 | limit 200
 ```
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch the `gong-connect-dialer-events` consumer lag (push path), SyncJob success, and outbound Dialpad `feign.*` error rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

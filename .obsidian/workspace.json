@@ -11,17 +11,14 @@
             "id": "f20544a1e1bc1e5f",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Canvas/Telephony Systems - External Data Flow.canvas",
-                "viewState": {
-                  "x": 615.2957571653459,
-                  "y": 141.31816604231662,
-                  "zoom": -2.6937781249879547
-                }
+                "file": "Canvas/Telephony Data Flow/Data Stores/DataStore-MongoDB.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Telephony Systems - External Data Flow"
+              "icon": "lucide-file",
+              "title": "DataStore-MongoDB"
             }
           }
         ]
@@ -183,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 471.5
+    "width": 702.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,23 +199,27 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
+    "Canvas/Telephony Systems - External Data Flow.canvas",
+    "Daily Notes/2026-06-23.md",
+    "Daily Notes/2026-06-22.md",
+    "Canvas/Telephony Data Flow/Providers/Zoom-Phone.md",
+    "Canvas/Telephony Data Flow/Providers/Aircall.md",
+    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-DIALER-EVENTS.md",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
     "Canvas/Project Architecture.canvas",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md",
     "Canvas/Telephony Data Flow/Web - REST/CallData-Controller.md",
     "Canvas/Telephony Data Flow/Providers/Vonage-VBC.md",
     "Canvas/Telephony Data Flow/Providers/RingCentral.md",
-    "Canvas/Telephony Data Flow/Providers/Aircall.md",
     "Canvas/Telephony Data Flow/Outbound Topics/GONG-CONNECT-CALL-INGESTED.md",
     "Canvas/Telephony Data Flow/Outbound Topics/COMMENT-UPDATE.md",
     "Canvas/Telephony Data Flow/Inbound Topics/EXTERNAL-RECORDINGS-IMPORT-REQUESTS.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-DIALER-EVENTS.md",
     "Canvas/Telephony Data Flow/Inbound Topics/LOW-PRIORITY-DIALER-EVENTS.md",
     "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-CALL-EVENT.md",
     "Canvas/Telephony Data Flow/Inbound Topics/ASSOCIATION-UPDATED.md",
     "Canvas/Telephony Data Flow/Inbound Topics/APP-USER-CHANGES.md",
     "Canvas/Telephony Data Flow/Inbound Producers/ProcessorJobSupervisor-Status.md",
-    "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
     "Canvas/Telephony Data Flow/Inbound Producers/GongConnect-WebApi-Tasks.md",
     "Canvas/Telephony Data Flow/Inbound Producers/FrontEndApi-WebFrontEnd.md",
     "Canvas/Telephony Data Flow/Inbound Producers/EnableWebApi-PublicApiServer.md",
@@ -226,10 +227,6 @@
     "Canvas/Telephony Data Flow/Inbound Producers/BackofficeManager.md",
     "Canvas/Telephony Data Flow/Downstream Consumers/TextIndexer.md",
     "Canvas/Telephony Data Flow/Downstream Consumers/ProspectingManager.md",
-    "Canvas/Telephony Data Flow/Downstream Consumers/ProcessorJobSupervisor.md",
-    "Canvas/Telephony Data Flow/Downstream Consumers/CrmEnricher.md",
-    "Canvas/Telephony Data Flow/Downstream Consumers/CommunicationsSyncServer.md",
-    "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
     "Canvas/Telephony Data Flow/Outbound Topics",

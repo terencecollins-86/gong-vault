@@ -40,12 +40,12 @@ tags: [telephony-systems, dialer, external-provider, zoom-phone, oncall]
 **Coralogix (DataPrime)** — Zoom list-calls for one company (legacy `"Listing calls"` `:541` / new `"Listing call history"` `:717`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $d.cid == '<companyId>'
-| filter $m.message.contains('Listing calls') || $m.message.contains('Listing call history')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.mdc.cid == '<companyId>'
+| filter $d.body.contains('Listing calls') || $d.body.contains('Listing call history')
 | limit 200
 ```
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch `gong-connect-dialer-events` consumer lag (push), SyncJob success, and Zoom HTTP error/429 rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
@@ -54,7 +54,7 @@ source logs
 
 ---
 
-## 🔌 Set a breakpoint (local)
+##  🔌 Set a breakpoint (local)
 
 Run the service: `gong-module-run --debug up --subsystem-names gong-telephony-systems` (base URL `http://localhost:8097`, no auth locally).
 

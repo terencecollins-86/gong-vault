@@ -40,12 +40,12 @@ tags: [telephony-systems, dialer, external-provider, ringcentral, oncall]
 **Coralogix (DataPrime)** — RC sync activity for one company (download + list-calls debug lines, `RingCentralDialerService.java:308`/`:391`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $d.cid == '<companyId>'
-| filter $m.message.contains('Downloading RC call') || $m.message.contains('Couldn''t find the page')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.mdc.cid == '<companyId>'
+| filter $d.body.contains('Downloading RC call') || $d.body.contains('Couldn''t find the page')
 | limit 200
 ```
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch the SyncJob success rate and outbound `feign.*` / RC HTTP error rate (429s). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

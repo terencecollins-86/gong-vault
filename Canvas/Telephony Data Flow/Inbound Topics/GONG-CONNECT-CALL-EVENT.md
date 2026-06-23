@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, inbound, oncall, gong-connect]
 **Coralogix (DataPrime)** — the only signal this consumer emits is its single info line (`GongConnectCallEventConsumer.java:27`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Not re-enabling Gong Connect sync job')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Not re-enabling Gong Connect sync job')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Seeing this line means the consumer is alive and receiving; absence over a busy window means it's not consuming (check lag).
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Seeing this line means the consumer is alive and receiving; absence over a busy window means it's not consuming (check lag).
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Only meaningful metric here is **consumer lag on `gong-connect-call-event`** (group health), not business throughput. Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

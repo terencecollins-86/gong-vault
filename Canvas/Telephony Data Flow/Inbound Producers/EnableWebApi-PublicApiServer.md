@@ -41,18 +41,18 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, recordings, low-pri
 **Coralogix (DataPrime)** — topic B shares the main consumer's log line (`TelephonyCallEventConsumerAbstract.java:48`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Received telephony call event') || $m.message.contains('non supported Dialer')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Received telephony call event') || $d.body.contains('non supported Dialer')
 | limit 200
 ```
 Topic A (recordings importer, `ExternalRecordingsImportRequestsConsumer.java:31`):
 ```text
 source logs
-| filter $l.applicationName == 'telephonysystemsrecordingsimporter'
-| filter $m.message.contains('got event=')
+| filter $l.subsystemname == 'telephonysystemsrecordingsimporter'
+| filter $d.body.contains('got event=')
 | limit 200
 ```
-Scope either with `| filter $d.cid == '<companyId>'`.
+Scope either with `| filter $d.mdc.cid == '<companyId>'`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Signals: lag on `low-priority-dialer-events` (`ingestertelephonysystemssupervisor`) and `external-recordings-import-requests` (`telephonysystemsrecordingsimporter`).
 

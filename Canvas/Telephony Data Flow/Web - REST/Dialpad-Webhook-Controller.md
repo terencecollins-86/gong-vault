@@ -53,11 +53,11 @@ tags: [telephony-systems, rest, inbound, dialpad, oncall]
 **Coralogix (DataPrime)** — Dialpad controller + advice activity (the advice logs `DialpadDialerException` at warn, `DialpadRestControllerAdvice.java:22`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('DialpadDialerException') || $l.subsystemName.contains('Dialpad')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('DialpadDialerException') || $l.subsystemName.contains('Dialpad')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: add `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: add `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch the Dialpad outbound `feign.*` error rate (the controller calls Dialpad's API through the OAuth service). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

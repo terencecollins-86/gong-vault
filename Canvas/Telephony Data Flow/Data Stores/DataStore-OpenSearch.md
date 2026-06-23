@@ -40,11 +40,11 @@ tags: [telephony-systems, opensearch, elasticsearch, data-store, oncall]
 **Coralogix (DataPrime)** — TS retention + audit activity:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('troubleshooting') || $m.message.contains('audit') || $m.message.contains('Disabled Inactive')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('troubleshooting') || $d.body.contains('audit') || $d.body.contains('Disabled Inactive')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). For OpenSearch, watch the **OpenSearch / Elasticsearch metric family** (`aws.es.*` / `opensearch.*` — indexing rate, search latency, 4xx/5xx, cluster status). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

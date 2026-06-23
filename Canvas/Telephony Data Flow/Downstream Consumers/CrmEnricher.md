@@ -41,11 +41,11 @@ Neither side of `comment-update` is the telephony Supervisor: the **producer** i
 **Coralogix (DataPrime)** — the consumer side (CrmEnricher):
 ```text
 source logs
-| filter $l.applicationName == 'crmenricher'
-| filter $m.severity == 'ERROR'
+| filter $l.subsystemname == 'crmenricher'
+| filter $m.severity == ERROR
 | limit 200
 ```
-Producer-side drop signal: grep `Failed to send comment update event` in the FrontEndCommon host service's logs (the `Robust.tryAndLog` message at `CommentService.java:920`). Scope to one company with `| filter $d.cid == '<companyId>'`.
+Producer-side drop signal: grep `Failed to send comment update event` in the FrontEndCommon host service's logs (the `Robust.tryAndLog` message at `CommentService.java:920`). Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

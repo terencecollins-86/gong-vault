@@ -37,11 +37,11 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, gong-connect]
 **Coralogix (DataPrime)** — the consumer logs each received event at TRACE (`TelephonyCallEventConsumerAbstract.java:48`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Received telephony call event') || $m.message.contains('non supported Dialer')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Received telephony call event') || $d.body.contains('non supported Dialer')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Key signal: **consumer lag on `gong-connect-dialer-events`**. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

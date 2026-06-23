@@ -40,12 +40,12 @@ tags: [telephony-systems, postgresql, rds, data-store, oncall]
 **Coralogix (DataPrime)** — query/connection errors for this service:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('sql') || $m.message.contains('JDBC') || $m.message.contains('connection')
-| filter $m.severity == 'ERROR' || $m.severity == 'WARN'
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('sql') || $d.body.contains('JDBC') || $d.body.contains('connection')
+| filter $m.severity == ERROR || $m.severity == WARNING
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). For Postgres, watch the **RDS / Postgres / Aurora metric family** (`aws.rds.*` — connections, CPU, replica lag, deadlocks) and the Supervisor connection-pool gauges. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

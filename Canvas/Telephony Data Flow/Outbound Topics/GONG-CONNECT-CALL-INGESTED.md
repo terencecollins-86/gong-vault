@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, outbound, oncall, gong-connect]
 **Coralogix (DataPrime)** — the send is wrapped by `KafkaUtils.sendKafkaEventWithRetries` (logs on failure/retry). Filter for the topic name and any send failures:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('gong-connect-call-ingested') || $m.message.contains('GongConnectCallIngested')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('gong-connect-call-ingested') || $d.body.contains('GongConnectCallIngested')
 | limit 200
 ```
-Scope to one call with `| filter $d.cid == '<companyId>'` or the `callId` in the MDC. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one call with `| filter $d.mdc.cid == '<companyId>'` or the `callId` in the MDC. Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

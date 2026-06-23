@@ -40,11 +40,11 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, call-processing, fe
 **Coralogix (DataPrime)** — the consumer logs consumed/sent counts at DEBUG (`TsNonRecordedCallsProcessingStatusConsumer.java:60,64`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains("'call processing status' events consumed") || $m.message.contains('Sending ingestion events')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains("'call processing status' events consumed") || $d.body.contains('Sending ingestion events')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Signals: **consumer lag on `call-processing-status-event`** (cluster `CALL_PROCESSOR`) and the per-tenant batch metrics (`registerTenantBatchMetrics(true)`, `:127`). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

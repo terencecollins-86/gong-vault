@@ -40,11 +40,11 @@ tags: [telephony-systems, s3, cloud-storage, data-store, oncall]
 **Coralogix (DataPrime)** — S3 delete/upload + customer-bucket assume-role lines:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('audio file') || $m.message.contains('Assuming') || $m.message.contains('s3')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('audio file') || $d.body.contains('Assuming') || $d.body.contains('s3')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). For S3, watch the **AWS S3 metric family** (`aws.s3.*` — 4xx/5xx, request latency) and the Supervisor `com.honeyfy.*` import-failure counters. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

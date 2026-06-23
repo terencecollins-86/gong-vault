@@ -39,12 +39,12 @@ tags: [telephony-systems, dialer, external-provider, ringcentral-engage, oncall]
 **Coralogix (DataPrime)** — Engage list-calls + list-users debug lines for one company (`RingCentralEngageDialerService.java:300`/`:258`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $d.cid == '<companyId>'
-| filter $m.message.contains('Listing calls') || $m.message.contains('Listing users')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.mdc.cid == '<companyId>'
+| filter $d.body.contains('Listing calls') || $d.body.contains('Listing users')
 | limit 200
 ```
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch periodic-sync success and outbound HTTP error rate to `engage.ringcentral.com`. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

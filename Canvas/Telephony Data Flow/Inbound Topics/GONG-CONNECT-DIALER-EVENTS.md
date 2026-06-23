@@ -44,11 +44,11 @@ HTTP twin (same `processCallEvent` core, no Kafka): `process-one-event` — see 
 **Coralogix (DataPrime)** — the consumer trace line (`TelephonyCallEventConsumerAbstract.java:48`, TRACE) and any "non supported Dialer" drop (`:53`, ERROR):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Received telephony call event') || $m.message.contains('non supported Dialer')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Received telephony call event') || $d.body.contains('non supported Dialer')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
@@ -57,6 +57,7 @@ Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| fi
 **Sentry** — [team `telephony-systems`](https://gong-io.sentry.io/issues/?query=assigned%3A%23telephony-systems&statsPeriod=14d) (⚠️ TextIndexer routes to `deal-intelligence`). Investigate with *"investigate this Sentry issue <url>"* (`observability:sentry-investigation`).
 
 ---
+
 
 ## 🔌 Set a breakpoint (local)
 

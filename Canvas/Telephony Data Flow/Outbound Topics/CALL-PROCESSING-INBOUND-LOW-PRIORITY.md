@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, outbound, oncall, call-processing]
 There is **no Supervisor log line for this topic** (nothing produces to it). Watch the real hand-off instead — `dialer-calls-updates` (`DialerCallsUpdatesProducer.java:31`, DEBUG) and the GDM façade success (`GdmCallEventSender.java:45`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('event to kafka') || $m.message.contains('call creation event to GDM')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('event to kafka') || $d.body.contains('call creation event to GDM')
 | limit 200
 ```
-Scope one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). The health signal is Kafka consumer lag on **`dialer-calls-updates`** (not on the low-priority topic, which gets nothing). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

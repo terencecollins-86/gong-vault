@@ -42,13 +42,13 @@ The consumer runs in the **ProcessorJobSupervisor** service, so its consume logs
 **Coralogix (DataPrime)** — our produce log line (`DialerCallsUpdatesProducer.java:31`, DEBUG) on the Supervisor side:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('event to kafka') || $m.message.contains('call creation event to GDM')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('event to kafka') || $d.body.contains('call creation event to GDM')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). The cross-boundary health signal is **Kafka consumer lag on `dialer-calls-updates`** (ProcessorJobSupervisor backing up) and our outbound producer error rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

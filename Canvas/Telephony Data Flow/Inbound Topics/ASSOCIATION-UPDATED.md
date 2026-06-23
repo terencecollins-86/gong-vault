@@ -41,11 +41,11 @@ tags: [telephony-systems, kafka, inbound, oncall, crm-association]
 **Coralogix (DataPrime)** — the consume + finish lines (`TelephonySystemsAssociationUpdatedConsumer.java:104` and `:114`), plus retry scheduling (`CrmAssociationRetryService.java:51`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('got association update event') || $m.message.contains('finished handling association updated') || $m.message.contains('Scheduling CRM association retry')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('got association update event') || $d.body.contains('finished handling association updated') || $d.body.contains('Scheduling CRM association retry')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'` (the consumer sets `COMPANY_ID`, `ACTIVITY_ID`, `ACTION_TYPE` into MDC at `:98-102`). Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'` (the consumer sets `COMPANY_ID`, `ACTIVITY_ID`, `ACTION_TYPE` into MDC at `:98-102`). Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Lag on `association-updated` + the consumer's own `AssociationUpdatedConsumerMetrics` (events handled `:115`, calls sent to pipeline `:214`). Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

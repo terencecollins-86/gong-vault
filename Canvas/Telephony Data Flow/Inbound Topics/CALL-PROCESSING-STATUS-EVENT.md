@@ -41,11 +41,11 @@ tags: [telephony-systems, kafka, inbound, oncall, call-processing]
 **Coralogix (DataPrime)** — the "events consumed" and "Sending ingestion events" debug lines (`TsNonRecordedCallsProcessingStatusConsumer.java:60` and `:64`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains("'call processing status' events consumed") || $m.message.contains('Sending ingestion events')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains("'call processing status' events consumed") || $d.body.contains('Sending ingestion events')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`. The "No 'call processing status' events consumed" line (`:57`) means a batch arrived but none of the 4 relevant outcomes were present.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`. The "No 'call processing status' events consumed" line (`:57`) means a batch arrived but none of the 4 relevant outcomes were present.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Lag on `call-processing-status-event` + per-tenant batch metrics (`registerTenantBatchMetrics(true)`, `:127`). Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

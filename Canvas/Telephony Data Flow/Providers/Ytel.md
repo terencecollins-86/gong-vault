@@ -40,11 +40,11 @@ tags: [telephony-systems, provider, dialer, sftp, pull-sync, oncall]
 **Coralogix (DataPrime)** — the per-day file listing + `-all` suffix handling:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('listFilesForDate done') || $m.message.contains("Removed '-all' suffix")
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('listFilesForDate done') || $d.body.contains("Removed '-all' suffix")
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

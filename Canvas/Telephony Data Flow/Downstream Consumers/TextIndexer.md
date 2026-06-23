@@ -44,13 +44,13 @@ TextIndexer is **in this repo** but its logs run under its own service id **`tex
 **Coralogix (DataPrime)** — the consume log line (`TextIngestedConsumer.java:41`, DEBUG):
 ```text
 source logs
-| filter $l.applicationName == 'textindexer'
-| filter $m.message.contains('Received TextIngested events')
+| filter $l.subsystemname == 'textindexer'
+| filter $d.body.contains('Received TextIngested events')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Cross-boundary check on the producer side: filter `$l.applicationName == 'ingestertelephonysystemssupervisor'` for the `Sending textIngestedEvent` info line (`SmsSyncService.java:155` / `ZoomPhoneSmsService.java:428`).
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Cross-boundary check on the producer side: filter `$l.subsystemname == 'ingestertelephonysystemssupervisor'` for the `Sending textIngestedEvent` info line (`SmsSyncService.java:155` / `ZoomPhoneSmsService.java:428`).
 
-- Errors only: swap the filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Cross-boundary health signal = **Kafka consumer lag on `texts-ingested`** (TextIndexer backing up) + our producer error rate. Filter `service:textindexer` (consumer) / `service:ingestertelephonysystemssupervisor` (producer) + your `g-cell`.

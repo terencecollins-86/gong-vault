@@ -40,11 +40,11 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, crm]
 **Coralogix (DataPrime)** — the consumer logs received events at DEBUG (`TelephonySystemsAssociationUpdatedConsumer.java:104`) and pipeline enqueue at DEBUG (`:202`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('got association update event for dialers') || $m.message.contains('finished handling association updated')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('got association update event for dialers') || $d.body.contains('finished handling association updated')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`, or filter on the `activityId` MDC key. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`, or filter on the `activityId` MDC key. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Signal: **consumer lag on `association-updated`** + the consumer's `AssociationUpdatedConsumerMetrics` (`reportEventsHandled`, `reportCallsSentToPipeline`). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

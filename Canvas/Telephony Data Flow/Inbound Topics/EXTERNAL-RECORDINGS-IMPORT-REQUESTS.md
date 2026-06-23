@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, inbound, oncall, recordings-import]
 **Coralogix (DataPrime)** — the consumer's per-event line (`ExternalRecordingsImportRequestsConsumer.java:31`, INFO `"got event=…"`). Note: that line is emitted by the **RecordingsImporter** service, so filter its application name:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('got event')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('got event')
 | limit 200
 ```
-> ⚠️ If the RecordingsImporter deploys under a distinct image name, swap `applicationName` accordingly. Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+> ⚠️ If the RecordingsImporter deploys under a distinct image name, swap `applicationName` accordingly. Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). #1 health signal = **consumer lag on `external-recordings-import-requests`**. Watch `feign.*` to the media/file services for import slowness.
 

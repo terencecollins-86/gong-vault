@@ -39,18 +39,18 @@ tags: [telephony-systems, kafka, upstream, producer, oncall, gong-connect, recor
 **Coralogix (DataPrime)** — topic A (the no-op consumer logs at INFO, `GongConnectCallEventConsumer.java:27`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Not re-enabling Gong Connect sync job')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Not re-enabling Gong Connect sync job')
 | limit 200
 ```
 Topic B (recording-import requests land in the importer, `ExternalRecordingsImportRequestsConsumer.java:31`):
 ```text
 source logs
-| filter $l.applicationName == 'telephonysystemsrecordingsimporter'
-| filter $m.message.contains('got event=')
+| filter $l.subsystemname == 'telephonysystemsrecordingsimporter'
+| filter $d.body.contains('got event=')
 | limit 200
 ```
-Scope either with `| filter $d.cid == '<companyId>'`.
+Scope either with `| filter $d.mdc.cid == '<companyId>'`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Signals: lag on `gong-connect-call-event` (`ingestertelephonysystemssupervisor`) and on `external-recordings-import-requests` (`telephonysystemsrecordingsimporter`).
 

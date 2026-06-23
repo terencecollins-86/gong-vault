@@ -41,11 +41,11 @@ tags: [telephony-systems, kafka, inbound, oncall, ms-teams]
 **Coralogix (DataPrime)** — the handler's per-type debug lines (`MsTeamsAppUserChangesConsumer.java:86` email, `:108` status/settings):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Handling user email change') || $m.message.contains('Handling user status or settings change')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Handling user email change') || $d.body.contains('Handling user status or settings change')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`. Numonix HTTP failures surface as `feign`/HTTP-client errors from `MsTeamsNumonixHttpClient`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`. Numonix HTTP failures surface as `feign`/HTTP-client errors from `MsTeamsNumonixHttpClient`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Lag on `app-user-changes` + `feign.*` to the Numonix endpoint (add/delete email latency & errors). Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

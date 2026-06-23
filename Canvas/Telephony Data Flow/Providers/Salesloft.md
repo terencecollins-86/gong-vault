@@ -40,11 +40,11 @@ tags: [telephony-systems, provider, dialer, pull-sync, oauth, oncall]
 **Coralogix (DataPrime)** — the two list calls + the call/user joins for this provider:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Listing call data records') || $m.message.contains('Get Call Data Record object')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Listing call data records') || $d.body.contains('Get Call Data Record object')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

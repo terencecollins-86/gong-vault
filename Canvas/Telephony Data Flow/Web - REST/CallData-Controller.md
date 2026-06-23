@@ -46,11 +46,11 @@ tags: [telephony-systems, rest, inbound, feign, call-data, oncall]
 **Coralogix (DataPrime)** — the controller's timer debug lines (`"listCallsMetadata(long, Set) completed"` @57, `"getCallMetadata(long, Long) completed"` @76) and the oversize error (`:42`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('listCallsMetadata') || $m.message.contains('getCallMetadata') || $m.message.contains('List of callIds is too large')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('listCallsMetadata') || $d.body.contains('getCallMetadata') || $d.body.contains('List of callIds is too large')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: add `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: add `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). This is a synchronous read surface — watch **inbound request latency / error rate** and the activity-store + Dialers-DB query time. Filter `service:ingestertelephonysystemssupervisor` + `g-cell`. Lag isn't relevant (no Kafka here).
 

@@ -41,11 +41,11 @@ tags: [telephony-systems, provider, dialer, pull-sync, oauth, oncall]
 **Coralogix (DataPrime)** — list calls + the external-vendor filter for this provider:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Listing calls using cursor') || $m.message.contains('Filtered an external vendor call')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Listing calls using cursor') || $d.body.contains('Filtered an external vendor call')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

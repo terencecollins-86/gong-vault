@@ -40,12 +40,12 @@ tags: [telephony-systems, dialer, external-provider, vonage, oncall]
 **Coralogix (DataPrime)** — VBC list-calls for one company (`VonageBusinessCommunicationsDialerService.java:445`/`:447`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $d.cid == '<companyId>'
-| filter $m.message.contains('Listing Calls')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.mdc.cid == '<companyId>'
+| filter $d.body.contains('Listing Calls')
 | limit 200
 ```
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+- Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch SyncJob success and outbound `feign.*` / VBC HTTP error rate (5xx retried, `:441`). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

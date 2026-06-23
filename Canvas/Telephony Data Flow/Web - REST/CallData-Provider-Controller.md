@@ -41,11 +41,11 @@ tags: [telephony-systems, rest, inbound, feign, call-data, oncall]
 **Coralogix (DataPrime)** — the oversize error line (`TelephonySystemsCallDataProviderController.java:32`, `"List of callIds is too large"`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('List of callIds is too large') || $m.message.contains('provider-data')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('List of callIds is too large') || $d.body.contains('provider-data')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: add `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: add `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Synchronous read surface — watch **inbound request latency / error rate** on `/telephony-systems/v2/calls/provider-data` and Dialers-DB query time. From the **caller** side, watch `feign.*` on `telephony-systems-call-data-client`. Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

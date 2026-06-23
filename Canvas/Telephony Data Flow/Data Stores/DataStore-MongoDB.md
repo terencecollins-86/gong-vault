@@ -39,11 +39,11 @@ tags: [telephony-systems, mongodb, crm-mirror, data-store, oncall]
 **Coralogix (DataPrime)** — the enrichment read counts / not-wired warn:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('enriched accounts') || $m.message.contains('enriched contacts') || $m.message.contains('CrmMirrorFetcherService is not wired') || $m.message.contains('Failed to enrich crm info')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('enriched accounts') || $d.body.contains('enriched contacts') || $d.body.contains('CrmMirrorFetcherService is not wired') || $d.body.contains('Failed to enrich crm info')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). For Mongo, watch the **MongoDB / DocumentDB metric family** (`mongodb.*` / `aws.docdb.*` — opcounters, query latency, connections). Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

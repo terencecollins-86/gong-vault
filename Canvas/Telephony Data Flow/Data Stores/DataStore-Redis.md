@@ -39,11 +39,11 @@ tags: [telephony-systems, redis, locks, data-store, oncall]
 **Coralogix (DataPrime)** — lock acquire attempts (`DialersConnectService.getSyncLock` logs at INFO):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Try to get a lock') || $m.message.contains('Failed to acquire lock')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Try to get a lock') || $d.body.contains('Failed to acquire lock')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Errors only: swap the message filter for `| filter $m.severity == ERROR`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). For Redis, watch the **Redis / ElastiCache metric family** (`aws.elasticache.*` — CPU, connections, evictions, latency) and connection-pool saturation. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
 

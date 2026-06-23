@@ -44,13 +44,13 @@ tags: [telephony-systems, kafka, outbound, oncall, call-processing]
 **Coralogix (DataPrime)** — the actual send log line (`DialerCallsUpdatesProducer.java:31`, DEBUG `"Sent ... event to kafka"`) and the GDM façade success (`GdmCallEventSender.java:45`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('event to kafka') || $m.message.contains('call creation event to GDM')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('event to kafka') || $d.body.contains('call creation event to GDM')
 | limit 200
 ```
-Scope to one call by adding `| filter $d.cid == '<companyId>'` or filtering on the `callId` in the MDC.
+Scope to one call by adding `| filter $d.mdc.cid == '<companyId>'` or filtering on the `callId` in the MDC.
 
-- Errors / drops: swap the message filter for `| filter $m.message.contains('Failed sending')` (the producer warn at `:29`) or `| filter $m.severity == 'ERROR'`.
+- Errors / drops: swap the message filter for `| filter $d.body.contains('Failed sending')` (the producer warn at `:29`) or `| filter $m.severity == ERROR`.
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). The #1 health signal is **Kafka consumer lag on `dialer-calls-updates`** (CommunicationsSyncServer backing up) plus the Supervisor's producer error rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.

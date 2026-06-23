@@ -42,11 +42,11 @@ tags: [telephony-systems, kafka, outbound, oncall, crm]
 **Coralogix (DataPrime)** — the produce itself is logged by the `frontendcommon` sender; our side logs the association-update handling that precedes it. Watch both via the topic name and the association consumer:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('comment-update') || $m.message.contains('CommentUpdate') || $m.message.contains('association update event for dialers')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('comment-update') || $d.body.contains('CommentUpdate') || $d.body.contains('association update event for dialers')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'` (the consumer sets `cid`, `activityId`, `actionType` in MDC — `TelephonySystemsAssociationUpdatedConsumer.java:98`). Errors only: `| filter $m.severity == 'ERROR'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'` (the consumer sets `cid`, `activityId`, `actionType` in MDC — `TelephonySystemsAssociationUpdatedConsumer.java:98`). Errors only: `| filter $m.severity == ERROR`.
 
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 

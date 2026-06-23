@@ -43,12 +43,12 @@ The consumer runs in **ProspectingManager**, so its consume logs are under **`pr
 **Coralogix (DataPrime)** — our produce log line (`KafkaUtils.java:22`, DEBUG, shared util) on the Supervisor side:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Sent') && $m.message.contains('event to kafka')
-| filter $m.message.contains('GongConnectCallIngested')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Sent') && $d.body.contains('event to kafka')
+| filter $d.body.contains('GongConnectCallIngested')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
 - Errors only: grep the `Failed sending ... event to kafka` warn (`KafkaUtils.java:26`).
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.

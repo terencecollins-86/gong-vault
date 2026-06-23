@@ -41,11 +41,11 @@ tags: [telephony-systems, rest, inbound, pbx, recording-import, oncall]
 **Coralogix (DataPrime)** — successful import (`PbxRecordingImportService.java:186` debug `"Successfully import call"`) and the GDM-send failure path (`:137` error `"Failed to send call to GDM"`):
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Successfully import call') || $m.message.contains('Failed to send call to GDM')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Successfully import call') || $d.body.contains('Failed to send call to GDM')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`. Dedup skips log at debug — search `"already exists - skipping"`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`. Dedup skips log at debug — search `"already exists - skipping"`.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Watch `feign.*` to FileUpload / GDM downstream and Kafka lag on `dialer-calls-updates` (where the GDM send ultimately lands — see [[DIALER-CALLS-UPDATES]]). Filter `service:ingestertelephonysystemssupervisor` + `g-cell`.
 

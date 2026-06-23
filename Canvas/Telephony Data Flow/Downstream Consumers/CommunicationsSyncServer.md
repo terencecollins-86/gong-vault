@@ -42,13 +42,13 @@ The consumer runs in **CommunicationsSyncServer**, so its consume logs are under
 **Coralogix (DataPrime)** — our produce log lines (`DialerCallsUpdatesProducer.java:31` / `WebConfCallsUpdatesProducer.java:32`, both DEBUG) on the Supervisor side:
 ```text
 source logs
-| filter $l.applicationName == 'ingestertelephonysystemssupervisor'
-| filter $m.message.contains('Sent') && $m.message.contains('event to kafka')
+| filter $l.subsystemname == 'ingestertelephonysystemssupervisor'
+| filter $d.body.contains('Sent') && $d.body.contains('event to kafka')
 | limit 200
 ```
-Scope to one company with `| filter $d.cid == '<companyId>'`.
+Scope to one company with `| filter $d.mdc.cid == '<companyId>'`.
 
-- Errors only: swap the message filter for `| filter $m.severity == 'ERROR'` (or grep the `Failed sending ... event to kafka` warn).
+- Errors only: swap the message filter for `| filter $m.severity == ERROR` (or grep the `Failed sending ... event to kafka` warn).
 - Guided: ask Claude *"use the coralogix-debug-expert"* or run the `observability:coralogix-logs` skill.
 
 **Datadog** — [Telephony Systems dashboard](https://app.datadoghq.com/dashboard/ptx-4jk-fkr/telephony-systems-dashboard). Cross-boundary health signal = **Kafka consumer lag on `dialer-calls-updates` and `webconference-call-events`** + our producer error rate. Filter `service:ingestertelephonysystemssupervisor` + your `g-cell`.
