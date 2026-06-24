@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engineering/Runbooks/Local Dev - Prod Data Import Fix.md",
+                "file": "Daily Notes/2026-06-24.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Local Dev - Prod Data Import Fix"
+              "title": "2026-06-24"
             }
           }
         ]
@@ -199,9 +199,12 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
-    "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Daily Notes/2026-06-23.md",
+    "Daily Notes/2026-06-24.md",
+    "Engineering/Runbooks/Maven Version Sync (Boost).md",
+    "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
     "Engineering/Runbooks/Local Dev - Prod Data Import Fix.md",
+    "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Canvas/Telephony Data Flow/Core/IngesterTelephonySystemsSupervisor.md",
     "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Data Stores/DataStore-MongoDB.md",
@@ -227,8 +230,6 @@
     "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-CALL-EVENT.md",
     "Canvas/Telephony Data Flow/Inbound Topics/ASSOCIATION-UPDATED.md",
     "Canvas/Telephony Data Flow/Inbound Topics/APP-USER-CHANGES.md",
-    "Canvas/Telephony Data Flow/Inbound Producers/ProcessorJobSupervisor-Status.md",
-    "Canvas/Telephony Data Flow/Inbound Producers/GongConnect-WebApi-Tasks.md",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
     "Canvas/Telephony Data Flow/Outbound Topics",
