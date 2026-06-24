@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/2026-06-24.md",
+                "file": "Engineering/Runbooks/Idea to Production - Gong Eng Workflow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-24"
+              "title": "Idea to Production - Gong Eng Workflow"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -180,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 702.5
+    "width": 390.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,10 +197,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f20544a1e1bc1e5f",
+  "active": "8b6fdac0c36fca53",
   "lastOpenFiles": [
-    "Daily Notes/2026-06-23.md",
     "Daily Notes/2026-06-24.md",
+    "Engineering/Runbooks/Idea to Production - Gong Eng Workflow.md",
+    "Daily Notes/2026-06-23.md",
     "Engineering/Runbooks/Maven Version Sync (Boost).md",
     "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
     "Engineering/Runbooks/Local Dev - Prod Data Import Fix.md",
@@ -229,7 +230,6 @@
     "Canvas/Telephony Data Flow/Inbound Topics/LOW-PRIORITY-DIALER-EVENTS.md",
     "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-CALL-EVENT.md",
     "Canvas/Telephony Data Flow/Inbound Topics/ASSOCIATION-UPDATED.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/APP-USER-CHANGES.md",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
     "Canvas/Telephony Data Flow/Outbound Topics",
