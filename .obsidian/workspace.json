@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/Swagger Trigger Runbook.md",
+                "file": "Calendar Ingestion/05 - Observability.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Swagger Trigger Runbook"
+              "title": "05 - Observability"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5,
-    "collapsed": true
+    "width": 468.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -200,12 +199,12 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
-    "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
-    "Calendar Ingestion/System Diagram.md",
+    "Calendar Ingestion/Entrypoints Within the Calendar System.md",
     "Calendar Ingestion/Swagger Trigger Runbook.md",
+    "Calendar Ingestion/System Diagram.md",
+    "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
     "Calendar Ingestion/01 - Architecture & Modules.md",
     "Calendar Ingestion/00 - Overview.md",
-    "Calendar Ingestion/Entrypoints Within the Calendar System.md",
     "Calendar Ingestion/07 - Onboarding Checklist.md",
     "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
     "Calendar Ingestion/05 - Observability.md",

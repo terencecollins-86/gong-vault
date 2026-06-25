@@ -13,6 +13,8 @@ created: 2026-06-25
 > URL needs a specific dashboard/alert ID I've left a `<…>` placeholder rather than invent one.
 > Paste the real IDs in the first time you open each — then this becomes a true one-click hub.
 
+* **Datadog:**: https://app.datadoghq.com/dashboard/wz6-t44-s9n/calendar-ingester-system?fromUser=false&refresh_mode=sliding&from_ts=1782397040941&to_ts=1782400640941&live=true
+
 ## Service identifiers (use these everywhere)
 
 Filter by the container-image names — these are the service identifiers in logs/metrics:
@@ -125,7 +127,7 @@ flowchart TD
 
 ## TODO for the team (fill these in once)
 
-- [ ] Paste real **Datadog dashboard** URL(s) for the 4 services
+- [x] Paste real **Datadog dashboard** URL(s) for the 4 services ✅ 2026-06-25
 - [ ] Confirm the **Sentry** saved-search URL for `mail-cal-ingestion`
 - [ ] List the **named Datadog monitors** that currently exist + their thresholds
 - [ ] Confirm which **Coralogix region** our cells log to
