@@ -1,0 +1,458 @@
+{
+    "info": {
+        "name": "Telephony Systems Web API (Dev Env)",
+        "_postman_id": "4b1c0b55-e84e-efee-dc95-0917742f3887",
+        "description": "Auto-generated from live OpenAPI spec at https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/v3/api-docs\n\nBase URL: https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net\n\nNOTE: Use the *.app.* host (not *.modules.*) \u2014 the service's GongSpringSecurityConfig rejects any Host header that is not *.app.*.\nInternal self-signed CA: disable SSL cert verification in Postman settings.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "integrationId",
+            "value": "9001",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "actuator",
+            "item": [
+                {
+                    "name": "[GET] handle",
+                    "_postman_id": "82325b35-ae1d-98df-be7e-bd6cad5f40dd",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/actuator/health",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "actuator",
+                                "health"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[GET] links",
+                    "_postman_id": "b718da8c-5d7f-8177-d449-cf17c7d09c48",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/actuator",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "actuator"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "integrations",
+            "item": [
+                {
+                    "name": "[POST] startDialerOAuth",
+                    "_postman_id": "09017980-12ba-6925-5269-573431e6a6ba",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/integrations/telephonycalls/dialers/v2/auth/start",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "integrations",
+                                "telephonycalls",
+                                "dialers",
+                                "v2",
+                                "auth",
+                                "start"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "telephony-integrations",
+            "item": [
+                {
+                    "name": "[DELETE] removeIntegration",
+                    "_postman_id": "6470ed0f-6a3e-d719-2816-755e71d1e5d6",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/{{integrationId}}/remove",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "{{integrationId}}",
+                                "remove"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[GET] getPageData",
+                    "_postman_id": "baf54a04-549a-71b4-0069-37b91e2771b3",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/get-page-data",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "get-page-data"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] connectIntegration",
+                    "_postman_id": "327016f8-de5d-bd8d-4ed5-cd0db658eeb2",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/connect",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "connect"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] isConnectionNameExists",
+                    "_postman_id": "718881b5-bd87-7f0f-296e-0bd65c583917",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/is-connection-name-exists",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "is-connection-name-exists"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] updateIntegration",
+                    "_postman_id": "f9ccdc38-f9ba-af0f-c37d-63b162a02f34",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/{{integrationId}}/update",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "{{integrationId}}",
+                                "update"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] updateIntegrationStatus",
+                    "_postman_id": "81f9e5e3-56fd-c460-1ec9-f6db538feba5",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephony-integrations/{{integrationId}}/update-status",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephony-integrations",
+                                "{{integrationId}}",
+                                "update-status"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "telephonycalls",
+            "item": [
+                {
+                    "name": "[DELETE] deleteDialerFtpKey",
+                    "_postman_id": "31dffccd-6dfe-4bad-70e1-db229cc23b43",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephonycalls/ajax/deletepublickey",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephonycalls",
+                                "ajax",
+                                "deletepublickey"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[GET] getDialerFtpKeys",
+                    "_postman_id": "5371c218-966b-58c9-550f-8346f4f0a757",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephonycalls/ajax/publickeys",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephonycalls",
+                                "ajax",
+                                "publickeys"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] createDialerFtpKey",
+                    "_postman_id": "632e1be1-e34b-42b0-3f58-281193c3a6c4",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/telephonycalls/ajax/createpublickey",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "telephonycalls",
+                                "ajax",
+                                "createpublickey"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "test",
+            "item": [
+                {
+                    "name": "[GET] home",
+                    "_postman_id": "3cdd4c75-b6e4-7560-5725-61e02681259f",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://telephonysystemswebapi.app.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/test",
+                            "protocol": "https",
+                            "host": [
+                                "telephonysystemswebapi",
+                                "app",
+                                "terry-collins-dev-env",
+                                "c1-devex",
+                                "ilc1",
+                                "internal",
+                                "gongio",
+                                "net"
+                            ],
+                            "path": [
+                                "test"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

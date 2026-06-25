@@ -1,0 +1,4321 @@
+{
+  "info": {
+    "name": "Telephony Systems Troubleshooters (Dev Env)",
+    "_postman_id": "67e34dd9-53cf-5700-3efa-c8a73479e317",
+    "description": "Generated from live OpenAPI spec (https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/v3/api-docs).\nBase URL: https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net\nAuth: internal, no token needed in dev-env.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "companyId",
+      "value": "9001",
+      "type": "string",
+      "description": "Seeded: 9001 (Acme/GONG_CONNECT_API), 9002 (Beta/DIAL_PAD_API), 9003 (Gamma/AIRCALL_API)"
+    },
+    {
+      "key": "integrationId",
+      "value": "9001",
+      "type": "string",
+      "description": "Seeded: 9001 (GONG_CONNECT_API), 9002 (DIAL_PAD_API), 9003 (AIRCALL_API), 9004 (8x8)"
+    },
+    {
+      "key": "integrationFlavor",
+      "value": "GONG_CONNECT_API",
+      "type": "string",
+      "description": "Seeded: GONG_CONNECT_API, DIAL_PAD_API, AIRCALL_API, EIGHT_BY_EIGHT_API"
+    },
+    {
+      "key": "providerCallId",
+      "value": "gc-call-aaa-001",
+      "type": "string"
+    },
+    {
+      "key": "callId",
+      "value": "100001",
+      "type": "string"
+    },
+    {
+      "key": "callIds",
+      "value": "100001,100002",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "heartbeat",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "[GET] Actuator",
+      "_postman_id": "9a78d5d9-8222-53bd-5aae-5604d88075bc",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/actuator",
+          "protocol": "https",
+          "host": [
+            "telephonysystemstroubleshooters",
+            "modules",
+            "terry-collins-dev-env",
+            "c1-devex",
+            "ilc1",
+            "internal",
+            "gongio",
+            "net"
+          ],
+          "path": [
+            "actuator"
+          ]
+        },
+        "description": "\n\nLive curl status: 200"
+      }
+    },
+    {
+      "name": "Actuator",
+      "_postman_id": "6a3afcd7-6d2e-922f-5d10-2adc01357b2a",
+      "item": [
+        {
+          "name": "[GET] Health",
+          "_postman_id": "a5707623-cfe8-2762-6470-2ff9a87ce459",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/actuator/health",
+              "protocol": "https",
+              "host": [
+                "telephonysystemstroubleshooters",
+                "modules",
+                "terry-collins-dev-env",
+                "c1-devex",
+                "ilc1",
+                "internal",
+                "gongio",
+                "net"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            },
+            "description": "\n\nLive curl status: 503"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Troubleshooting",
+      "_postman_id": "d2d0ccae-34d6-1010-f397-a303a0acfee3",
+      "item": [
+        {
+          "name": "Telephony System Pci Compliant",
+          "_postman_id": "e843a06d-c807-ad38-0655-5a3b3733c73a",
+          "item": [
+            {
+              "name": "Api Uploads",
+              "_postman_id": "f02926d9-1218-723b-cbc4-898f8e375624",
+              "item": [
+                {
+                  "name": "[DELETE] Use this with caution!",
+                  "_postman_id": "c7fd15e3-521d-2c66-7f29-087e3ee045f5",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/api-uploads/calls/delete?companyId={{companyId}}&provisional_call_id={{provisional_call_id}}&client_unique_id={{client_unique_id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "api-uploads",
+                        "calls",
+                        "delete"
+                      ],
+                      "query": [
+                        {
+                          "key": "companyId",
+                          "value": "{{companyId}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "provisional_call_id",
+                          "value": "{{provisional_call_id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "client_unique_id",
+                          "value": "{{client_unique_id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "Use this with caution!"
+                  }
+                },
+                {
+                  "name": "[DELETE] Use with caution!",
+                  "_postman_id": "710126de-cb3c-d6ea-3858-81a9459b6fd1",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/api-uploads/calls/deleteBatch?companyId={{companyId}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "api-uploads",
+                        "calls",
+                        "deleteBatch"
+                      ],
+                      "query": [
+                        {
+                          "key": "companyId",
+                          "value": "{{companyId}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "batch-size",
+                          "value": "{{batch-size}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Use with caution!"
+                  }
+                },
+                {
+                  "name": "[POST] Reassociate",
+                  "_postman_id": "b4feedf5-6596-a2b1-1179-fb52d08dad16",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/api-uploads/calls/reassociate?associateOnly={{associateOnly}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "api-uploads",
+                        "calls",
+                        "reassociate"
+                      ],
+                      "query": [
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "associateOnly",
+                          "value": "{{associateOnly}}",
+                          "description": "if true, only reassociate call, dosesn't update provider reported attendees - otherwise will also reprocess provider reported attendees",
+                          "disabled": false
+                        },
+                        {
+                          "key": "priority",
+                          "value": "{{priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "batchSize",
+                          "value": "{{batchSize}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Reprocess",
+                  "_postman_id": "b7ee4a99-d43d-0fd5-c401-d57c94afd1a4",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/api-uploads/calls/reprocess",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "api-uploads",
+                        "calls",
+                        "reprocess"
+                      ],
+                      "query": [
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "batchSize",
+                          "value": "{{batchSize}}",
+                          "description": "text file where each callId is in a new line without commas",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Dedicated",
+              "_postman_id": "147975ac-e95b-3bf5-fe84-898cd7997fc7",
+              "item": [
+                {
+                  "name": "[POST] Findduplicatesbytype",
+                  "_postman_id": "994a7cf7-0180-ed08-09bf-a3ebd04fd46d",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/8x8/findDuplicatesByType?company-id={{company-id}}&integration-id={{integration-id}}&sync-date-from={{sync-date-from}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "8x8",
+                        "findDuplicatesByType"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-from",
+                          "value": "{{sync-date-from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-to",
+                          "value": "{{sync-date-to}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "should-delete",
+                          "value": "{{should-delete}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "upload-to-bucket",
+                          "value": "{{upload-to-bucket}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "upload-to-path",
+                          "value": "{{upload-to-path}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "type-to-find",
+                          "value": "{{type-to-find}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "batch-size",
+                          "value": "{{batch-size}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Reassociate",
+                  "_postman_id": "c3082fb7-f6e8-3840-39d9-271b6e723511",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/chorus/calls/reassociate?pipeline-stage={{pipeline-stage}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "chorus",
+                        "calls",
+                        "reassociate"
+                      ],
+                      "query": [
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "redoTitle",
+                          "value": "{{redoTitle}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "priority",
+                          "value": "{{priority}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Relink",
+                  "_postman_id": "f1525801-df4b-9656-5f57-c116ae76d125",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/ZipRecruiter/attendees/relink?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "ZipRecruiter",
+                        "attendees",
+                        "relink"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "to",
+                          "value": "{{to}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Uploadfromcsv",
+                  "_postman_id": "7ae4d5e6-fc9a-c8dc-f7d2-d17bd85932a1",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/ZipRecruiter/calls/uploadFromCSV?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "ZipRecruiter",
+                        "calls",
+                        "uploadFromCSV"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "syncPriodicStartDate",
+                          "value": "{{syncPriodicStartDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] insert real five9 call id to call provider data",
+                  "_postman_id": "1f2c305a-f6ed-ea3e-ce96-1a53683e0b9b",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/providerCallId/insertFromUrl?company-id={{company-id}}&integration-id={{integration-id}}&empty-call-ids-list={{empty-call-ids-list}}&fromDate={{fromDate}}&toDate={{toDate}}&delimiter={{delimiter}}&return-location-start-from-1={{return-location-start-from-1}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "providerCallId",
+                        "insertFromUrl"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "batch-size",
+                          "value": "{{batch-size}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "empty-call-ids-list",
+                          "value": "{{empty-call-ids-list}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "fromDate",
+                          "value": "{{fromDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "toDate",
+                          "value": "{{toDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "delimiter",
+                          "value": "{{delimiter}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "return-location-start-from-1",
+                          "value": "{{return-location-start-from-1}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "insert real five9 call id to call provider data"
+                  }
+                },
+                {
+                  "name": "[POST] Setfive9Callidasprovidercallid",
+                  "_postman_id": "eb1b7e6c-3461-e1a9-d9a4-54eda125a391",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/setFive9CallIdAsProviderCallId?company-id={{company-id}}&integration-id={{integration-id}}&fromDate={{fromDate}}&toDate={{toDate}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "setFive9CallIdAsProviderCallId"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "fromDate",
+                          "value": "{{fromDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "toDate",
+                          "value": "{{toDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Redo",
+                  "_postman_id": "67dd343f-de5b-a1db-eb2d-5f4282c8c70b",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/titles/redo?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "titles",
+                        "redo"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline priority",
+                          "value": "{{pipeline priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "calls-per-batch",
+                          "value": "{{calls-per-batch}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "associate-calls",
+                          "value": "{{associate-calls}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "redo-titles",
+                          "value": "{{redo-titles}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "template-five9-path",
+                          "value": "{{template-five9-path}}",
+                          "description": "For cases the template has changed and the new one will not parse the old calls correctly",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Redoorreassociate",
+                  "_postman_id": "aa14ed90-f5ef-e391-1e9d-cf420c19b71a",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/five9/titles/redoOrReassociate?company-id={{company-id}}&integration-id={{integration-id}}&from={{from}}&to={{to}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "five9",
+                        "titles",
+                        "redoOrReassociate"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline priority",
+                          "value": "{{pipeline priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "associate-calls",
+                          "value": "{{associate-calls}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "redo-titles",
+                          "value": "{{redo-titles}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "template-five9-path",
+                          "value": "{{template-five9-path}}",
+                          "description": "For cases the template has changed and the new one will not parse the old calls correctly",
+                          "disabled": true
+                        },
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Effective start date time: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "to",
+                          "value": "{{to}}",
+                          "description": "Effective start date time: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "waiting-seconds-between-batches",
+                          "value": "{{waiting-seconds-between-batches}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Only GongConnect",
+                  "_postman_id": "4f311e4b-d8c1-bfd3-6fff-f445192bc6d0",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/gong-connect/company/setIntegrationStatus?company-id={{company-id}}&integration-id={{integration-id}}&integration-status={{integration-status}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "gong-connect",
+                        "company",
+                        "setIntegrationStatus"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-status",
+                          "value": "{{integration-status}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "Only GongConnect"
+                  }
+                },
+                {
+                  "name": "[POST] Countcallsinbucketandreturnifexist",
+                  "_postman_id": "ba771613-9a2a-e25f-3f61-8b0c5198521a",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dedicated/verint/countCallsInBucketAndReturnIfExist?company-id={{company-id}}&integration-id={{integration-id}}&start-date={{start-date}}&end-date={{end-date}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dedicated",
+                        "verint",
+                        "countCallsInBucketAndReturnIfExist"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "start-date",
+                          "value": "{{start-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "end-date",
+                          "value": "{{end-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Dialerservicesmanager",
+              "_postman_id": "73f7ee61-25ca-2117-73c9-68d943cb9d3a",
+              "item": [
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "13496127-3961-ec0e-ea31-4ad8abdb93d3",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/dialerServicesManager/generic/calls/company/sync-calls?company-id={{company-id}}&integration-id={{integration-id}}&sync-date-from={{sync-date-from}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "dialerServicesManager",
+                        "generic",
+                        "calls",
+                        "company",
+                        "sync-calls"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-from",
+                          "value": "{{sync-date-from}}",
+                          "description": "Date: yyyy-MM-ddThh:mm:ssZ",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-to",
+                          "value": "{{sync-date-to}}",
+                          "description": "Date: yyyy-MM-ddThh:mm:ssZ",
+                          "disabled": true
+                        },
+                        {
+                          "key": "repChannelName",
+                          "value": "{{repChannelName}}",
+                          "description": "repChannelName (Left [Phone Caller #1] \\ Right [Phone Caller #2]) \\ null)",
+                          "disabled": true
+                        },
+                        {
+                          "key": "isInitialSync",
+                          "value": "{{isInitialSync}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Disconnect",
+              "_postman_id": "640cc9d5-17d0-ff6b-2912-aab791d8cd4e",
+              "item": [
+                {
+                  "name": "[POST] Dialer",
+                  "_postman_id": "70289458-d1e7-043c-02e2-a71258dba64d",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/disconnect/dialer?company-id={{company-id}}&integration-id={{integration-id}}&descriptor-id={{descriptor-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "disconnect",
+                        "dialer"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "descriptor-id",
+                          "value": "{{descriptor-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "app-user-id",
+                          "value": "{{app-user-id}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Generic",
+              "_postman_id": "651cc5a3-be16-014a-ac11-9196518fa9e2",
+              "item": [
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "499369e8-63dd-8e18-ff1e-57668b9ff13b",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/backfill/backfillMarkedTSs",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "backfill",
+                        "backfillMarkedTSs"
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "eb9a3c4c-a5c6-4f69-8725-29dad50718b6",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/backfill/markChangedUsers",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "backfill",
+                        "markChangedUsers"
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "c3adf584-d419-792f-b465-adf791b314ca",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/backfill/setBackfillStatus?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "backfill",
+                        "setBackfillStatus"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "shouldSetBackfill",
+                          "value": "{{shouldSetBackfill}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "3ae39b0e-9692-087f-c28a-4d2aeab1d41f",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/backfill/setBackfillStatusForMultipleIntegrations?backfill action={{backfill action}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "backfill",
+                        "setBackfillStatusForMultipleIntegrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "backfill action",
+                          "value": "{{backfill action}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] Update activities for company by query",
+                  "_postman_id": "20391a3b-c23e-8b4f-bd40-489fb68a6214",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/activities/updateActivitiesByQuery?companyIds={{companyIds}}&integration-flavor={{integration-flavor}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "activities",
+                        "updateActivitiesByQuery"
+                      ],
+                      "query": [
+                        {
+                          "key": "companyIds",
+                          "value": "{{companyIds}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "initialize-dialer-cache",
+                          "value": "{{initialize-dialer-cache}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "fields-to-update",
+                          "value": "{{fields-to-update}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Create date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "to",
+                          "value": "{{to}}",
+                          "description": "Create date: yyyy-MM-dd",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Update activities for company by query",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "[DELETE] Delete attendee from a call",
+                  "_postman_id": "95284658-62cf-57a8-ec20-4d72dc15b67c",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/attendees/clear?company-id={{company-id}}&call-id={{call-id}}&attendee-id={{attendee-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "attendees",
+                        "clear"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "call-id",
+                          "value": "{{call-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "attendee-id",
+                          "value": "{{attendee-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "Delete attendee from a call"
+                  }
+                },
+                {
+                  "name": "[POST] Relink",
+                  "_postman_id": "533a3890-659c-c60b-3392-6d610e910dd6",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/attendees/relink?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "attendees",
+                        "relink"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "fromDate",
+                          "value": "{{fromDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "toDate",
+                          "value": "{{toDate}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "shouldUpdateTitle",
+                          "value": "{{shouldUpdateTitle}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Changecallowner",
+                  "_postman_id": "f25b6ef6-1e6f-7f73-bb16-15c5a8fca8a0",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/changeCallOwner?company-id={{company-id}}&new-owner-id={{new-owner-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "changeCallOwner"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "new-owner-id",
+                          "value": "{{new-owner-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Deletecallproviderdatarecords",
+                  "_postman_id": "c8e11547-9e6c-c69c-27b6-804c88b1ab5f",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/deleteCallProviderDataRecords?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "deleteCallProviderDataRecords"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "gongCallIds",
+                          "value": "{{gongCallIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callsPerBatch",
+                          "value": "{{callsPerBatch}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Insertcallids",
+                  "_postman_id": "0664bfd0-f31f-26e9-8166-4569c9d1874c",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/insertCallIds?integration-flavor={{integration-flavor}}&company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "insertCallIds"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Maskids",
+                  "_postman_id": "04f3f216-7785-1236-3acc-86af15826353",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/maskIds?from={{from}}&to={{to}}&integration-flavor={{integration-flavor}}&company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "maskIds"
+                      ],
+                      "query": [
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Create date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "to",
+                          "value": "{{to}}",
+                          "description": "Create date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "callIds, if not set all matching calls will be masked",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Maskidsrevert",
+                  "_postman_id": "989598c8-59b4-cd6b-3604-bdd003a3e00c",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/maskIdsRevert?integration-flavor={{integration-flavor}}&company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "maskIdsRevert"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Recachecallsforreprocess",
+                  "_postman_id": "eae5aa87-f3d2-2ab1-0d44-660c4f446ce8",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/cachedCalls/reCacheCallsForReprocess?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "redoCalls",
+                        "cachedCalls",
+                        "reCacheCallsForReprocess"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] AKA redo title from provider sync",
+                  "_postman_id": "30359bd8-35ae-ce5d-5ead-3a7922f7f824",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/redoCallFromProviderSync?integration-flavor={{integration-flavor}}&integration-id={{integration-id}}&company-id={{company-id}}&updatePhoneNumber={{updatePhoneNumber}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "redoCalls",
+                        "redoCallFromProviderSync"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "updatePhoneNumber",
+                          "value": "{{updatePhoneNumber}}",
+                          "description": "if true, prospect phone number will be updated as well",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "AKA redo title from provider sync"
+                  }
+                },
+                {
+                  "name": "[POST] AKA redo title",
+                  "_postman_id": "4a3fb4f2-cfbc-b9ec-7372-5721b0a66a38",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/redoExistingCall",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "redoCalls",
+                        "redoExistingCall"
+                      ],
+                      "query": [
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "associateCalls",
+                          "value": "{{associateCalls}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "updateTitles",
+                          "value": "{{updateTitles}}",
+                          "description": "Relevant when titles have been built using the formatters/dialer have separate logic for titles and only re-association is needed",
+                          "disabled": true
+                        },
+                        {
+                          "key": "priority",
+                          "value": "{{priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "parallelism",
+                          "value": "{{parallelism}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "parallelMaxWaitTimePerCallSec",
+                          "value": "{{parallelMaxWaitTimePerCallSec}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "parallelMaxWaitTimeTotalInMin",
+                          "value": "{{parallelMaxWaitTimeTotalInMin}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "AKA redo title"
+                  }
+                },
+                {
+                  "name": "[POST] AKA update data from provider sync",
+                  "_postman_id": "d9b0d316-68ce-0708-ade7-f102bda326e8",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/updateCallDetailsFromProviderSync?integration-flavor={{integration-flavor}}&integration-id={{integration-id}}&company-id={{company-id}}&pipeline-stage={{pipeline-stage}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "redoCalls",
+                        "updateCallDetailsFromProviderSync"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "should-pipeline",
+                          "value": "{{should-pipeline}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "if should pipeline flag is turn off - this value has no meaning",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline priority",
+                          "value": "{{pipeline priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "fields-to-update",
+                          "value": "{{fields-to-update}}",
+                          "description": "Choose one or more fields to update",
+                          "disabled": true
+                        },
+                        {
+                          "key": "calls-per-batch",
+                          "value": "{{calls-per-batch}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "waiting-seconds-between-batches",
+                          "value": "{{waiting-seconds-between-batches}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "AKA update data from provider sync"
+                  }
+                },
+                {
+                  "name": "[POST] Updatecallrecordingtimes",
+                  "_postman_id": "746feabc-ff97-c938-1fa7-27e184b815e5",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/redoCalls/updateCallRecordingTimes?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "redoCalls",
+                        "updateCallRecordingTimes"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "should-pipeline",
+                          "value": "{{should-pipeline}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline priority",
+                          "value": "{{pipeline priority}}",
+                          "description": "if should pipeline flag is turn off - this value has no meaning",
+                          "disabled": true
+                        },
+                        {
+                          "key": "calls-per-batch",
+                          "value": "{{calls-per-batch}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Set stereo tracks for calls",
+                  "_postman_id": "e8f0028c-a750-5402-0a58-b506b00054f3",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/setStereoTracksForCallIds?company-id={{company-id}}&pipeline-priority={{pipeline-priority}}&pipeline-stage={{pipeline-stage}}&batch-size={{batch-size}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "setStereoTracksForCallIds"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "is-API-upload-calls",
+                          "value": "{{is-API-upload-calls}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "repChannelName",
+                          "value": "{{repChannelName}}",
+                          "description": "repChannelName (Left [Phone Caller #1] \\ Right [Phone Caller #2]) \\ null)",
+                          "disabled": true
+                        },
+                        {
+                          "key": "pipeline-priority",
+                          "value": "{{pipeline-priority}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "if should pipeline flag is turn off - this value has no meaning",
+                          "disabled": false
+                        },
+                        {
+                          "key": "batch-size",
+                          "value": "{{batch-size}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "shouldPipeline",
+                          "value": "{{shouldPipeline}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Set stereo tracks for calls"
+                  }
+                },
+                {
+                  "name": "[POST] Set stereo tracks by provider data",
+                  "_postman_id": "7476998c-e5be-0076-7dd0-706a959153d1",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/setStereoTracksFromProviderSync?integrationId={{integrationId}}&companyId={{companyId}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "setStereoTracksFromProviderSync"
+                      ],
+                      "query": [
+                        {
+                          "key": "integrationId",
+                          "value": "{{integrationId}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "{{companyId}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "shouldPipeline",
+                          "value": "{{shouldPipeline}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Set stereo tracks by provider data"
+                  }
+                },
+                {
+                  "name": "[POST] Synconecall",
+                  "_postman_id": "425ce505-5b6c-0460-bf2f-da86c41da1fc",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/calls/syncOneCall?company-id={{company-id}}&integration-id={{integration-id}}&providerCallId={{providerCallId}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "calls",
+                        "syncOneCall"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "providerCallId",
+                          "value": "{{providerCallId}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callDate",
+                          "value": "{{callDate}}",
+                          "description": "Currently required for Amazon Connect",
+                          "disabled": true
+                        },
+                        {
+                          "key": "callUrl",
+                          "value": "{{callUrl}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Change all the provided calls to the same chosen direction",
+                  "_postman_id": "90e59e38-796f-98ed-3e34-bff8a181018c",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/direction/set?company-id={{company-id}}&direction={{direction}}&pipeline-stage={{pipeline-stage}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "direction",
+                        "set"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "direction",
+                          "value": "{{direction}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline-stage",
+                          "value": "{{pipeline-stage}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "pipeline priority",
+                          "value": "{{pipeline priority}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "call-ids",
+                          "value": "{{call-ids}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Change all the provided calls to the same chosen direction"
+                  }
+                },
+                {
+                  "name": "[POST] Clear",
+                  "_postman_id": "f766df96-9389-66e3-e800-3e7e4e2d14f8",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/dispositions/clear?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "dispositions",
+                        "clear"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "callIds",
+                          "value": "{{callIds}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Set",
+                  "_postman_id": "fe736e97-bc2c-f77b-d65b-2abe1b6dfc3d",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/dispositions/set?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "dispositions",
+                        "set"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[DELETE] Delete",
+                  "_postman_id": "f60b8206-d680-3c48-7865-56906a442525",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/delete?company-id={{company-id}}&integration-id={{integration-id}}&property={{property}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "delete"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "property",
+                          "value": "{{property}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[DELETE] Deletetransient",
+                  "_postman_id": "1cd1d29d-0d4f-29aa-6be0-dac6e0f93b16",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/deleteTransient?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "deleteTransient"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] List",
+                  "_postman_id": "99f39161-5778-544e-17eb-0c3d55377cc8",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/list?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Listallintegrationvalueforproperty",
+                  "_postman_id": "e564f7a6-9e73-1e47-f367-717b26a6c561",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/listAllIntegrationValueForProperty?property={{property}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "listAllIntegrationValueForProperty"
+                      ],
+                      "query": [
+                        {
+                          "key": "property",
+                          "value": "{{property}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Set",
+                  "_postman_id": "d48979bf-ac87-f40b-6730-d15396761280",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/set?company-id={{company-id}}&integration-id={{integration-id}}&property={{property}}&propertyValue={{propertyValue}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "set"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "property",
+                          "value": "{{property}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "propertyValue",
+                          "value": "{{propertyValue}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "setOnlyForActiveIntegration",
+                          "value": "{{setOnlyForActiveIntegration}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Setforenabledintegrations",
+                  "_postman_id": "2dd3e9e7-5d7b-7f74-1b6b-871121936731",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/properties/setForEnabledIntegrations?property={{property}}&propertyValue={{propertyValue}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "properties",
+                        "setForEnabledIntegrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "property",
+                          "value": "{{property}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "propertyValue",
+                          "value": "{{propertyValue}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Setprovidercompanyidentifier",
+                  "_postman_id": "5140233b-5442-6aa4-0959-abe7064b6879",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/SetProviderCompanyIdentifier?company-id={{company-id}}&integration-id={{integration-id}}&provider-company-identifier={{provider-company-identifier}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "SetProviderCompanyIdentifier"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "provider-company-identifier",
+                          "value": "{{provider-company-identifier}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Changeintegrationstatus",
+                  "_postman_id": "3a41b93d-6e88-f3d4-c913-4c1eb49cbeed",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/changeIntegrationStatus?company-id={{company-id}}&integration-id={{integration-id}}&updated-integration-status={{updated-integration-status}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "changeIntegrationStatus"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "updated-integration-status",
+                          "value": "{{updated-integration-status}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "repChannelName",
+                          "value": "{{repChannelName}}",
+                          "description": "repChannelName: Left for 'Phone Caller #1' \\ Right for 'Phone Caller #2' \\ null",
+                          "disabled": true
+                        },
+                        {
+                          "key": "alternativeDownloadField",
+                          "value": "{{alternativeDownloadField}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Setcompanysyncparams",
+                  "_postman_id": "c4df38fe-513c-7f96-8aa6-8106536907d3",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setCompanySyncParams?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "setCompanySyncParams"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "repChannelName",
+                          "value": "{{repChannelName}}",
+                          "description": "repChannelName: Left for 'Phone Caller #1' \\ Right for 'Phone Caller #2'",
+                          "disabled": true
+                        },
+                        {
+                          "key": "alternativeDownloadField",
+                          "value": "{{alternativeDownloadField}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Setrepsideforcompany",
+                  "_postman_id": "8ecb4458-d7ea-0b9e-6cc6-fb4873f8fb52",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setRepSideForCompany?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "setRepSideForCompany"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "repChannelName",
+                          "value": "{{repChannelName}}",
+                          "description": "repChannelName (Left [Phone Caller #1] \\ Right [Phone Caller #2]) \\ null)",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "19680fe1-e701-5a36-0c06-2ea8fb98ddbd",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setSyncTime/multiple-companies?integration-flavor={{integration-flavor}}&is-initial-sync={{is-initial-sync}}&sync-date-from={{sync-date-from}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "setSyncTime",
+                        "multiple-companies"
+                      ],
+                      "query": [
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "is-initial-sync",
+                          "value": "{{is-initial-sync}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-from",
+                          "value": "{{sync-date-from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "companyIds",
+                          "value": "{{companyIds}}",
+                          "description": "companyIds, if not set all matching companies will be updated",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] SFDC only",
+                  "_postman_id": "e1402770-6c13-1ea2-b9bf-0bb39221cd25",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/setSyncTime/single-company?company-id={{company-id}}&integration-id={{integration-id}}&is-initial-sync={{is-initial-sync}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "setSyncTime",
+                        "single-company"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "is-initial-sync",
+                          "value": "{{is-initial-sync}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "sync-date-from",
+                          "value": "{{sync-date-from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "sync-date-to",
+                          "value": "{{sync-date-to}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "SFDC only"
+                  }
+                },
+                {
+                  "name": "[POST] Update integration flavor - Do not use unless you are sure there is a need for it",
+                  "_postman_id": "e3bd2b66-491e-fac6-fe67-4b183f0ef4f1",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/company/sync/updateIntegrationFlavor?company-id={{company-id}}&integration-id={{integration-id}}&updated-integration-flavor={{updated-integration-flavor}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "company",
+                        "sync",
+                        "updateIntegrationFlavor"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "updated-integration-flavor",
+                          "value": "{{updated-integration-flavor}}",
+                          "description": "Updated integration flavor",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "Update integration flavor - Do not use unless you are sure there is a need for it"
+                  }
+                },
+                {
+                  "name": "[POST] User Exists",
+                  "_postman_id": "a04d1484-5b3f-61df-74bc-8823dc3e90c2",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/generic/user-exists?company-id={{company-id}}&integration-id={{integration-id}}&user-id={{user-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "generic",
+                        "user-exists"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "user-id",
+                          "value": "{{user-id}}",
+                          "description": "Can be either user ID or email",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Numonix",
+              "_postman_id": "b1a2d562-ea28-7063-05d0-163a0f9f067a",
+              "item": [
+                {
+                  "name": "[POST] Add recorded users for a specific integration. Input either a list of appuser ids or a list of email addresses",
+                  "_postman_id": "646c977a-99ae-af36-ae9d-b58dc4598d55",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/numonix/add-recorded-users?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "numonix",
+                        "add-recorded-users"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "appuser-ids",
+                          "value": "{{appuser-ids}}",
+                          "description": "comma separated list of appuser ids",
+                          "disabled": true
+                        },
+                        {
+                          "key": "emails",
+                          "value": "{{emails}}",
+                          "description": "comma separated list of emails",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Add recorded users for a specific integration. Input either a list of appuser ids or a list of email addresses"
+                  }
+                },
+                {
+                  "name": "[DELETE] Delete recorded users for a specific integration. Input either a list of appuser ids or a list of email addresses",
+                  "_postman_id": "c3c809a8-e8c8-9761-5242-52d56ba2b9ac",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/numonix/delete-recorded-users?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "numonix",
+                        "delete-recorded-users"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "appuser-ids",
+                          "value": "{{appuser-ids}}",
+                          "description": "comma separated list of appuser ids",
+                          "disabled": true
+                        },
+                        {
+                          "key": "emails",
+                          "value": "{{emails}}",
+                          "description": "comma separated list of emails",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "Delete recorded users for a specific integration. Input either a list of appuser ids or a list of email addresses"
+                  }
+                },
+                {
+                  "name": "[GET] List recorded users per tenant id. if not tenant id, will for available tenants for company",
+                  "_postman_id": "f6c24bc6-7d1e-80dd-f0e8-1230240cf2d0",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/numonix/list-recorded-users?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "numonix",
+                        "list-recorded-users"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "ms-tenant-id",
+                          "value": "{{ms-tenant-id}}",
+                          "description": "",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "List recorded users per tenant id. if not tenant id, will for available tenants for company\n\nLive curl status: 200"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Ringcentral",
+              "_postman_id": "685ebb53-b8a6-6131-f6f1-9c8758edf88e",
+              "item": [
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "e74ba408-b21c-f424-9a29-1eeef17437a7",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/calls/company/importCallsForCompany?company-id={{company-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "calls",
+                        "company",
+                        "importCallsForCompany"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "Allowed: RINGCENTRAL_API_OAUTH,RINGCENTRAL_BUSINESS_CONNECT",
+                          "disabled": true
+                        },
+                        {
+                          "key": "process-calls",
+                          "value": "{{process-calls}}",
+                          "description": "",
+                          "disabled": true
+                        },
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                },
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "46dbcb11-9809-f794-a7a0-ddd80366c6c3",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/calls/initialsync/companies/abort",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "calls",
+                        "initialsync",
+                        "companies",
+                        "abort"
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                },
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "cd672adf-d0d5-a9ff-da32-9a9414805c4d",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/calls/initialsync/company/abort?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "calls",
+                        "initialsync",
+                        "company",
+                        "abort"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                },
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "38205425-ca67-abb3-6188-b3ccc795d574",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/calls/initialsync/company/start?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "calls",
+                        "initialsync",
+                        "company",
+                        "start"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "from",
+                          "value": "{{from}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": true
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                },
+                {
+                  "name": "[POST] deprecated",
+                  "_postman_id": "597dc6a7-8f79-bb5f-429d-c4ee20a59e57",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/calls/reimportSpecificCall?company-id={{company-id}}&integration-id={{integration-id}}&RC callIds={{RC callIds}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "calls",
+                        "reimportSpecificCall"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "RC callIds",
+                          "value": "{{RC callIds}}",
+                          "description": "comma delimited RingCentral callIds - No more then 50 each time",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "deprecated"
+                  }
+                },
+                {
+                  "name": "[GET] deprecated",
+                  "_postman_id": "2cf56cb6-313e-e964-b6e0-26d2d4231394",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/ringcentral/company/recordedEmployees?company-id={{company-id}}&integration-id={{integration-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "ringcentral",
+                        "company",
+                        "recordedEmployees"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": "deprecated\n\nLive curl status: 200"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Sftp Dialers",
+              "_postman_id": "b1470731-6642-43c6-ef2e-0ae5aa71e4ff",
+              "item": [
+                {
+                  "name": "[POST] Getproviderids",
+                  "_postman_id": "8e323874-d1ad-c94c-32be-e51f3f3938d5",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/sftp-dialers/paths/company/getProviderIds?company-id={{company-id}}&integration-flavor={{integration-flavor}}&paths={{paths}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "sftp-dialers",
+                        "paths",
+                        "company",
+                        "getProviderIds"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor",
+                          "value": "{{integration-flavor}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "paths",
+                          "value": "{{paths}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Syncjobinfra",
+              "_postman_id": "6fa4dbcc-bbd1-24f8-799a-fef1de5bb4da",
+              "item": [
+                {
+                  "name": "[POST] Start High Priority Sync For Integration",
+                  "_postman_id": "aa18e205-063e-b59a-ff0d-60cf254cbc94",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/syncJobInfra/start-high-priority-sync-for-integration?company-id={{company-id}}&integration-id={{integration-id}}&integration-flavor-id={{integration-flavor-id}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "syncJobInfra",
+                        "start-high-priority-sync-for-integration"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor-id",
+                          "value": "{{integration-flavor-id}}",
+                          "description": "",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Start High Priority Sync For Multiple Integrations",
+                  "_postman_id": "396c8cd1-b1da-5713-fd3e-7b665bb6b4f1",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/syncJobInfra/start-high-priority-sync-for-multiple-integrations",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "syncJobInfra",
+                        "start-high-priority-sync-for-multiple-integrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "allIntegrations",
+                          "value": "{{allIntegrations}}",
+                          "description": "NOTE! Selecting this will start syncs for all integrations!",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Start Low Priority Sync For Integration",
+                  "_postman_id": "6bfd5605-7d25-e91d-6595-5b1ffcbe95bc",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/syncJobInfra/start-low-priority-sync-for-integration?company-id={{company-id}}&integration-id={{integration-id}}&integration-flavor-id={{integration-flavor-id}}&from-date={{from-date}}&to-date={{to-date}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "syncJobInfra",
+                        "start-low-priority-sync-for-integration"
+                      ],
+                      "query": [
+                        {
+                          "key": "company-id",
+                          "value": "{{company-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-id",
+                          "value": "{{integration-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "integration-flavor-id",
+                          "value": "{{integration-flavor-id}}",
+                          "description": "",
+                          "disabled": false
+                        },
+                        {
+                          "key": "from-date",
+                          "value": "{{from-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "to-date",
+                          "value": "{{to-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                },
+                {
+                  "name": "[POST] Start Low Priority Sync For Multiple Integrations",
+                  "_postman_id": "109873f0-0c94-0f83-05ad-26d625592a9b",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://telephonysystemstroubleshooters.modules.terry-collins-dev-env.c1-devex.ilc1.internal.gongio.net/troubleshooting/telephony-system-pci-compliant/syncJobInfra/start-low-priority-sync-for-multiple-integrations?from-date={{from-date}}&to-date={{to-date}}",
+                      "protocol": "https",
+                      "host": [
+                        "telephonysystemstroubleshooters",
+                        "modules",
+                        "terry-collins-dev-env",
+                        "c1-devex",
+                        "ilc1",
+                        "internal",
+                        "gongio",
+                        "net"
+                      ],
+                      "path": [
+                        "troubleshooting",
+                        "telephony-system-pci-compliant",
+                        "syncJobInfra",
+                        "start-low-priority-sync-for-multiple-integrations"
+                      ],
+                      "query": [
+                        {
+                          "key": "from-date",
+                          "value": "{{from-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        },
+                        {
+                          "key": "to-date",
+                          "value": "{{to-date}}",
+                          "description": "Date: yyyy-MM-dd",
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    "description": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

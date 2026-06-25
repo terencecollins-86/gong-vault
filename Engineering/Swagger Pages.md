@@ -2,6 +2,8 @@
 
 Live and deployed Swagger/OpenAPI endpoints for testing.
 
+> For my remote dev environment (`terry-collins-dev-env`) service URLs, see [[Dev Env Service URLs]].
+
 **Auth notes:**
 - Internal services (`*.prod.gongio.net`) — requires VPN + troubleshooters cookie (`troubleshootersAuthJWT`)
 - Public API (`app.gong.io`) — requires OAuth2 Bearer token (Authorize button in UI)
