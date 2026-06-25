@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/2026-06-25.md",
+                "file": "Engineering/kubectl CLI — Intro to Advanced.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-25"
+              "title": "kubectl CLI — Intro to Advanced"
             }
           }
         ]
@@ -199,10 +199,12 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md",
+    "Daily Notes/2026-06-25.md",
+    "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
     "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/kubectl Cheatsheet — Telephony Services on Kubernetes.md",
     "Engineering/Dev Env Service URLs.md",
-    "Daily Notes/2026-06-25.md",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
     "List of urls.md",
     "Engineering/Swagger Pages.md.tmp.41.b0647e40e5d5",
@@ -236,11 +238,9 @@
     "Canvas/Project Architecture.canvas",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md",
     "Canvas/Telephony Data Flow/Web - REST/CallData-Controller.md",
-    "Canvas/Telephony Data Flow/Providers/Vonage-VBC.md",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
     "Canvas/Telephony Data Flow/Outbound Topics",
-    "Canvas/Telephony Data Flow/Inbound Topics",
     "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
