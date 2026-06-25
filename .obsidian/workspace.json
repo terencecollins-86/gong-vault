@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engineering/kubectl CLI — Intro to Advanced.md",
-                "mode": "source",
+                "file": "Calendar Ingestion/Swagger Trigger Runbook.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kubectl CLI — Intro to Advanced"
+              "title": "Swagger Trigger Runbook"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5
+    "width": 468.5,
+    "collapsed": true
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -199,10 +200,25 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
+    "Calendar Ingestion/System Diagram.md",
+    "Calendar Ingestion/Swagger Trigger Runbook.md",
+    "Calendar Ingestion/01 - Architecture & Modules.md",
+    "Calendar Ingestion/00 - Overview.md",
+    "Calendar Ingestion/Entrypoints Within the Calendar System.md",
+    "Calendar Ingestion/07 - Onboarding Checklist.md",
+    "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
+    "Calendar Ingestion/05 - Observability.md",
+    "Calendar Ingestion/04 - Providers & Sources.md",
+    "Calendar Ingestion/03 - Services Reference.md",
+    "Calendar Ingestion/02 - Data Flows.md",
+    "Calendar Ingestion/Calendar Ingestion Architecture.md",
+    "Calendar Ingestion/_dashboard.md",
+    "Calendar Ingestion",
+    "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md",
     "Daily Notes/2026-06-25.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
-    "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/kubectl Cheatsheet — Telephony Services on Kubernetes.md",
     "Engineering/Dev Env Service URLs.md",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
@@ -220,27 +236,12 @@
     "Engineering/Runbooks/Idea to Production - Gong Eng Workflow.md",
     "Daily Notes/2026-06-24.md",
     "Daily Notes/2026-06-23.md",
-    "Engineering/Runbooks/Maven Version Sync (Boost).md",
-    "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
-    "Canvas/Telephony Data Flow/Core/IngesterTelephonySystemsSupervisor.md",
     "Canvas/Telephony Systems - External Data Flow.canvas",
-    "Canvas/Telephony Data Flow/Data Stores/DataStore-MongoDB.md",
-    "Canvas/Telephony Data Flow/Data Stores/DataStore-OpenSearch.md",
-    "Canvas/Telephony Data Flow/Downstream Consumers/CommunicationsSyncServer.md",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md.tmp.42.c91bedbfdb48",
-    "Canvas/Telephony Data Flow/Data Stores/DataStore-PostgreSQL.md",
-    "Canvas/Telephony Data Flow/Inbound Producers/GongConnectWebhooksServer.md",
-    "Daily Notes/2026-06-22.md",
-    "Canvas/Telephony Data Flow/Providers/Zoom-Phone.md",
-    "Canvas/Telephony Data Flow/Providers/Aircall.md",
-    "Canvas/Telephony Data Flow/Inbound Topics/GONG-CONNECT-DIALER-EVENTS.md",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
     "Canvas/Project Architecture.canvas",
-    "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md",
-    "Canvas/Telephony Data Flow/Web - REST/CallData-Controller.md",
     "Canvas/Telephony Data Flow/Web - REST",
     "Canvas/Telephony Data Flow/Providers",
-    "Canvas/Telephony Data Flow/Outbound Topics",
     "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
