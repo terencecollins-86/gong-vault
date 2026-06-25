@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/05 - Observability.md",
+                "file": "Calendar Ingestion/Storage & Schema Reference.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "05 - Observability"
+              "title": "Storage & Schema Reference"
             }
           }
         ]
@@ -199,6 +199,10 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Engineering/Notes/gong-java-cheat-sheet.md",
+    "Calendar Ingestion/Storage & Schema Reference.md",
+    "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
+    "Calendar Ingestion/05 - Observability.md",
     "Calendar Ingestion/Entrypoints Within the Calendar System.md",
     "Calendar Ingestion/Swagger Trigger Runbook.md",
     "Calendar Ingestion/System Diagram.md",
@@ -206,8 +210,6 @@
     "Calendar Ingestion/01 - Architecture & Modules.md",
     "Calendar Ingestion/00 - Overview.md",
     "Calendar Ingestion/07 - Onboarding Checklist.md",
-    "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
-    "Calendar Ingestion/05 - Observability.md",
     "Calendar Ingestion/04 - Providers & Sources.md",
     "Calendar Ingestion/03 - Services Reference.md",
     "Calendar Ingestion/02 - Data Flows.md",
@@ -233,8 +235,6 @@
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.md",
     "Engineering/Runbooks/Local Dev - Prod Data Import Fix.md",
     "Engineering/Runbooks/Idea to Production - Gong Eng Workflow.md",
-    "Daily Notes/2026-06-24.md",
-    "Daily Notes/2026-06-23.md",
     "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md.tmp.42.c91bedbfdb48",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",
