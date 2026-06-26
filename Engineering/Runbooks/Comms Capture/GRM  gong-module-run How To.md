@@ -243,6 +243,162 @@ Run the intercepted module locally (debug agent on 5005) and attach your IDE to 
 
 ---
 
+---
+
+## CLI Reference
+
+### Global options
+
+These go **before** the verb and affect the runner itself, not the module.
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--runner-tag-name` | `<tag>` | Docker tag for the internal runner image (default: `latest`) |
+| `--runner-ecr-repository` | `<repo>` | ECR repository URL for the runner image |
+| `--use-proxy` | — | Route image pulls through the local/remote proxy |
+| `--external-tool` | — | Signal that the call comes from an external tool (suppresses some interactive output) |
+
+### Verbs overview
+
+| Verb | What it does |
+|------|--------------|
+| `up` | Start one or more modules (local Docker or remote K8s) |
+| `down` | Stop and remove deployed modules |
+| `remote` | Manage the remote dev environment (connect, intercept, sleep, etc.) |
+| `synthetic-data` | Spin up or reset lightweight test-data containers |
+| `prod-data` | Import production data into local databases |
+| `generate-ssl-certificate` | Create/renew the local `*.local.gong-it.net` SSL certificate |
+| `clean-images` | Delete stale Docker images from local cache |
+| `install-bash-completion` | Register tab-completion for the shell |
+| `db-migrate` | ~~Run Flyway migrations~~ **Deprecated** — migrations now run automatically inside each module's installer |
+
+---
+
+### `up` — start modules
+
+**One of these is required:**
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--image-names` | `a,b,c` | Comma-separated list of module names |
+| `--image-name` | `name` | Single module name (singular alias) |
+| `--group-names` | `a,b` | Comma-separated list of group names (e.g. `deals`, `engage`) |
+| `--subsystem-names` | `a,b` | Comma-separated list of subsystem names (e.g. `gong-ingestion`) |
+
+**Optional:**
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--remote` | — | Deploy to your personal K8s namespace instead of running locally |
+| `--branch-name` | `<branch>` | Use the image built from this branch (requires `--remote`; branch must have a CI build) |
+| `--tag-name` | `<tag>` | Override the Docker image tag (defaults to `latest` from `main`) |
+| `--ecr-repository` | `<url>` | Override the ECR registry URL |
+| `--exclude-images` | `a,b` | Modules to exclude when using a group or subsystem selector |
+| `--exclude-core-infra-modules` | — | Don't auto-include the `core_infra` group (local runs include it by default) |
+| `--preserve-tags-for-groups` | `<groups>` | Keep the tag already defined in YAML for modules in these groups (useful for mixed-branch setups) |
+| `--web-port` | `<port>` | Override the host port mapped to the module's HTTP server |
+| `--debug-port` | `<port>\|none` | Pin the JDWP debug port to a fixed host port; `none` disables the mapping |
+| `--debug-suspend` | — | Start the JVM **suspended** — execution waits until an IDE debugger attaches (useful for catching startup code) |
+| `--jmx-port` | `<port>\|none` | Pin the JMX port; `none` disables it |
+| `--java-max-mem-value` | `<val>` | Override the JVM `-Xmx` value (alias: `--max-memory`) |
+| `--extra-jvm-options` | `<opts>` | Append arbitrary JVM flags (e.g. `-XX:+HeapDumpOnOutOfMemoryError`) |
+| `--spring-profiles` | `a,b` | Activate additional Spring profiles |
+| `--extra-env-vars` | `k=v,k=v` | Inject extra environment variables into the container |
+| `--skip-health-check` | — | Don't wait for the module's `/welcome/_healthcheck` to pass |
+| `--skip-core-infra-health-check` | — | Skip the startup check for DBs, Traefik, CoreDNS, etc. |
+| `--force-recreate` | — | Tear down and recreate containers even if their config hasn't changed (docker-compose `--force-recreate`) |
+| `--remove-orphans` | — | Remove containers that belong to the compose project but aren't in the current service list |
+| `--skip-installer` | — | Don't run the per-module installer (DB migrator) container |
+| `--only-installer` | — | Run only the installer containers — skip the main module containers |
+
+> [!note] `--force-recreate` vs `--force`
+> - **`--force-recreate`** (on `up`): passes `--force-recreate` to `docker-compose up`, forcing containers to be destroyed and rebuilt from scratch even if their configuration is unchanged. Use this when a container is in a bad state or you want to guarantee a clean start.
+> - **`--force`** (on `remote`): a lower-level override that bypasses certain safety guards in the remote environment management (e.g. forces an operation that would otherwise be blocked by a conflict check). It does **not** affect container recreation.
+
+---
+
+### `down` — stop modules
+
+**One of these is required:**
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--image-names` | `a,b,c` | Modules to stop |
+| `--group-names` | `a,b` | Group(s) to stop |
+| `--subsystem-names` | `a,b` | Subsystem(s) to stop |
+
+**Optional:**
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--remote` | — | Remove deployments from your K8s namespace (not local Docker) |
+
+---
+
+### `remote` — manage the remote environment
+
+All sub-actions are single flags; most are mutually exclusive.
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--connect` | — | Start the Telepresence tunnel to your remote namespace (required before most remote operations) |
+| `--disconnect` | — | Quit Telepresence and tear down the local tunnel |
+| `--init` | — | Bootstrap your personal remote namespace (first-time setup) |
+| `--status` | — | Print the current state of your remote namespace (deployed modules, intercepts) |
+| `--refresh-modules` | — | Re-pull the latest image tags for all currently deployed modules |
+| `--sleep` | — | Scale all workloads to zero (save cluster resources while you're away) |
+| `--wake-up` | — | Scale workloads back up from sleep |
+| `--intercept` | `<module>` | Route remote cluster traffic for `<module>` to your local machine (Telepresence intercept) |
+| `--port` | `<port>` | Local port to receive intercepted traffic (used with `--intercept`; default: 8080) |
+| `--leave` | `<module>` | Stop intercepting traffic for `<module>` and restore normal routing |
+| `--generate-run-configurations` | — | Generate IntelliJ Maven run configurations for the modules in your namespace |
+| `--force-recreate` | — | Force full recreation of the remote environment, **including core infra services** |
+| `--force` | — | Override conflict/safety guards for the remote operation (use with caution) |
+| `--skip-core-infra-health-check` | — | Skip the health check for core infra (DBs, Traefik, CoreDNS) during remote init |
+| `--disable-ff-mock` | — | Disable the feature-flags mock service in the remote env (routes FF requests to real infra instead) |
+| `--shared` | — | Use shared environment mode (multi-developer namespace) |
+| `--env-name` | `<name>` | Target a named environment other than your personal namespace |
+| `--with-external-url` | `<url>` | Register an external URL for the remote environment |
+| `--synthetic-data-image-tag` | `<tag>` | Override the synthetic-data image tag for the remote env |
+
+---
+
+### `synthetic-data` — test data containers
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--synthetic-data-image-tag` | `<tag>` | Use a specific tag of the synthetic data image (default: latest) |
+| `--synthetic-volume-init` | — | **Destructive** — reinitialise the synthetic data Docker volume from scratch |
+| `--synthetic-data-sync-from-existing-containers` | — | Copy data from currently running containers into fresh volumes |
+| `--remote` | — | Apply to the remote environment instead of local |
+
+---
+
+### `prod-data` — production data import
+
+| Option | Description |
+|--------|-------------|
+| `--import-prod-data` | Run the import-prod-data pipeline to sync real production data into local databases |
+
+---
+
+### `generate-ssl-certificate`
+
+| Option | Description |
+|--------|-------------|
+| `--force-recreate` | Regenerate the SSL certificate even if a valid one already exists |
+| `--remote` | Generate/renew the certificate for the remote environment |
+
+---
+
+### `clean-images`
+
+| Option | Argument | Description |
+|--------|----------|-------------|
+| `--image-tag-prefix` | `<prefix>` | Delete images whose tag matches this prefix regex (default: `11-main\|11-master`) |
+
+---
+
 ## Related Notes
 
 - [[Comms Capture Maven Modules]] — module breakdown per service if you're working in comms capture

@@ -13,15 +13,33 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/gong-module-run Commands.md",
+                "file": "Calendar Ingestion/_dashboard.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gong-module-run Commands"
+              "title": "_dashboard"
+            }
+          },
+          {
+            "id": "e79f762c7377a39a",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
+                "viewState": {
+                  "x": -4.037857078637785,
+                  "y": -551.0993482369182,
+                  "zoom": -1.4146405262387556
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Meeting Ingestion Architecture"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tmux",
+                "query": "ku",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -211,14 +229,21 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "f20544a1e1bc1e5f",
+  "active": "e79f762c7377a39a",
   "lastOpenFiles": [
-    "Engineering/Notes/tmux Cheatsheet.md",
+    "Engineering/Dev Env Service URLs.md",
+    "Calendar Ingestion/02 - Data Flows.md",
+    "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
+    "Calendar Ingestion/01 - Architecture & Modules.md",
+    "Calendar Ingestion/00 - Overview.md",
     "Calendar Ingestion/gong-module-run Commands.md",
+    "Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
+    "Daily Notes/2026-06-18.md",
+    "Calendar Ingestion/_dashboard.md",
+    "Engineering/Notes/tmux Cheatsheet.md",
     "Daily Notes/2026-06-26.md",
     "Daily Notes/2026-06-25.md",
     "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
-    "Calendar Ingestion/00 - Overview.md",
     "Calendar Ingestion/Storage & Schema Reference.md",
     "Engineering/Notes/gong-java-cheat-sheet.md",
     "Calendar Ingestion/05 - Observability.md",
@@ -226,28 +251,22 @@
     "Calendar Ingestion/Swagger Trigger Runbook.md",
     "Calendar Ingestion/System Diagram.md",
     "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
-    "Calendar Ingestion/01 - Architecture & Modules.md",
     "Calendar Ingestion/07 - Onboarding Checklist.md",
     "Calendar Ingestion/04 - Providers & Sources.md",
     "Calendar Ingestion/03 - Services Reference.md",
-    "Calendar Ingestion/02 - Data Flows.md",
     "Calendar Ingestion/Calendar Ingestion Architecture.md",
-    "Calendar Ingestion/_dashboard.md",
     "Calendar Ingestion",
     "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
     "Engineering/kubectl Cheatsheet — Telephony Services on Kubernetes.md",
-    "Engineering/Dev Env Service URLs.md",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
-    "List of urls.md",
     "Engineering/Swagger Pages.md.tmp.41.b0647e40e5d5",
     "Telephony Systems/Postman Collections/TelephonySystemsWebAPI-devenv.postman_collection.json",
     "Telephony Systems/Postman Collections/TelephonySystemsTroubleshooters-devenv.postman_collection.json",
     "Telephony Systems/Postman Collections/IngesterTelephonySystemsSupervisor-devenv.postman_collection.json",
     "Telephony Systems/Postman Collections",
     "Engineering/Runbooks/Comms Capture/Recorders.canvas",
-    "Engineering/Runbooks/Comms Capture/Recorders.md",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md.tmp.42.c91bedbfdb48",
@@ -258,7 +277,6 @@
     "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
-    "Engineering/Runbooks/Comms Capture/Processors.canvas",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
