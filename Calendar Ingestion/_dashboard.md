@@ -23,7 +23,8 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 7. [[06 - Runbook & Troubleshooting]] — troubleshooter endpoints, common ops
 8. [[07 - Onboarding Checklist]] — day-1 → week-1 ramp
 9. [[Entrypoints Within the Calendar System]] — local-debug walkthrough per entrypoint
-10. [[gong-module-run Commands]] — all `gong-module-run` commands (local, remote, partial, full)
+10. [[Google Import Flow — Debugger Walkthrough]] — full call chain from scheduled task → Kafka → provider API → MongoDB → OpenSearch
+11. [[gong-module-run Commands]] — all `gong-module-run` commands (local, remote, partial, full)
 
 ---
 

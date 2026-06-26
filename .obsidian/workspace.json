@@ -25,17 +25,14 @@
             "id": "e79f762c7377a39a",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
-                "viewState": {
-                  "x": -4.037857078637785,
-                  "y": -551.0993482369182,
-                  "zoom": -1.4146405262387556
-                }
+                "file": "Calendar Ingestion/Google Import Flow — Debugger Walkthrough.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Meeting Ingestion Architecture"
+              "icon": "lucide-file",
+              "title": "Google Import Flow — Debugger Walkthrough"
             }
           }
         ],
@@ -231,9 +228,10 @@
   },
   "active": "e79f762c7377a39a",
   "lastOpenFiles": [
+    "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
+    "Calendar Ingestion/Google Import Flow — Debugger Walkthrough.md",
     "Engineering/Dev Env Service URLs.md",
     "Calendar Ingestion/02 - Data Flows.md",
-    "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Calendar Ingestion/01 - Architecture & Modules.md",
     "Calendar Ingestion/00 - Overview.md",
     "Calendar Ingestion/gong-module-run Commands.md",
@@ -257,9 +255,7 @@
     "Calendar Ingestion/Calendar Ingestion Architecture.md",
     "Calendar Ingestion",
     "Engineering/kubectl CLI — Intro to Advanced.md",
-    "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
-    "Engineering/kubectl Cheatsheet — Telephony Services on Kubernetes.md",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
     "Engineering/Swagger Pages.md.tmp.41.b0647e40e5d5",
     "Telephony Systems/Postman Collections/TelephonySystemsWebAPI-devenv.postman_collection.json",
