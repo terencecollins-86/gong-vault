@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/Storage & Schema Reference.md",
-                "mode": "preview",
-                "source": true
+                "file": "Calendar Ingestion/gong-module-run Commands.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Storage & Schema Reference"
+              "title": "gong-module-run Commands"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tmux",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -174,6 +174,16 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "c5b920c1411250be",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
           }
         ],
         "currentTab": 5
@@ -194,21 +204,29 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "obsidian-git:Open Git source control": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "omnisearch:Omnisearch": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Toggle Footer Connections": false,
+      "smart-connections:Smart Connections: Open random connection": false
     }
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
-    "Engineering/Notes/gong-java-cheat-sheet.md",
-    "Calendar Ingestion/Storage & Schema Reference.md",
+    "Engineering/Notes/tmux Cheatsheet.md",
+    "Calendar Ingestion/gong-module-run Commands.md",
+    "Daily Notes/2026-06-26.md",
+    "Daily Notes/2026-06-25.md",
     "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
+    "Calendar Ingestion/00 - Overview.md",
+    "Calendar Ingestion/Storage & Schema Reference.md",
+    "Engineering/Notes/gong-java-cheat-sheet.md",
     "Calendar Ingestion/05 - Observability.md",
     "Calendar Ingestion/Entrypoints Within the Calendar System.md",
     "Calendar Ingestion/Swagger Trigger Runbook.md",
     "Calendar Ingestion/System Diagram.md",
     "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
     "Calendar Ingestion/01 - Architecture & Modules.md",
-    "Calendar Ingestion/00 - Overview.md",
     "Calendar Ingestion/07 - Onboarding Checklist.md",
     "Calendar Ingestion/04 - Providers & Sources.md",
     "Calendar Ingestion/03 - Services Reference.md",
@@ -218,7 +236,6 @@
     "Calendar Ingestion",
     "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md",
-    "Daily Notes/2026-06-25.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
     "Engineering/kubectl Cheatsheet — Telephony Services on Kubernetes.md",
     "Engineering/Dev Env Service URLs.md",
@@ -232,9 +249,6 @@
     "Engineering/Runbooks/Comms Capture/Recorders.canvas",
     "Engineering/Runbooks/Comms Capture/Recorders.md",
     "Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
-    "Engineering/Runbooks/Comms Capture/Webconf Streaming.md",
-    "Engineering/Runbooks/Local Dev - Prod Data Import Fix.md",
-    "Engineering/Runbooks/Idea to Production - Gong Eng Workflow.md",
     "Canvas/Telephony Systems - External Data Flow.canvas",
     "Canvas/Telephony Data Flow/Web - REST/Dialpad-Webhook-Controller.md.tmp.42.c91bedbfdb48",
     "Canvas/IngesterMailSupervisor Data Flow.canvas",

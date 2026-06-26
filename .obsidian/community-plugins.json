@@ -5,5 +5,7 @@
   "obsidian-tasks-plugin",
   "obsidian-git",
   "obsidian-minimal-settings",
-  "templater-obsidian"
+  "templater-obsidian",
+  "omnisearch",
+  "smart-connections"
 ]
