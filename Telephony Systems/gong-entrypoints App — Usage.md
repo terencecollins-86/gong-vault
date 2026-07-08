@@ -77,6 +77,42 @@ You should get `Backfilled <n> TSs`. To catch it in the debugger, set a breakpoi
 > `telephonysystems/backfill/README.md`) and a per-module Postman collection under
 > `postman/`, per the repo's README conventions.
 
+### Entrypoint #2 — process one call event (Flow B, happy path)
+
+Drives the same core path as the `TelephonyCallEventConsumer`. The guaranteed 200 uses
+`callStatus.type = STARTED`: the service checks status first, and only `COMPLETED`/`FAILED` are
+processed, so a `STARTED` event is cleanly **skipped** → `200 "Done"` without needing a seeded app
+user or integration. `callStatus` must be non-null (a null NPEs downstream → 500).
+
+```bash
+curl -X POST 'http://localhost:8080/telephonysystems/process-call-event?integration-flavor=GONG_CONNECT_API' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "companyId": 0,
+    "providerIdentifier": "smoke-test-call-1",
+    "providerIdentifierType": "ENGAGE_DIALER",
+    "providerName": "gong-connect",
+    "callStatus": { "type": "STARTED" },
+    "direction": "OUTBOUND"
+  }'
+```
+
+`processCallEvent` has 8 distinct paths (A–H) — the HTTP status is set only by
+`PushCallReportInfo.sendToErrorTopic`, which is `true` (→ 500) **only** for `unexpectedfailure()`.
+So `skipped()` and `failed()` both return **200**. Paths **A–D work with the checked-in seed**
+(`dev/seed-dialers-local.sql`, company 9001); the two error paths are **B** (null `callStatus` → 500
+NPE) and **G** (valid user, no CONNECTED integration → 500).
+
+Full ingestion (path **H** — a `handled` 200 that creates a call) needs `callStatus.type = COMPLETED`
+**plus** a non-null `recordingStatus` **plus** seeded data: a company with a CONNECTED
+`GONG_CONNECT_API` integration (9001 already is, in `dialers_dev`) **and** an `ownerIdentifier`
+resolving to an `active` / `shouldImportCalls` `AppUser`. The AppUser lookup hits the **OPERATIONAL**
+datasource, which maps to **`honeyfy_dev`** locally (NOT `operational_dev`, which is empty). `honeyfy_dev`
+is populated with real users but none for the dialers shim company 9001, so run
+`telephonysystems/processcallevent/seed-appuser-local.sql` against `honeyfy_dev` to add appuser 700501.
+The full path table, seeding notes and per-path Postman requests are in
+`telephonysystems/processcallevent/README.md`.
+
 ---
 
 ## Switching target environment (local vs remote)
@@ -125,22 +161,31 @@ Files under `src/main/java/io/gong/gongentrypoints/`:
 
 | File | Role |
 |---|---|
-| `telephonysystems/backfill/BackfillTrigger.java` | The REST endpoint + downstream call + loop logic |
+| `telephonysystems/backfill/BackfillTrigger.java` | Entrypoint #1 — backfill smoke test (zero-arg) |
 | `telephonysystems/backfill/README.md` | Per-entrypoint usage (once / N-times / loop curl) |
+| `telephonysystems/processcallevent/ProcessCallEventTrigger.java` | Entrypoint #2 — Flow B, process one call event (JSON body + `integration-flavor`) |
+| `telephonysystems/processcallevent/README.md` | Per-entrypoint usage |
+| `telephonysystems/synconecall/SyncOneCallTrigger.java` | Entrypoint #3 — sync one call (query params, pull/SYNC path) |
+| `telephonysystems/synconecall/README.md` | Per-entrypoint usage |
+| `telephonysystems/syncjob/SyncJobTrigger.java` | Entrypoint #5 — SyncJob (SQS) via run-chain-now + send-message |
+| `telephonysystems/syncjob/README.md` | Per-entrypoint usage (incl. note on #4 Kafka consumer) |
+| `telephonysystems/TriggerLoop.java` | Shared once / N-times / loop-until-stopped runner |
 | `telephonysystems/TelephonyClientConfig.java` | Builds the `RestClient` pointed at the base URL (module-level) |
 | `telephonysystems/TelephonyProperties.java` | Binds `telephony.base-url` |
 | `resources/application.properties` | Local default (`telephony.base-url=http://localhost:8097`) |
 | `resources/application-remote.properties` | Remote override (profile `remote`) |
-| `postman/telephonysystems.postman_collection.json` | Per-module Postman collection |
+| `telephonysystems/telephonysystems.postman_collection.json` | Per-module Postman collection |
 
 ### Adding another entry point
 
 1. Pick a flow from [[02 - Data Flows]] and its troubleshooter endpoint from
    [[Entrypoints Within the Telephony System]].
 2. Add a new package `<module>.<entrypoint>` with a `@RestController` exposing
-   `POST /<module>/<entrypoint>` (support `loop` for repeat/loop). Add a request body for flows
-   that need one, e.g. Flow B's `process-one-event`.
-3. Inject the same `telephonyRestClient` and call the troubleshooter path.
-4. Add a `README.md` in the entrypoint package and a request to the module's Postman collection.
+   `POST /<module>/<entrypoint>`. Add a request body for flows that need one, e.g. Flow B's
+   `process-one-event`.
+3. Inject the same `telephonyRestClient`, and delegate repeat/loop to a `new TriggerLoop()`
+   (`triggerLoop.run(loop, this::fireOnce)` + a `/stop` mapping) so `loop=N`/`loop=true` behave
+   consistently across entrypoints.
+4. Add a `README.md` in the entrypoint package and requests to the module's Postman collection.
 
 That's the whole pattern — one small controller per entry point.

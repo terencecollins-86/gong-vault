@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
+                "file": "Telephony Systems/08 - Ubiquitous Language.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Telephony Systems"
+              "title": "08 - Ubiquitous Language"
             }
           }
         ],
@@ -89,8 +89,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -206,7 +205,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 365.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -229,8 +228,11 @@
   },
   "active": "e79f762c7377a39a",
   "lastOpenFiles": [
-    "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
+    "Telephony Systems/_dashboard.md",
     "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
+    "Telephony Systems/08 - Ubiquitous Language.md",
+    "Telephony Systems/Load Prod Data Locally.md",
+    "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
     "Engineering/Runbooks/Comms Capture/_index.md",
     "Telephony Systems/06 - Runbook & Troubleshooting.md",
     "Telephony Systems/gong-entrypoints App — Usage.md",
@@ -254,8 +256,6 @@
     "Calendar Ingestion/06 - Runbook & Troubleshooting.md",
     "Calendar Ingestion/Storage & Schema Reference.md",
     "Engineering/Notes/gong-java-cheat-sheet.md",
-    "Calendar Ingestion/05 - Observability.md",
-    "Calendar Ingestion/Entrypoints Within the Calendar System.md",
     "Calendar Ingestion",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",

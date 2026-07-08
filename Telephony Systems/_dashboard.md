@@ -22,7 +22,9 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 6. [[05 - Observability]] — logs, metrics, alerts, Swagger
 7. [[06 - Runbook & Troubleshooting]] — troubleshooter endpoints, common ops
 8. [[07 - Onboarding Checklist]] — day-1 → week-1 ramp
-9. [[gong-entrypoints App — Usage]] — one-button triggers for each entry point
+9. [[08 - Ubiquitous Language]] — the DDD glossary: exact domain terms (entities, value objects, events, processes)
+10. [[gong-entrypoints App — Usage]] — one-button triggers for each entry point
+11. [[Load Prod Data Locally]] — where user/company data lives (honeyfy_dev) + seeding + the prod-import saga
 
 ---
 
