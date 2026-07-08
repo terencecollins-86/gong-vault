@@ -22,6 +22,7 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 6. [[05 - Observability]] — logs, metrics, alerts, Swagger
 7. [[06 - Runbook & Troubleshooting]] — troubleshooter endpoints, common ops
 8. [[07 - Onboarding Checklist]] — day-1 → week-1 ramp
+9. [[gong-entrypoints App — Usage]] — one-button triggers for each entry point
 
 ---
 

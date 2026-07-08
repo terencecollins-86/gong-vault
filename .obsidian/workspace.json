@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Calendar Ingestion/Google Import Flow — Debugger Walkthrough.md",
+                "file": "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Google Import Flow — Debugger Walkthrough"
+              "title": "Telephony Systems"
             }
           }
         ],
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ku",
+                "query": "gong-mod",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,7 +89,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -228,8 +229,17 @@
   },
   "active": "e79f762c7377a39a",
   "lastOpenFiles": [
-    "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
+    "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
+    "Engineering/Runbooks/Comms Capture/Telephony Systems.md",
+    "Engineering/Runbooks/Comms Capture/_index.md",
+    "Telephony Systems/06 - Runbook & Troubleshooting.md",
+    "Telephony Systems/gong-entrypoints App — Usage.md",
+    "Telephony Systems/00 - Overview.md",
+    "Telephony Systems/02 - Data Flows.md",
+    "Engineering/Notes/Ingestion (`gong-ingestion`) - Entry Points.md",
+    "Daily Notes/2026-07-08.md",
     "Calendar Ingestion/Google Import Flow — Debugger Walkthrough.md",
+    "Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Engineering/Dev Env Service URLs.md",
     "Calendar Ingestion/02 - Data Flows.md",
     "Calendar Ingestion/01 - Architecture & Modules.md",
@@ -246,15 +256,7 @@
     "Engineering/Notes/gong-java-cheat-sheet.md",
     "Calendar Ingestion/05 - Observability.md",
     "Calendar Ingestion/Entrypoints Within the Calendar System.md",
-    "Calendar Ingestion/Swagger Trigger Runbook.md",
-    "Calendar Ingestion/System Diagram.md",
-    "Calendar Ingestion/Troubleshooting Endpoints Catalog.md",
-    "Calendar Ingestion/07 - Onboarding Checklist.md",
-    "Calendar Ingestion/04 - Providers & Sources.md",
-    "Calendar Ingestion/03 - Services Reference.md",
-    "Calendar Ingestion/Calendar Ingestion Architecture.md",
     "Calendar Ingestion",
-    "Engineering/kubectl CLI — Intro to Advanced.md",
     "Engineering/Hybrid Debugger — Step-by-Step Setup Guide.md.tmp.43.21849c0815f9",
     "Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
     "Engineering/Swagger Pages.md.tmp.41.b0647e40e5d5",
@@ -272,7 +274,6 @@
     "Canvas/Telephony Data Flow/Providers",
     "Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
-    "Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "Assets/Screenshot 2026-05-07 at 17.16.23.png",
