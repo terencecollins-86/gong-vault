@@ -16,6 +16,11 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 
 1. [[00 - Overview]] — what the sub-system owns, the mental model, the flow
 2. [[01 - Services & Modules]] — CallScheduler, the webhook servers, and the calendar producer
+3. [[02 - Entry Points (Inbound & Outbound)]] — every inbound & outbound point, code-grounded
+4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
+5. [[04 - Onboarding Checklist]] — day-1 / week-1 ramp + local dev
+
+🗺️ **10,000-ft view:** [[Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
 
 ---
 
