@@ -6,7 +6,7 @@ created: 2026-07-08
 
 # 08 · Ubiquitous Language
 
-> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Data Flows]] · [[04 - Providers & Dialers]]
+> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Data Flows]] · [[04 - Providers & Dialers]] · next → [[09 - Use Cases]]
 
 The shared vocabulary of the **IngesterTelephonySystemsSupervisor** domain — the words engineers,
 support, and product should all use to mean the same thing. Every term below is a **real

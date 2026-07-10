@@ -11,17 +11,14 @@
             "id": "f20544a1e1bc1e5f",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
-                "viewState": {
-                  "x": 880,
-                  "y": 137.05788733542764,
-                  "zoom": -1.9261451526884639
-                }
+                "file": "Subsystems/Consent/04 - Use Cases.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Comms Capture Overview"
+              "icon": "lucide-file",
+              "title": "04 - Use Cases"
             }
           }
         ]
@@ -216,6 +213,11 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Subsystems/Call Scheduling/04 - Use Cases.md",
+    "Subsystems/Calendar Ingestion/08 - Use Cases.md",
+    "Subsystems/Telephony Systems/09 - Use Cases.md",
+    "Subsystems/Consent/04 - Use Cases.md",
+    "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Work/Engineering/Runbooks/Comms Capture/_index.md",
     "Work/Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Subsystems/Call Scheduling/00 - Overview.md",
@@ -256,16 +258,11 @@
     "PKM/Resources/Work",
     "PKM/Goals & Growth/_dashboard.md",
     "PKM/Daily Notes/2026-07-09.md",
-    "PKM/Daily Notes/2026-07-08.md",
-    "PKM/Daily Notes/2026-06-26.md",
-    "PKM/Daily Notes/2026-06-25.md",
-    "PKM/Daily Notes/2026-06-24.md",
     "Work/Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Recorders.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Processors.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Ingestion.canvas",
-    "Work/Engineering/Runbooks/Comms Capture/In-Meeting Experience.canvas",
     "Work/Inbox/Gong Architecture.png",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",

@@ -6,7 +6,7 @@ created: 2026-07-09
 
 # 03 · Ubiquitous Language
 
-> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Data Flow]] · [[Storage & Schema Reference]]
+> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Data Flow]] · [[Storage & Schema Reference]] · next → [[04 - Use Cases]]
 
 The shared vocabulary of the **Recording Consent** domain — the words engineers, support, product,
 and legal/compliance should all use to mean the same thing. Every term below is a **real

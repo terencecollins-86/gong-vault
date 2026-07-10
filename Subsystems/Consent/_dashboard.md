@@ -18,7 +18,8 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 2. [[01 - Services & Modules]] — the DCP services, the consent page, and monolith-shared code
 3. [[02 - Data Flow]] — every inbound & outbound point, code-grounded
 4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
-5. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
+5. [[04 - Use Cases]] — the domain use cases in DDD terms (actor → command → outcome → event)
+6. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
 
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Consent — Data Flow canvas]]
 

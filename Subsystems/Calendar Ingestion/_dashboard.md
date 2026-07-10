@@ -21,10 +21,11 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 5. [[04 - Providers & Sources]] — the calendar providers we integrate (Google, Office 365)
 6. [[05 - Observability]] — logs, metrics, alerts, Swagger
 7. [[06 - Runbook & Troubleshooting]] — troubleshooter endpoints, common ops
-8. [[07 - Onboarding Checklist]] — day-1 → week-1 ramp
-9. [[Entrypoints Within the Calendar System]] — local-debug walkthrough per entrypoint
-10. [[Google Import Flow — Debugger Walkthrough]] — full call chain from scheduled task → Kafka → provider API → MongoDB → OpenSearch
-11. [[gong-module-run Commands]] — all `gong-module-run` commands (local, remote, partial, full)
+8. [[08 - Use Cases]] — the domain use cases in DDD terms (actor → command → outcome → event)
+9. [[07 - Onboarding Checklist]] — day-1 → week-1 ramp
+10. [[Entrypoints Within the Calendar System]] — local-debug walkthrough per entrypoint
+11. [[Google Import Flow — Debugger Walkthrough]] — full call chain from scheduled task → Kafka → provider API → MongoDB → OpenSearch
+12. [[gong-module-run Commands]] — all `gong-module-run` commands (local, remote, partial, full)
 
 ---
 
