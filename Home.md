@@ -4,7 +4,21 @@ cssclasses: []
 
 # 🏠 Gong PKM — Home
 
-> Quick nav: [[Engineering/_dashboard|🟦 Engineering]] · [[Architecture/_dashboard|🟩 Architecture]] · [[Meetings/_dashboard|🟥 Meetings]] · [[Research/_dashboard|🟣 Research]] · [[Goals & Growth/_dashboard|🌟 Growth]] · [[Tasks/_board|📋 Tasks]] · [[Telephony Systems/_dashboard|☎️ Telephony Systems]] · [[Calendar Ingestion/_dashboard|📅 Calendar Ingestion]]
+> **Sections:** [[Subsystems/_dashboard|🧩 Subsystems]] · [[Work/_dashboard|🛠️ Work]] · [[PKM/_dashboard|🧠 PKM]] · [[_meta/_dashboard|⚙️ _meta]]
+>
+> **Jump to:** [[Work/Engineering/_dashboard|🟦 Engineering]] · [[Work/Architecture/_dashboard|🟩 Architecture]] · [[Work/Meetings/_dashboard|🟥 Meetings]] · [[Work/Research/_dashboard|🟣 Research]] · [[PKM/Goals & Growth/_dashboard|🌟 Growth]] · [[Work/Tasks/_board|📋 Tasks]] · [[Subsystems/Telephony Systems/_dashboard|☎️ Telephony]] · [[Subsystems/Calendar Ingestion/_dashboard|📅 Calendar]] · [[Subsystems/Call Scheduling/_dashboard|📞 Call Scheduling]] · [[Subsystems/Consent/_dashboard|✅ Consent]]
+
+---
+
+## 🧩 Subsystems
+
+```dataview
+TABLE length(rows) AS "Pages", max(rows.file.mtime) AS "Updated"
+FROM "Subsystems"
+WHERE file.name != "_dashboard"
+GROUP BY file.folder AS "Subsystem"
+SORT file.folder ASC
+```
 
 ---
 
@@ -24,7 +38,7 @@ LIMIT 10
 
 ```dataview
 TABLE file.mtime AS "Modified", file.size AS "Size"
-FROM "Inbox"
+FROM "Work/Inbox"
 WHERE file.name != "_README"
 SORT file.mtime DESC
 LIMIT 7
@@ -36,7 +50,7 @@ LIMIT 7
 
 ```dataview
 TABLE jira AS "Jira", status AS "Status", file.mtime AS "Updated"
-FROM "Engineering"
+FROM "Work/Engineering"
 WHERE type = "engineering" AND status = "active"
 SORT file.mtime DESC
 LIMIT 8
@@ -48,7 +62,7 @@ LIMIT 8
 
 ```dataview
 TABLE date AS "Date", attendees AS "Attendees"
-FROM "Meetings"
+FROM "Work/Meetings"
 WHERE type = "meeting" AND date >= date(today)
 SORT date ASC
 LIMIT 5
@@ -60,7 +74,7 @@ LIMIT 5
 
 ```dataview
 TABLE date AS "Date"
-FROM "Goals & Growth/Wins"
+FROM "PKM/Goals & Growth/Wins"
 WHERE contains(tags, "win")
 SORT date DESC
 LIMIT 5
@@ -72,7 +86,7 @@ LIMIT 5
 
 ```dataview
 TABLE file.day AS "Date"
-FROM "Daily Notes"
+FROM "PKM/Daily Notes"
 SORT file.day DESC
 LIMIT 7
 ```

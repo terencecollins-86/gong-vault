@@ -1,8 +1,8 @@
 {
   "newFileLocation": "current",
   "newFileFolderPath": "",
-  "attachmentFolderPath": "Assets",
-  "dailyNotesFolder": "Daily Notes",
+  "attachmentFolderPath": "_meta/Assets",
+  "dailyNotesFolder": "PKM/Daily Notes",
   "dailyNotesFormat": "YYYY-MM-DD",
   "templateFolder": "_templates",
   "openBehavior": "daily",
