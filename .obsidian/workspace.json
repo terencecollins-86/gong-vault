@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Subsystems/Consent/04 - Use Cases.md",
+                "file": "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04 - Use Cases"
+              "title": "02 - Entry Points (Inbound & Outbound)"
             }
           }
         ]
@@ -213,10 +213,12 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
+    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
+    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
+    "Subsystems/Consent/04 - Use Cases.md",
     "Subsystems/Call Scheduling/04 - Use Cases.md",
     "Subsystems/Calendar Ingestion/08 - Use Cases.md",
     "Subsystems/Telephony Systems/09 - Use Cases.md",
-    "Subsystems/Consent/04 - Use Cases.md",
     "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Work/Engineering/Runbooks/Comms Capture/_index.md",
     "Work/Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
@@ -226,7 +228,6 @@
     "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
     "Subsystems/Call Scheduling/03 - Ubiquitous Language.md",
     "Subsystems/Call Scheduling/04 - Onboarding Checklist.md",
-    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
     "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Subsystems/Telephony Systems/02 - Data Flows.md",
     "Subsystems/Telephony Systems/Load Prod Data Locally.md",
@@ -257,12 +258,10 @@
     "PKM/Resources/Work/EMEA Customer Story Team Assignments.pptx",
     "PKM/Resources/Work",
     "PKM/Goals & Growth/_dashboard.md",
-    "PKM/Daily Notes/2026-07-09.md",
     "Work/Engineering/Runbooks/Comms Capture/Webconf Streaming.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Telephony Systems.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Recorders.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Processors.canvas",
-    "Work/Engineering/Runbooks/Comms Capture/Ingestion.canvas",
     "Work/Inbox/Gong Architecture.png",
     "Inbox/Gong Architecture.png",
     "Assets/Screenshot 2026-05-07 at 17.27.23.png",

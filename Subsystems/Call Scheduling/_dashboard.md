@@ -22,6 +22,7 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 6. [[05 - Onboarding Checklist]] — day-1 / week-1 ramp + local dev
 
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
+🧭 **Context map:** [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map — Call Scheduling ⇄ Consent]] (DDD)
 
 ---
 
