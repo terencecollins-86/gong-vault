@@ -86,7 +86,7 @@ all are query-param driven; only 3 take a `@RequestBody`, all in
 request topics, the fastest way to drive the engine by hand.
 
 > [!tip] Heaviest troubleshooting surfaces (endpoint counts)
-> `TroubleshootingGoToMeetingIntegration` (17) · `TroubleshootingWebEx` (11) · `TroubleshootingRecurringEmailScheduling` (8) · `TroubleshootingCompanyInviteHandlerName` (6) · `TroubleshootingGoToMeetingSyncTasks` / `TroubleshootingGlobalInviteHandlersSummaryEmailSender` (5 each). Discover live paths via the Swagger UI (see [[04 - Onboarding Checklist]]).
+> `TroubleshootingGoToMeetingIntegration` (17) · `TroubleshootingWebEx` (11) · `TroubleshootingRecurringEmailScheduling` (8) · `TroubleshootingCompanyInviteHandlerName` (6) · `TroubleshootingGoToMeetingSyncTasks` / `TroubleshootingGlobalInviteHandlersSummaryEmailSender` (5 each). Discover live paths via the Swagger UI (see [[05 - Onboarding Checklist]]).
 
 ## 2 · Mailgun webhook endpoints (`IncomingMailgunController`)
 

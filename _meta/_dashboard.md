@@ -10,14 +10,7 @@ created: 2026-07-10
 
 ---
 
-## 📁 Folders in this section
 
-```dataview
-TABLE length(rows) AS "Files", max(rows.file.mtime) AS "Last updated"
-FROM "_meta"
-GROUP BY file.folder AS "Folder"
-SORT length(rows) DESC
-```
 
 ---
 

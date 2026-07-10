@@ -6,7 +6,7 @@ created: 2026-07-09
 
 # 03 · Ubiquitous Language
 
-> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Entry Points (Inbound & Outbound)]] · next → [[04 - Onboarding Checklist]]
+> [[_dashboard|← Team Hub]] · [[00 - Overview]] · [[02 - Entry Points (Inbound & Outbound)]] · next → [[04 - Use Cases]]
 
 The shared vocabulary of the **Call Scheduling** domain — the words engineers, support, and product
 should all use to mean the same thing. Every term below is a **real type/enum/method name in code**;

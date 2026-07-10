@@ -17,7 +17,9 @@ Section hubs: [[PKM/Goals & Growth/_dashboard|🌟 Goals & Growth]]
 ```dataview
 TABLE length(rows) AS "Pages", max(rows.file.mtime) AS "Last updated"
 FROM "PKM"
-GROUP BY file.folder AS "Folder"
+WHERE file.folder != this.file.folder
+FLATTEN regexreplace(replace(file.folder, this.file.folder + "/", ""), "/.*", "") AS Subfolder
+GROUP BY Subfolder
 SORT length(rows) DESC
 ```
 

@@ -18,7 +18,8 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 2. [[01 - Services & Modules]] — CallScheduler, the webhook servers, and the calendar producer
 3. [[02 - Entry Points (Inbound & Outbound)]] — every inbound & outbound point, code-grounded
 4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
-5. [[04 - Onboarding Checklist]] — day-1 / week-1 ramp + local dev
+5. [[04 - Use Cases]] — the domain use cases in DDD terms (actor → command → Resolution → event)
+6. [[05 - Onboarding Checklist]] — day-1 / week-1 ramp + local dev
 
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
 
@@ -42,7 +43,9 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 ```dataview
 TABLE length(rows) AS "Pages", max(rows.file.mtime) AS "Last updated"
 FROM "Subsystems/Call Scheduling"
-GROUP BY file.folder AS "Folder"
+WHERE file.folder != this.file.folder
+FLATTEN regexreplace(replace(file.folder, this.file.folder + "/", ""), "/.*", "") AS Subfolder
+GROUP BY Subfolder
 SORT length(rows) DESC
 ```
 

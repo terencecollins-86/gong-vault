@@ -4,9 +4,9 @@ tags: [call-scheduling, onboarding, checklist]
 created: 2026-07-09
 ---
 
-# 04 · Onboarding Checklist
+# 05 · Onboarding Checklist
 
-> [[_dashboard|← Team Hub]] · [[03 - Ubiquitous Language]]
+> [[_dashboard|← Team Hub]] · [[03 - Ubiquitous Language]] · [[04 - Use Cases]]
 
 A concrete ramp for a new engineer joining **Call Scheduling**. Everything a newcomer needs to get
 started on `gong-call-schedulers`.

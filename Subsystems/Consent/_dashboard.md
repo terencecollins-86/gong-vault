@@ -41,7 +41,9 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 ```dataview
 TABLE length(rows) AS "Pages", max(rows.file.mtime) AS "Last updated"
 FROM "Subsystems/Consent"
-GROUP BY file.folder AS "Folder"
+WHERE file.folder != this.file.folder
+FLATTEN regexreplace(replace(file.folder, this.file.folder + "/", ""), "/.*", "") AS Subfolder
+GROUP BY Subfolder
 SORT length(rows) DESC
 ```
 
