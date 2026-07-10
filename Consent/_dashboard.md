@@ -16,7 +16,11 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 
 1. [[00 - Overview]] — what the sub-system owns, the mental model
 2. [[01 - Services & Modules]] — the DCP services, the consent page, and monolith-shared code
-3. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
+3. [[02 - Data Flow]] — every inbound & outbound point, code-grounded
+4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
+5. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
+
+🗺️ **10,000-ft view:** [[Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Consent — Data Flow canvas]]
 
 ---
 

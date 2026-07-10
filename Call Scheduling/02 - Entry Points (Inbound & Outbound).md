@@ -239,5 +239,5 @@ The repo's `CLAUDE.md` predates the current code. Verified corrections:
 - [[00 - Overview]] — the mental model in prose
 - [[01 - Services & Modules]] — per-module reference
 - [[03 - Ubiquitous Language]] — the domain vocabulary behind these types
-- [[Call Scheduling - Data Flow.canvas|Data-flow canvas]] — the 10,000-ft view
+- [[Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|Data-flow canvas]] — the 10,000-ft view
 - [[Calendar Ingestion/02 - Data Flows]] — where `call-scheduling-requests` is produced

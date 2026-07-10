@@ -36,6 +36,28 @@ Organised by **where it runs** (local vs remote) and **how much of the stack you
 
 ---
 
+## Health checks (local)
+
+Once a module is running locally, verify it with actuator:
+
+```bash
+# IngesterCalendarSupervisor (8885)
+curl -s http://localhost:8885/actuator/health | jq .
+
+# GoogleCalendarIngester (8887)
+curl -s http://localhost:8887/actuator/health | jq .
+
+# OfficeCalendarIngester (8886)
+curl -s http://localhost:8886/actuator/health | jq .
+
+# MeetingsIndexer (9921)
+curl -s http://localhost:9921/actuator/health | jq .
+```
+
+Expected: `{"status":"UP"}` from each. Swap `/actuator/health` for `/actuator/health/readiness`, `/actuator/info`, or `/actuator` to dig deeper.
+
+---
+
 ## Local (no `--remote`)
 
 Local runs spin up Docker containers on your machine using the latest `main` image from ECR. Swagger UIs are reachable at `http://localhost:<port>/swagger-ui/index.html`.

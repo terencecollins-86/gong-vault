@@ -15,7 +15,7 @@ started on `gong-call-schedulers`.
 
 - [ ] Read [[00 - Overview]] and [[01 - Services & Modules]] — know the **4 modules** (2 deployables).
 - [ ] Skim [[02 - Entry Points (Inbound & Outbound)]] — internalise the **two ways a call gets scheduled** (calendar-sync feed vs email invite).
-- [ ] Open the [[Call Scheduling - Data Flow.canvas|data-flow canvas]] for the 10,000-ft view.
+- [ ] Open the [[Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|data-flow canvas]] for the 10,000-ft view.
 - [ ] Clone & build the repo:
 	```bash
 	git clone https://github.com/Honeyfy/gong-call-schedulers.git
@@ -37,6 +37,26 @@ started on `gong-call-schedulers`.
 ## Local development
 
 **Prerequisites:** LEAPP connected to Gong AWS Dev/Test · Docker running (embedded Kafka/Redis) · local PostgreSQL on `localhost:5432`.
+
+### Hybrid health check (port 8091)
+
+The hybrid run config binds the service to `localhost:8091` (`-Dserver.port=8091`).
+
+```bash
+# Is it up?
+curl -s http://localhost:8091/actuator/health | jq .
+
+# Is it ready to serve traffic?
+curl -s http://localhost:8091/actuator/health/readiness | jq .
+
+# Build info / version
+curl -s http://localhost:8091/actuator/info | jq .
+
+# All exposed actuator endpoints
+curl -s http://localhost:8091/actuator | jq .
+```
+
+Expected: `{"status":"UP"}` from the health endpoint.
 
 ```bash
 # Database

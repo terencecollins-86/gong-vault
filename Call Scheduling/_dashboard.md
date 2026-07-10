@@ -20,7 +20,7 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
 5. [[04 - Onboarding Checklist]] — day-1 / week-1 ramp + local dev
 
-🗺️ **10,000-ft view:** [[Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
+🗺️ **10,000-ft view:** [[Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
 
 ---
 

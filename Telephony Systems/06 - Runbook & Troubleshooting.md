@@ -45,6 +45,28 @@ Full pattern + rules: [[Architecture/Troubleshoot Endpoints]]. Swagger discovery
 
 ---
 
+## Local / hybrid health check (Supervisor — port 8097)
+
+When the Supervisor is running locally or via `gong-module-run`, it listens on `localhost:8097`.
+
+```bash
+# Is it up?
+curl -s http://localhost:8097/actuator/health | jq .
+
+# Is it ready to serve traffic?
+curl -s http://localhost:8097/actuator/health/readiness | jq .
+
+# Build info / version
+curl -s http://localhost:8097/actuator/info | jq .
+
+# All exposed actuator endpoints
+curl -s http://localhost:8097/actuator | jq .
+```
+
+Expected: `{"status":"UP"}` from the health endpoint.
+
+---
+
 ## Common incident playbooks
 
 ### 1. "Calls from provider X aren't showing up"

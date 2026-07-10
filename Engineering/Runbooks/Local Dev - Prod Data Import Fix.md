@@ -131,5 +131,5 @@ docker rm -f installercli-<tag>
 
 ## Related
 
-- [[Telephony Systems]] · [[IngesterTelephonySystemsSupervisor]]
+- [[Telephony Systems]] · [[Call Scheduling/Canvas/Telephony Systems/Core/IngesterTelephonySystemsSupervisor]]
 - Original goal: seed local DBs to test `process-one-event` (company 9001 / appuser 501) — see `gong-telephony-systems/dev/seed-dialers-local.sql`.

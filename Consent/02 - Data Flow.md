@@ -221,5 +221,5 @@ Logical DB **`RECORDING_COMPLIANCE`**. Write-through base `AbstractRedisWithFall
 
 - [[00 - Overview]] · [[01 - Services & Modules]] · [[Storage & Schema Reference]]
 - [[03 - Ubiquitous Language]] — the domain vocabulary behind these types
-- [[Consent - Data Flow.canvas|Data-flow canvas]] — the 10,000-ft view
+- [[Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Data-flow canvas]] — the 10,000-ft view
 - [[Call Scheduling/02 - Entry Points (Inbound & Outbound)]] — upstream via `call-scheduling-updated`

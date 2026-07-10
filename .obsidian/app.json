@@ -7,5 +7,6 @@
   "templateFolder": "_templates",
   "openBehavior": "daily",
   "readableLineLength": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }
