@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel Internal Meetings"
+title: "UC-C5 · Cancel Internal Meetings"
 tags: [call-scheduling, use-case, cancel, internal-meetings]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: INTERNAL_MEETING_RECORDING_DISABLED
 crud: CANCEL
 ---
 
-# UC-CX · Cancel Internal Meetings
+# UC-C5 · Cancel Internal Meetings
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · prev → [[C - Cancel/C4 - Cancel By Company And Provider|UC-C4]] · next → [[C - Cancel/C6 - Cancel Blacklisted Calls|UC-C6]]
 

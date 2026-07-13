@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel By Owner"
+title: "UC-C1 · Cancel By Owner"
 tags: [call-scheduling, use-case, cancel, owner]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: CANCEL_BY_OWNER
 crud: CANCEL
 ---
 
-# UC-CX · Cancel By Owner
+# UC-C1 · Cancel By Owner
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · next → [[C - Cancel/C2 - Cancel By Compliance Email|UC-C2]]
 

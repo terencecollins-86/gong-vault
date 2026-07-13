@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel By Compliance Email"
+title: "UC-C2 · Cancel By Compliance Email"
 tags: [call-scheduling, use-case, cancel, compliance]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: CANCEL_BY_COMPLIANCE_EMAIL
 crud: CANCEL
 ---
 
-# UC-CX · Cancel By Compliance Email
+# UC-C2 · Cancel By Compliance Email
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · prev → [[C - Cancel/C1 - Cancel By Owner|UC-C1]] · next → [[C - Cancel/C3 - Cancel On Resolution Change|UC-C3]]
 

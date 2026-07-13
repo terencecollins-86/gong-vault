@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel Blacklisted Calls"
+title: "UC-C6 · Cancel Blacklisted Calls"
 tags: [call-scheduling, use-case, cancel, blacklist]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: CALL_BLACKLISTED
 crud: CANCEL
 ---
 
-# UC-CX · Cancel Blacklisted Calls
+# UC-C6 · Cancel Blacklisted Calls
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · prev → [[C - Cancel/C5 - Cancel Internal Meetings|UC-C5]]
 

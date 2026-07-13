@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel On Resolution Change"
+title: "UC-C3 · Cancel On Resolution Change"
 tags: [call-scheduling, use-case, cancel, resolution]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: COMPLIANCE_ENFORCING / USER_NOT_MARKED_FOR_RECORDING
 crud: CANCEL
 ---
 
-# UC-CX · Cancel On Resolution Change
+# UC-C3 · Cancel On Resolution Change
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · prev → [[C - Cancel/C2 - Cancel By Compliance Email|UC-C2]] · next → [[C - Cancel/C4 - Cancel By Company And Provider|UC-C4]]
 

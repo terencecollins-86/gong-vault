@@ -1,5 +1,5 @@
 ---
-title: "UC-CX · Cancel By Company And Provider"
+title: "UC-C4 · Cancel By Company And Provider"
 tags: [call-scheduling, use-case, cancel, provider]
 created: 2026-07-13
 group: C - Cancel
@@ -7,7 +7,7 @@ resolution: CALL_PROVIDER_DISABLED_FOR_COMPANY
 crud: CANCEL
 ---
 
-# UC-CX · Cancel By Company And Provider
+# UC-C4 · Cancel By Company And Provider
 
 > [[04 - Use Cases|← Use Cases hub]] · Group **C — Cancel** · prev → [[C - Cancel/C3 - Cancel On Resolution Change|UC-C3]] · next → [[C - Cancel/C5 - Cancel Internal Meetings|UC-C5]]
 
