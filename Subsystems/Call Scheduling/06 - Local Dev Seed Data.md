@@ -6,7 +6,7 @@ tags: [call-scheduling, local-dev, seed-data, runbook]
 
 Getting a successful end-to-end flow locally requires seeding six tables in the right order. This doc covers the minimum seed sequence, a ready-to-fire `CallSchedulingRequest` payload, expected happy-path outcomes, and common failure modes.
 
-> **Flow targeted**: Path E — `NEW_CALL` (calendar sync, no existing call → INSERT into `public.call`)
+> **Flow targeted**: Path E — `NEW_CALL` (no existing call → INSERT into `public.call`). Two payloads are given: an **email** mechanism (`CALENDAR_SYNC_EMAIL`, simplest) and the **largest happy path** (`CALENDAR_INGESTER`, runs the full validator chain + writes `updated_calendar_event`). Use the ingester payload to see all 6 verification rows land.
 
 ---
 
@@ -179,14 +179,90 @@ Content-Type: application/json
 
 After a successful Path E flow, verify:
 
-| # | What to check | Where |
-|---|--------------|-------|
-| 1 | Redis lock acquired and released | Logs: `CallScheduler.9001.<enhancedId>` |
-| 2 | New row with `status = 'SCHEDULED'` | `honeyfy_dev` → `public.call` |
-| 3 | New row inserted | `call_scheduler_dev` → `call_scheduler.scheduled_calls` |
-| 4 | New upsert row | `call_scheduler_dev` → `call_scheduler.updated_calendar_event` |
-| 5 | `CallSchedulingCalendarEventUpdated` event | Kafka topic `call-scheduling-updated` |
-| 6 | History event | Kafka topic `call-scheduling-history` |
+| #   | What to check                              | Where                                                          | Mechanism |
+| --- | ------------------------------------------ | -------------------------------------------------------------- | --------- |
+| 1   | Redis lock acquired and released           | Logs: `CallScheduler.9001.<enhancedId>`                        | both      |
+| 2   | New row with `status = 'SCHEDULED'`        | `honeyfy_dev` → `public.call`                                  | both      |
+| 3   | New row inserted                           | `call_scheduler_dev` → `call_scheduler.scheduled_calls`        | both      |
+| 4   | New upsert row                             | `call_scheduler_dev` → `call_scheduler.updated_calendar_event` | **`CALENDAR_INGESTER` only** |
+| 5   | `CallSchedulingCalendarEventUpdated` event | Kafka topic `call-scheduling-updated`                          | both      |
+| 6   | History event                              | Kafka topic `call-scheduling-history`                          | both      |
+
+> ⚠️ **Row 4 requires a non-email mechanism.** `updated_calendar_event` is written by `updateEventIfNotTooOld()`, gated at `IncomingEventHandler.java:179` by `if (!context.creationMechanism.isEmail())`. `CallCreationMechanism.isEmail()` (in `AppCommon`) returns **true** for `CALENDAR_SYNC_EMAIL`, `OPT_IN_EMAIL`, and `COORDINATOR_EMAIL` — so the email payload above **can never populate row 4**. To exercise it, use the `CALENDAR_INGESTER` payload in the next section.
+
+---
+
+## Largest Happy Path — `CALENDAR_INGESTER` (calendar sync)
+
+The email payload above skips **two whole stages** — the `updated_calendar_event` upsert *and* the 13-validator chain (`IncomingEventHandler.java:179,188`). To drive the **fullest** happy path — the one a real calendar-sync from the ingester takes — send with `callCreationMechanism: "CALENDAR_INGESTER"`. This is the payload to use when you want to see the whole system exercised end-to-end, including all 6 verification rows above.
+
+**What the ingester path adds over the email path** (`EventValidationFactory.java:66` → `generalEventValidation`, 13 validators):
+
+| Validator | Gate in local dev | Satisfied by |
+|---|---|---|
+| `CheckEventRelevance` | Rejects `MISC_EVENT` / `PRIVATE_OR_CONFIDENTIAL_EVENT` | `isPrivateOrConfidential: false` + a real `summary` (already in payload) |
+| `CheckOrganizer` | `CANNOT_IDENTIFY_CALL_OWNER` if organizer ≠ a known appuser | user 501 = organizer (seed step 5) |
+| `CheckProviderEnabled` | `CALL_PROVIDER_DISABLED_FOR_COMPANY` | `company_recorder_properties` zoom=TRUE (seed step 6) |
+| `CheckUrlValidity` | `NO_CALL_IN_DETAILS` | Zoom URL in `description` |
+| `CheckConsentPageEnabled`, `CheckCompliance`, `CheckDoNotRecordUsers`, `CheckDoNotRecordInterviewUsers`, `CheckInternalMeetingAllowed`, `CheckInterviewValidity`, `CheckBlockTitle`, `CheckBlockParticipnat`, `CheckRecordingOnlyFromOrganizerCalendar` | Feature-flag-gated or default-pass — **no-ops** with the standard seed | nothing extra to seed |
+
+> ✅ **The standard 6-row seed already satisfies the full ingester path.** The only "extra" work vs. the email flow is using a fresh `iCalUID`/`providerEventId` (row 4 enforces `TOO_OLD_REQUEST` dedup).
+
+**Payload** — identical to the email one except the mechanism and fresh IDs:
+
+```json
+{
+  "companyId": 9001,
+  "callSchedulingEventType": "CALENDAR_EVENT",
+  "callCreationMechanism": "CALENDAR_INGESTER",
+  "calendarPayload": {
+    "userId": 501,
+    "emailAddress": "alice@acme-corp.com",
+    "provider": "Google",
+    "providerEventId": "ingester-001",
+    "iCalUID": "ingester-001@google.com",
+    "recurringEventId": null,
+    "etag": "etag-ing-001",
+    "organizer": {
+      "name": "Alice Acme", "emailAddress": "alice@acme-corp.com",
+      "responseStatus": "ACCEPTED", "role": "ORGANIZER"
+    },
+    "creator": {
+      "name": "Alice Acme", "emailAddress": "alice@acme-corp.com",
+      "responseStatus": "ACCEPTED", "role": "ORGANIZER"
+    },
+    "invitees": [
+      { "name": "Alice Acme", "emailAddress": "alice@acme-corp.com",
+        "responseStatus": "ACCEPTED", "role": "ORGANIZER" },
+      { "name": "Bob External", "emailAddress": "bob@external.com",
+        "responseStatus": "NOT_RESPONDED", "role": "PARTICIPANT" }
+    ],
+    "startTime": "2026-08-01T14:00:00Z",
+    "endTime": "2026-08-01T15:00:00Z",
+    "createTime": "2026-07-13T10:00:00Z",
+    "lastModifiedTime": "2026-07-13T10:00:00Z",
+    "originalStartTime": "2026-08-01T14:00:00Z",
+    "summary": "Acme Sync",
+    "description": "Join Zoom: https://zoom.us/j/123456789",
+    "location": "",
+    "additionalMeetingUrls": [],
+    "isPrivateOrConfidential": false,
+    "isAllDay": false,
+    "isCancelled": false,
+    "isRecurrent": false,
+    "isCrmIntegrationEnabled": false,
+    "isMeetingIndexed": false
+  }
+}
+```
+
+**Verify row 4 lands** (the whole point):
+```sql
+-- call_scheduler_dev
+SELECT company_id, enhanced_ical_id FROM call_scheduler.updated_calendar_event WHERE company_id = 9001;
+```
+
+> If validation returns an unexpected resolution the email path bypassed, check which validator fired — the resolution enum name maps 1:1 to the table above (e.g. `CANNOT_IDENTIFY_CALL_OWNER` → `CheckOrganizer`).
 
 ---
 

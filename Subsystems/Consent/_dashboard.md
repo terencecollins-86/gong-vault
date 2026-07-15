@@ -20,6 +20,8 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
 5. [[04 - Use Cases]] — the domain use cases in DDD terms (actor → command → outcome → event)
 6. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
+7. [[05 - Data Access & Storage]] — code-grounded datasource / DAO / schema map
+8. [[06 - Local Dev Seed Data]] — seed the base + drive the flows to populate owned tables
 
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Consent — Data Flow canvas]]
 🧭 **Context map:** [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map — Call Scheduling ⇄ Consent]] (DDD)

@@ -69,6 +69,8 @@ The logical→physical mapping for **local dev** is defined by the Flyway config
 1. Add / open a data source pointing at `localhost:5432/**honeyfy_dev**` (local creds `postgres` / `postgres`) — this is the `OPERATIONAL` DB. Expand its **`public`** schema for the cross-schema tables in §3.
 2. `call_scheduler`'s owned tables live in a **separate physical DB, `call_scheduler_dev`** — add a data source for `localhost:5432/call_scheduler_dev` (or enable **"show all databases"** on a single `localhost:5432` connection so both appear).
 
+> 🐳 **Host differs inside a container**: `localhost:5432` is correct for IntelliJ / psql running **on your Mac**. When you connect **from inside a GCR / Docker container** (e.g. running Flyway or `psql` from an agent shell), Postgres is reached at **`host.docker.internal:5432`** instead — `localhost` resolves to the container itself. Same creds (`postgres`/`postgres`), same DB names.
+
 **Two traps:**
 - ❌ **`operational_dev` is the wrong DB.** A legacy migration (`honeyfy/Schema/.../V20170101_0059__CreateOperationalDevDb.java`) creates a database literally named `operational_dev`, but the app + Flyway actually target **`honeyfy_dev`**. Connecting IntelliJ to `operational_dev` shows an empty/stale DB.
 - ❌ Don't expect one DB to hold everything — `OPERATIONAL` and `CALL_SCHEDULER` are **two different physical databases** locally, even though both are on `localhost:5432`.

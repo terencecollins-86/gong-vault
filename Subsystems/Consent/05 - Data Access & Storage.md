@@ -155,12 +155,28 @@ Local-dev mapping (`honeyfy/DbConfig/src/main/resources/DbConfig/flyway/<name>/d
 | `RECORDING_CONSENT_TIMED_EVENTS` | **`recording_consent_timed_events_dev`** | `event_based_tasks` |
 | `OPERATIONAL` | **`honeyfy_dev`** | `public` (+ legacy `recording_compliance`) |
 | `SCHEDULED_TASKS_01` / `_02` | **`scheduled_tasks_0{1,2}_dev`** | `public` |
-| `USER_AUTH` | **`user_auth_dev`** | `user_auth` |
+| `USER_AUTH` | **`user_auth_dev`** | `public` (holds `appuser_secure_access_key`) |
 
 **Traps:**
 - ❌ Don't look for the operational tables in `operational_dev` — the app targets **`honeyfy_dev`** (legacy `CreateOperationalDevDb` migration creates the misleading `operational_dev` name). Same trap documented in [[Subsystems/Call Scheduling/08 - Data Access & Storage#1a. Logical → physical DB names (finding these in IntelliJ)|Call Scheduling §1a]].
 - ❌ `recording_compliance` exists in **two** physical DBs (`honeyfy_dev` legacy + `recording_consent_dev` live) — the DAO writes the `recording_consent_dev` one.
 - ❌ Consent spans **6+ separate physical databases** locally; enable **"show all databases"** on a single `localhost:5432` connection or add a data source per DB.
+
+> 🐳 **Host differs inside a container**: `localhost:5432` is correct for IntelliJ / psql on your Mac. From **inside a GCR / Docker container**, use **`host.docker.internal:5432`** instead (`localhost` resolves to the container). Same creds and DB names. See [[Subsystems/Call Scheduling/08 - Data Access & Storage#1a. Logical → physical DB names (finding these in IntelliJ)|Call Scheduling §1a]].
+
+> 🛠️ **Migrating the empty DBs**: `RECORDING_CONSENT_TIMED_EVENTS`, `SCHEDULED_TASKS_01/02`, and `USER_AUTH` ship empty in a fresh local setup. Flyway them via `honeyfy/Schema`'s `flyway-maven-plugin` (history table `schema_version`), overriding the host and absolute migration path — the pom's `filesystem:../src/...` locations only resolve during a full reactor `install`:
+> ```bash
+> # scheduled_tasks_01/02 and user_auth live in honeyfy/Schema
+> mvn -f honeyfy/Schema/pom.xml org.flywaydb:flyway-maven-plugin:migrate@user_auth \
+>   -Dflyway.url="jdbc:postgresql://host.docker.internal:5432/user_auth_dev" \
+>   -Dflyway.locations="classpath:com/honeyfy/migration/common,filesystem:$PWD/honeyfy/Schema/src/main/resources/user_auth/db/migration" \
+>   -Dflyway.schemas="public,user_auth"
+> # recording_consent_timed_events lives in gong-data-capture (event_based_tasks schema)
+> mvn -f honeyfy/Schema/pom.xml org.flywaydb:flyway-maven-plugin:migrate@scheduled_tasks_01 \
+>   -Dflyway.url="jdbc:postgresql://host.docker.internal:5432/recording_consent_timed_events_dev" \
+>   -Dflyway.locations="filesystem:$PWD/gong-data-capture/RecordingConsentTasks/src/main/resources/schema/recording_consent_timed_events/db/migration" \
+>   -Dflyway.schemas="public,recording_consent_timed_events"
+> ```
 
 ---
 
