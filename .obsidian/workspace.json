@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
+                "file": "Work/Engineering/Runbooks/Comms Capture/Comms Capture Architecture Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02 - Entry Points (Inbound & Outbound)"
+              "title": "Comms Capture Architecture Overview"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5,
-    "collapsed": true
+    "width": 468.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -212,10 +211,14 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "f20544a1e1bc1e5f",
+  "active": "8b6fdac0c36fca53",
   "lastOpenFiles": [
-    "Subsystems/Call Scheduling/04 - Use Cases.md",
+    "Acronyms.md",
+    "Subsystems/Consent/00 - Overview.md",
+    "Subsystems/Calendar Ingestion/01 - Architecture & Modules.md",
+    "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
+    "Subsystems/Call Scheduling/04 - Use Cases.md",
     "Subsystems/Call Scheduling/08 - Data Access & Storage.md",
     "PKM/Daily Notes/2026-07-15.md",
     "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md",
@@ -238,9 +241,6 @@
     "Subsystems/Consent/Use Cases/F - React/F1 - React To Scheduled Call.md",
     "Subsystems/Consent/Use Cases/E - Propagate/E2 - Run Change Action.md",
     "Subsystems/Consent/Use Cases/E - Propagate/E1 - Orchestrate Change Request.md",
-    "Acronyms.md",
-    "Work/Architecture/Gong Environment Abbreviations (GGE, GPE).md",
-    "Subsystems/Consent/Use Cases/D - Configure/D2 - Manage One-Time Meeting.md",
     "Subsystems/Consent/Use Cases/F - React",
     "Subsystems/Consent/Use Cases/B - Capture/B2 - Skip Or Decline.md.tmp.43.e56ec70e9b2e",
     "Subsystems/Consent/Use Cases/E - Propagate/E2 - Run Change Action.md.tmp.43.74df2a05cd28",
@@ -254,7 +254,6 @@
     "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
-    "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
     "_meta/Assets/me.jpeg",
     "_meta/Assets/Screenshot 2026-05-07 at 17.27.23.png",
