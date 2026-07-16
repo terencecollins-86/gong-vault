@@ -150,6 +150,35 @@ You're developing on `feature/my-change` and want the cluster to run your branch
 gong-module-run up --image-names gong-my-module,dep-a --remote --branch-name feature/my-change
 ```
 
+> [!important] `--branch-name` is **remote-only**
+> `cli_args.sh` enforces that `--branch-name` may only be combined with `--remote`. It does **not** build or select a git branch for a *local* Docker run. For local testing of your branch, build the image yourself and run the `1.0-SNAPSHOT` tag — see Example 3b.
+
+### Example 3b: Test your branch **locally** in Docker (no remote)
+
+For local Docker runs, `gong-module-run` runs *images*, not git branches. To test your in-progress code you build a local image from your checked-out branch, then tell the runner to use that local image instead of pulling `latest` from ECR.
+
+The trigger is the tag **`1.0-SNAPSHOT`** (the Maven `version` in the poms). `detect_ecr_repo` in `gong-module-run-cli` empties the ECR registry prefix when the tag is `1.0-SNAPSHOT` (or when `--ecr-repository local` is passed), so the runner uses your locally-built image:
+
+```bash
+# 1. Build the local image from your feature branch (in the service repo, on your branch)
+mvn clean install -pl CallScheduler -am -DskipTests
+
+# 2. Verify the image exists (else the runner silently falls back to ECR)
+docker images | grep 'callscheduler.*1.0-SNAPSHOT'
+
+# 3. Run it, forcing the local tag and recreating any running container
+gong-module-run up --image-names callscheduler --tag-name 1.0-SNAPSHOT --force-recreate
+```
+
+`--ecr-repository local` is an equivalent alternative to `--tag-name 1.0-SNAPSHOT`. `core_infra` (DBs, Redis, Kafka, Traefik) is auto-included unless you pass `--exclude-core-infra-modules`.
+
+| Goal | Command |
+|------|---------|
+| Latest built image from ECR (default) | `gong-module-run up --image-names callscheduler` |
+| **Your local feature-branch code** | `gong-module-run up --image-names callscheduler --tag-name 1.0-SNAPSHOT --force-recreate` |
+
+> [!note] The exact Maven goal that produces the local Docker image depends on the parent POM's image-build plugin (Jib or similar). If step 2 shows no image, check the service repo's build config for the image-producing goal/profile.
+
 ### Example 4: Clean up after testing
 
 ```bash
@@ -291,7 +320,7 @@ These go **before** the verb and affect the runner itself, not the module.
 |--------|----------|-------------|
 | `--remote` | — | Deploy to your personal K8s namespace instead of running locally |
 | `--branch-name` | `<branch>` | Use the image built from this branch (requires `--remote`; branch must have a CI build) |
-| `--tag-name` | `<tag>` | Override the Docker image tag (defaults to `latest` from `main`) |
+| `--tag-name` | `<tag>` | Override the Docker image tag (defaults to `latest` from `main`). Pass `1.0-SNAPSHOT` to run your **locally-built** image instead of pulling from ECR — see Example 3b |
 | `--ecr-repository` | `<url>` | Override the ECR registry URL |
 | `--exclude-images` | `a,b` | Modules to exclude when using a group or subsystem selector |
 | `--exclude-core-infra-modules` | — | Don't auto-include the `core_infra` group (local runs include it by default) |
