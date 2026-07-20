@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5cfca1eb72419113",
+        "id": "15fbe966af914aef",
         "type": "tabs",
         "children": [
           {
-            "id": "c11c568e6d2dcf8c",
+            "id": "6df622792db23c57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Subsystems/Consent/Use Cases/C - Enforce/C1 - Restrict Recording.md",
+                "file": "Subsystems/Call Scheduling/Use Cases/C - Cancel/C3 - Cancel On Resolution Change.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C1 - Restrict Recording"
+              "title": "C3 - Cancel On Resolution Change"
             }
           }
         ]
@@ -211,10 +211,29 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "8b6fdac0c36fca53",
+  "active": "6df622792db23c57",
   "lastOpenFiles": [
-    "Work/Architecture/Recording Architecture — How Gong Records Meetings.md",
+    "Subsystems/Call Scheduling/Use Cases/C - Cancel/C2 - Cancel By Compliance Email.md",
+    "Subsystems/Call Scheduling/Use Cases/C - Cancel/C1 - Cancel By Owner.md",
+    "Subsystems/Call Scheduling/Use Cases/B - Reschedule/B1 - Reschedule On Time Change.md",
+    "Subsystems/Call Scheduling/Use Cases/A - Schedule/A4 - Manual Schedule.md",
+    "Subsystems/Call Scheduling/Use Cases/A - Schedule/A3 - Coordinator Invite-Handler.md",
+    "Subsystems/Call Scheduling/Use Cases/A - Schedule/A2 - Opt-In Email Invite.md",
+    "Subsystems/Call Scheduling/Use Cases/A - Schedule/A1 - Calendar Sync Schedule.md",
+    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
+    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
+    "Subsystems/Call Scheduling/Canvas/Outbound Topics/CALL-SCHEDULING-UPDATED.md",
+    "Subsystems/Call Scheduling/07 - End-to-End User Flow.md",
+    "Subsystems/Call Scheduling/Canvas/Upstream/Calendar-Ingestion.md",
+    "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
+    "Subsystems/Call Scheduling/00 - Overview.md",
     "Subsystems/Consent/02 - Data Flow.md",
+    "Subsystems/Consent/Consent Email — Default Allow & Outcome Matrix.md",
+    "Subsystems/Consent/Use Cases/A - Solicit/A3 - Render Consent Email Landing Page.md",
+    "Subsystems/Consent/Use Cases/A - Solicit/A2 - Send Pre-Call Consent Email.md",
+    "Subsystems/Consent/Use Cases/A - Solicit/A1 - Render Jump Page.md",
+    "Subsystems/Consent/Use Cases/C - Enforce/C1 - Restrict Recording.md",
+    "Work/Architecture/Recording Architecture — How Gong Records Meetings.md",
     "Subsystems/Consent/03 - Ubiquitous Language.md",
     "Work/Engineering/Notes/Kafka at Gong.md",
     "Subsystems/Consent/07 - New Engineer FAQ.md",
@@ -223,25 +242,7 @@
     "Work/Architecture/Troubleshoot Endpoints.md",
     "Subsystems/Telephony Systems/_dashboard.md",
     "Work/Engineering/Notes/TestNG Groups at Gong.md",
-    "Subsystems/Consent/01 - Services & Modules.md",
-    "Subsystems/Consent/00 - Overview.md",
-    "Subsystems/Consent/_dashboard.md",
-    "Work/Research/Spikes/Adjustable Logging - R&D.md",
-    "Work/Engineering/Notes/Flyway Migrations at Gong.md",
-    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
-    "PKM/Daily Notes/2026-07-20.md",
-    "PKM/Daily Notes/2026-07-17.md",
-    "Work/Engineering/Dev Env Service URLs.md",
-    "Work/Engineering/Runbooks/Comms Capture/Hybrid Debugging — How It Works.md",
-    "Work/Engineering/Codes.md",
-    "Work/Engineering/Runbooks/Comms Capture/Data Capture.md",
     "Work/Engineering/Runbooks/Comms Capture/Call Scheduling.canvas",
-    "Work/Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
-    "PKM/Daily Notes/2026-07-16.md",
-    "PKM/Daily Notes/2026-07-15.md",
-    "Work/Jira Tasks — Call Scheduling & Data Capture.md",
-    "Subsystems/Consent/Use Cases/F - React/F1 - React To Scheduled Call.md",
-    "Subsystems/Consent/Use Cases/B - Capture/B3 - Audit The Decision.md",
     "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
     "Subsystems/Call Scheduling/08 - Data Access & Storage.md.tmp.43.daec5c0625ec",
     "Subsystems/Consent/Use Cases/F - React",
@@ -252,7 +253,6 @@
     "Subsystems/Consent/Use Cases/D - Configure",
     "Subsystems/Consent/Use Cases/C - Enforce",
     "Subsystems/Consent/Use Cases/A - Solicit",
-    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
