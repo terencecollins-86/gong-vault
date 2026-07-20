@@ -11,14 +11,14 @@
             "id": "f20544a1e1bc1e5f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Work/Engineering/Dev Env Service URLs.md",
-                "mode": "source",
-                "source": false
+                "aFile": ".smart-env/multi/PKM_Daily_Notes_2026-07-15_md.ajson",
+                "bFile": ".smart-env/multi/PKM_Daily_Notes_2026-07-15_md.ajson",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Dev Env Service URLs"
+              "icon": "diff",
+              "title": "Diff: PKM_Daily_Notes_2026-07-15_md.ajson  (Working Tree)"
             }
           }
         ]
@@ -213,9 +213,11 @@
   },
   "active": "f20544a1e1bc1e5f",
   "lastOpenFiles": [
-    "Work/Engineering/Codes.md",
-    "Work/Engineering/Dev Env Service URLs.md",
+    "PKM/Daily Notes/2026-07-20.md",
     "PKM/Daily Notes/2026-07-17.md",
+    "Work/Engineering/Dev Env Service URLs.md",
+    "Work/Engineering/Runbooks/Comms Capture/Hybrid Debugging — How It Works.md",
+    "Work/Engineering/Codes.md",
     "Work/Engineering/Runbooks/Comms Capture/Data Capture.md",
     "Work/Engineering/Runbooks/Comms Capture/Call Scheduling.canvas",
     "Work/Engineering/Runbooks/Comms Capture/GRM  gong-module-run How To.md",
@@ -239,8 +241,6 @@
     "Subsystems/Call Scheduling/04 - Use Cases.md",
     "Subsystems/Call Scheduling/08 - Data Access & Storage.md",
     "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md",
-    "Subsystems/Consent/06 - Local Dev Seed Data.md",
-    "Subsystems/Consent/05 - Data Access & Storage.md",
     "Subsystems/Call Scheduling/08 - Data Access & Storage.md.tmp.43.daec5c0625ec",
     "Subsystems/Consent/Use Cases/F - React",
     "Subsystems/Consent/Use Cases/B - Capture/B2 - Skip Or Decline.md.tmp.43.e56ec70e9b2e",
