@@ -49,15 +49,15 @@ Every interaction — accept, decline, skip, skipped-reason — is written to `r
 
 **DCP** = the company's recording-consent policy. Key fields (`DcpJumpPageSettings`):
 
-| Field | Meaning |
-|---|---|
-| `profileKey` | Short identifier that appears in every jump-page URL for this company |
-| `isEnabled` / `isEnforced` | Whether the consent page is shown / required |
-| `linkType` | `PMI` (static) or `DYNAMIC` (per-meeting) — see below |
-| `recordingOptOut` | What happens when a participant declines |
-| `logoUrl` | Company branding shown on the consent page |
-| `languages` | Supported locales for the consent page text |
-| `historicProfileKeys` | Old keys preserved so existing calendar links don't break |
+| Field                      | Meaning                                                               |
+| -------------------------- | --------------------------------------------------------------------- |
+| `profileKey`               | Short identifier that appears in every jump-page URL for this company |
+| `isEnabled` / `isEnforced` | Whether the consent page is shown / required                          |
+| `linkType`                 | `PMI` (static) or `DYNAMIC` (per-meeting) — see below                 |
+| `recordingOptOut`          | What happens when a participant declines                              |
+| `logoUrl`                  | Company branding shown on the consent page                            |
+| `languages`                | Supported locales for the consent page text                           |
+| `historicProfileKeys`      | Old keys preserved so existing calendar links don't break             |
 
 A company can have multiple DCP profiles. The `profileKey` in the URL selects which one applies.
 
@@ -109,14 +109,15 @@ The generated URL lives in **Redis** (`DcpJumpPageRedisService`) as the hot-path
 
 ```
 Participant clicks Accept
-    → JumpPageController#acceptAnswer
-    → publishes JumpPageInteractionEvent on audit-meeting-consent
-    → RecordingSupervisorClient signals recording allowed
+    → JumpPageController#acceptAnswer                     (MeetingFrontEnd)
+    → publishes JumpPageInteractionEvent
+          cluster: RECORDING_CONSENT  topic: audit-meeting-consent  key: companyId
+    → RecordingSupervisorClient#restrictCallRecording     (outbound HTTP)
     → redirect to provider meeting URL (Zoom / Teams / Webex)
 
 Participant clicks Decline / opts out
     → JumpPageController#skipAnswer
-    → same audit event, denied_recording = true
+    → same Kafka event, denied_recording = true
     → recording suppressed for this participant
 ```
 
@@ -124,30 +125,95 @@ See [[Use Cases/B - Capture/B1 - Accept Recording|UC-B1]] and [[Use Cases/B - Ca
 
 ---
 
+## Kafka topics — jump page lifecycle
+
+All topics use the **`RECORDING_CONSENT`** Kafka cluster unless noted.
+
+### Produced by MeetingFrontEnd (participant interaction)
+
+| Topic | Event type | Producer | Consumed by | Purpose |
+|---|---|---|---|---|
+| `audit-meeting-consent` | `JumpPageInteractionEvent` | `JumpPageController#publishInteractionEvent:765` | `AuditMeetingConsentConsumer` (RecordingConsentTasks) | Records every accept / skip / decline decision; drives the compliance audit trail |
+
+### Consumed by RecordingConsentTasks (async processing)
+
+| Topic | Cluster | Event type | Consumer | Purpose |
+|---|---|---|---|---|
+| `audit-meeting-consent` | `RECORDING_CONSENT` | `JumpPageInteractionEvent` | `AuditMeetingConsentConsumer:26` | Writes `jump_page_session` + `jump_page_interaction` rows |
+| `audit-stop-recording` | `RECORDING_CONSENT` | `StopRecordingEvent` | `AuditStopRecordingConsumer:25` | Writes `stop_recording_audit` when recording is halted |
+| `reset-consent-redis-for-company` | `RECORDING_CONSENT` | `ResetConsentRedisForCompanyEvent` | `ResetConsentRedisForCompanyConsumer:17` | Evicts a company's jump-page data from Redis (triggered by DCP settings change) |
+| `calendar-updates-for-consent` | `RECORDING_CONSENT` | `CalendarUpdateEvent` | `CalendarUpdatesForConsentConsumer:24` | Keeps the `calendar_event` mirror current (drives which meetings need a jump page) |
+| `call-scheduling-updated` | `CALL_SCHEDULER_V2` | `CallSchedulingUpdated` | `ConsentCallSchedulingUpdatedConsumer:26` (HF/ConsentProfile) | Reacts to a call being scheduled/cancelled — schedules the pre-call consent email |
+| `check-and-fix-consent-page-redis` | `RECORDING_CONSENT` | — | `CheckAndFixConsentPageRedisConsumer` (HF/ConsentProfile) | Repairs stale Redis consent-page state |
+
+### Produced by DcpChangeManager (DCP settings propagation)
+
+When a DCP profile changes (e.g. company enables/disables consent, changes provider), `ChangeRequestLifecycle` fans changes out to all affected users via three topics:
+
+| Topic | Cluster | Event type | Purpose |
+|---|---|---|---|
+| `batch-users-change-executor` | `DATA_CAPTURE` | `DcpChangeRequestEvent` | Fan-out one change request to all users in parallel |
+| `single-user-change-executor` | `DATA_CAPTURE` | `DcpChangeRequestEvent` | Apply change to one user |
+| `single-user-change-request-done` | `DATA_CAPTURE` | `DcpUserChangeRequestDoneEvent` | Signal that a single-user change completed |
+
+After propagation, `ResetConsentRedisForCompanyConsumer` evicts the company's Redis cache so the next page render picks up the new DCP settings.
+
+---
+
+## Database tables — jump page & DCP
+
+All tables live in the `recording_consent` Postgres database. See [[Storage & Schema Reference]] for the schema-level map; use `kb_table(action=schema)` for column-level detail.
+
+### `recording_compliance` schema — audit / compliance
+
+| Table | Written by | Columns of interest |
+|---|---|---|
+| `jump_page_session` | `RecordingComplianceDao#insertJumpPageSession` (RecordingConsentTasks) | One row per consent-page visit |
+| `jump_page_interaction` | `RecordingComplianceDao#insertJumpPageInteraction:43` | `denied_recording`, `got_access`, `per_meeting_consent`, `skipped_consent_page`, `skipped_consent_reason` |
+| `stop_recording_audit` | `RecordingComplianceDao#auditCallStoppingStatus:93` | Written when recording is stopped on decline |
+
+Also cross-writes `public.call` (operational DB) via `RecordingComplianceDao#updateInteractionsCountInCall:84`.
+
+### `recording_consent_settings` schema — per-user / per-company state
+
+| Table | Written by | Purpose |
+|---|---|---|
+| `user_settings` | `UserSettingsDao#upsert` (RecordingConsentTasks) | Per-user default meeting provider |
+| `appuser_consent_settings` | `DcpConsentSettingsDao#upsertAppUserConsentSettings` (HF/ConsentProfile) | Per-user consent preferences backing the DCP settings API |
+| `calendar_event` | `ConsentMeetingUpdatesDao#upsertEventData` (HF/RecordingCompliance) | Calendar-event mirror — which meetings need a jump page; updated via `calendar-updates-for-consent` |
+
+### `data_capture_profile` schema — DCP change requests (DcpChangeManager)
+
+| What | Written by | Purpose |
+|---|---|---|
+| Change-request tables | `DcpChangeManagerDao` (DcpChangeManager) | Tracks the `ChangeRequestLifecycle` state machine (`DcpChangeRequestEvent`) as it propagates a DCP settings change across all users |
+
+---
+
 ## Redis layout (hot path)
 
-`DcpJumpPageRedisService` stores three kinds of data in the `RECORDING_COMPLIANCE` Redis logical DB:
+`DcpJumpPageRedisService` stores three kinds of data in the **`RECORDING_COMPLIANCE`** Redis logical DB (descriptor name: `CONSENT_REDIS`):
 
-| Data | Key shape | Content |
+| Data | Content | Refreshed by |
 |---|---|---|
-| Per-user settings | user key → `RedisDcpJumpPageUserSettings` | Provider URI, consent settings |
-| Per-company DCP profile | company → `RedisDcpJumpPageSettings` | DCP profile + company name |
-| One-time meeting settings | meeting key → `JumpPageOnetimeMeetingSettings` | Per-meeting provider + state |
+| Per-user settings | Provider URI, consent settings (`RedisDcpJumpPageUserSettings`) | `PopulateDcpJumpPageRedisTask` (every 5 min) + `JumpPageService` on user change |
+| Per-company DCP profile | DCP profile + company name (`RedisDcpJumpPageSettings`) | Same task + `ResetConsentRedisForCompanyConsumer` on settings change |
+| One-time meeting settings | Per-meeting provider + `OneTimeMeetingStatus` (`JumpPageOnetimeMeetingSettings`) | `JumpPageAdminService#scheduleMeeting` / `#updateOnetimeMeeting` |
 
-`TroubleshootingDcpJumpPageRedis` is an admin REST endpoint (`RecordingConsentTasks`) for inspecting this Redis state in non-prod environments.
+`TroubleshootingDcpJumpPageRedis` (32 endpoints, `RecordingConsentTasks`) is the admin surface for inspecting and repairing this Redis state.
 
 ---
 
 ## Audit trail
 
-Every participant interaction is logged in two tables (`recording_compliance` schema):
+Every participant interaction is logged synchronously (via the `audit-meeting-consent` Kafka round-trip) into:
 
-| Table | Captures |
-|---|---|
-| `jump_page_session` | One row per consent-page visit |
-| `jump_page_interaction` | `denied_recording`, `got_access`, `per_meeting_consent`, `skipped_consent_page`, `skipped_consent_reason` |
+| Table | Schema | Captures |
+|---|---|---|
+| `jump_page_session` | `recording_compliance` | One row per consent-page visit |
+| `jump_page_interaction` | `recording_compliance` | `denied_recording`, `got_access`, `per_meeting_consent`, `skipped_consent_page`, `skipped_consent_reason` |
 
-Written by `AuditService` (honeyfy `RecordingCompliance`) via `AuditMeetingConsentConsumer` consuming the `audit-meeting-consent` Kafka topic.
+Written by `AuditMeetingConsentConsumer` (RecordingConsentTasks) consuming `audit-meeting-consent`.
 
 ---
 
@@ -176,4 +242,4 @@ Written by `AuditService` (honeyfy `RecordingCompliance`) via `AuditMeetingConse
 - [[Use Cases/B - Capture/B1 - Accept Recording|UC-B1]] · [[Use Cases/B - Capture/B2 - Skip Or Decline|UC-B2]] — what happens after the participant answers
 - [[Use Cases/D - Configure/D2 - Manage One-Time Meeting|UC-D2]] — managing dynamic meetings
 - [[Storage & Schema Reference]] — `jump_page_session` / `jump_page_interaction` table schema
-- [[02 - Data Flow]] — Kafka topic map including `audit-meeting-consent`
+- [[02 - Data Flow]] — complete Kafka topic map, all Kafka consumers, DB writes, and Redis producers for the full Consent subsystem
