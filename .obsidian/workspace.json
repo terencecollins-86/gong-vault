@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2aa82fe11e5f68b3",
+        "id": "5cfca1eb72419113",
         "type": "tabs",
         "children": [
           {
-            "id": "f20544a1e1bc1e5f",
+            "id": "c11c568e6d2dcf8c",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": ".smart-env/multi/PKM_Daily_Notes_2026-07-15_md.ajson",
-                "bFile": ".smart-env/multi/PKM_Daily_Notes_2026-07-15_md.ajson",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: PKM_Daily_Notes_2026-07-15_md.ajson  (Working Tree)"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -53,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Troubleshoot Endpoints.md",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +70,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -211,8 +208,19 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "f20544a1e1bc1e5f",
+  "active": "c11c568e6d2dcf8c",
   "lastOpenFiles": [
+    "Work/Architecture/Troubleshoot Endpoints.md",
+    "Subsystems/Telephony Systems/_dashboard.md",
+    "Subsystems/Consent/02 - Data Flow.md",
+    "Work/Engineering/Notes/TestNG Groups at Gong.md",
+    "Subsystems/Consent/Jump Page & DCP.md",
+    "Subsystems/Consent/01 - Services & Modules.md",
+    "Subsystems/Consent/00 - Overview.md",
+    "Subsystems/Consent/_dashboard.md",
+    "Work/Research/Spikes/Adjustable Logging - R&D.md",
+    "Work/Engineering/Notes/Flyway Migrations at Gong.md",
+    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
     "PKM/Daily Notes/2026-07-20.md",
     "PKM/Daily Notes/2026-07-17.md",
     "Work/Engineering/Dev Env Service URLs.md",
@@ -224,23 +232,13 @@
     "PKM/Daily Notes/2026-07-16.md",
     "PKM/Daily Notes/2026-07-15.md",
     "Work/Jira Tasks — Call Scheduling & Data Capture.md",
-    "Subsystems/Consent/02 - Data Flow.md",
     "Subsystems/Consent/Use Cases/F - React/F1 - React To Scheduled Call.md",
     "Subsystems/Consent/Use Cases/B - Capture/B3 - Audit The Decision.md",
     "Subsystems/Consent/Use Cases/B - Capture/B2 - Skip Or Decline.md",
     "Subsystems/Consent/Use Cases/B - Capture/B1 - Accept Recording.md",
     "Subsystems/Consent/Use Cases/A - Solicit/A3 - Render Consent Email Landing Page.md",
     "Subsystems/Consent/Use Cases/A - Solicit/A2 - Send Pre-Call Consent Email.md",
-    "Subsystems/Consent/Use Cases/A - Solicit/A1 - Render Jump Page.md",
-    "Work/Engineering/Runbooks/Comms Capture/Comms Capture Architecture Overview.md",
-    "Acronyms.md",
-    "Subsystems/Consent/00 - Overview.md",
-    "Subsystems/Calendar Ingestion/01 - Architecture & Modules.md",
     "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
-    "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
-    "Subsystems/Call Scheduling/04 - Use Cases.md",
-    "Subsystems/Call Scheduling/08 - Data Access & Storage.md",
-    "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md",
     "Subsystems/Call Scheduling/08 - Data Access & Storage.md.tmp.43.daec5c0625ec",
     "Subsystems/Consent/Use Cases/F - React",
     "Subsystems/Consent/Use Cases/B - Capture/B2 - Skip Or Decline.md.tmp.43.e56ec70e9b2e",
@@ -252,7 +250,6 @@
     "Subsystems/Consent/Use Cases/A - Solicit",
     "Subsystems/Consent/Use Cases",
     "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
-    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "Work/Engineering/Runbooks/Comms Capture/Call Orchestration.canvas",
     "Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
