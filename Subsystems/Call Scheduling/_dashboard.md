@@ -24,6 +24,12 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas|Call Scheduling — Data Flow canvas]]
 🧭 **Context map:** [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map — Call Scheduling ⇄ Consent]] (DDD)
 
+**Event Storming canvases (Actor → Command → Event → Policy → Data):**
+- [[Subsystems/Call Scheduling/Canvas/ES1 - Schedule.canvas|ES1 — Schedule]] — all scheduling paths A1–A4 (calendar sync, email invite, manual, coordinator)
+- [[Subsystems/Call Scheduling/Canvas/ES2 - Cancel & Reschedule.canvas|ES2 — Cancel & Reschedule]] — B1 (reschedule) + C1–C6 (all cancel paths + compliance gate)
+- [[Subsystems/Call Scheduling/Canvas/ES3 - Restore & Recurring.canvas|ES3 — Restore & Recurring]] — D1 (restore) + E1–E2 (recurring series expansion + cancel)
+- [[Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas|ES4 — Operational]] — F1–F4 (GDPR purge, token sync, history audit, recording hand-off)
+
 ---
 
 ## 🗺️ At a glance

@@ -13,15 +13,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas",
+                "file": "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
                 "viewState": {
-                  "x": 546.8821200809626,
-                  "y": -732.8829762154204,
-                  "zoom": -0.31418325181928075
+                  "x": -1557.329976489188,
+                  "y": 471.2214706878862,
+                  "zoom": -0.4988492556568777
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "ES3 - Propagate DCP Change"
+              "title": "ES4 - Operational"
             }
           }
         ]
@@ -216,7 +216,19 @@
   },
   "active": "6df622792db23c57",
   "lastOpenFiles": [
+    "Subsystems/Call Scheduling/Canvas/Inbound Topics/PURGE-COMPANY.md",
+    "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
+    "Subsystems/Call Scheduling/Canvas/ES3 - Restore & Recurring.canvas",
+    "Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md",
+    "Subsystems/Call Scheduling/Canvas/ES2 - Cancel & Reschedule.canvas",
     "Subsystems/Call Scheduling/Canvas/ES1 - Schedule.canvas",
+    "Subsystems/Call Scheduling/Canvas/Providers/Conferencing-Providers.md",
+    "Subsystems/Call Scheduling/Canvas/Upstream/Mailgun-Email.md",
+    "Subsystems/Call Scheduling/Canvas/Actors/RepUser.md",
+    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
+    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
+    "Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas",
+    "Subsystems/Call Scheduling/_dashboard.md.tmp.41.bb6b6f02a47c",
     "Subsystems/Call Scheduling/Canvas/Data Stores/DataStore-CallSchedulerDB.md",
     "Subsystems/Call Scheduling/Canvas/Policies/RecurringExpansion.md",
     "Subsystems/Call Scheduling/Canvas/Policies/ValidationChain.md",
@@ -226,7 +238,6 @@
     "Subsystems/Call Scheduling/Canvas/Events/CallSchedulingRequestEvent.md",
     "Subsystems/Call Scheduling/Canvas/Events",
     "Subsystems/Call Scheduling/Canvas/Actors/CalendarIngestion.md",
-    "Subsystems/Call Scheduling/Canvas/Actors/RepUser.md",
     "Subsystems/Call Scheduling/Canvas/Actors",
     "Subsystems/Consent/Canvas/ES2 - Enforce.canvas",
     "Subsystems/Consent/Canvas/ES1 - Solicit & Capture.canvas",
@@ -238,8 +249,6 @@
     "Subsystems/Consent/Canvas/Events/StopRecordingEvent.md",
     "Subsystems/Consent/_dashboard.md",
     "Subsystems/Consent/07 - New Engineer FAQ.md",
-    "Subsystems/Consent/Canvas/ES4 - React to Upstream Events.canvas",
-    "Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas",
     "Subsystems/Consent/Canvas/Data Stores/DataStore-DataCaptureDB.md",
     "Subsystems/Consent/Canvas/Data Stores/DataStore-RecordingConsentDB.md",
     "Subsystems/Consent/Canvas/Actors/ConsentAdmin.md",
@@ -251,17 +260,8 @@
     "Subsystems/Consent/Canvas/Events/DcpChangeRequestEvent.md",
     "Subsystems/Consent/Canvas/Events/ConsentEmailPageInteractionEvent.md",
     "Subsystems/Consent/Canvas/Events",
-    "Subsystems/Consent/Canvas/Core/RecordingConsentApiServer.md",
-    "Subsystems/Consent/Canvas/Core/MeetingFrontEnd.md",
-    "Subsystems/Consent/06 - Local Dev Seed Data.md",
     "Subsystems/Consent/_dashboard.md.tmp.41.0b09d1b0403a",
     "Subsystems/Consent/Jump Page & DCP.md.tmp.41.f4c41ea7fd86",
-    "Subsystems/Consent/PPT/Consent In Gong.pptx",
-    "Subsystems/Call Scheduling/Canvas/Call Scheduling - Data Flow.canvas",
-    "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
-    "Work/Engineering/Runbooks/Comms Capture/Call Scheduling.canvas",
-    "Subsystems/Calendar Ingestion/Meeting Ingestion Architecture.canvas",
-    "Work/Engineering/Runbooks/Comms Capture/Comms Capture Overview.canvas",
     "_meta/Assets/me.jpeg",
     "_meta/Assets/Screenshot 2026-05-07 at 17.27.23.png",
     "_meta/Assets/Screenshot 2026-05-07 at 17.16.23.png",

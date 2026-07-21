@@ -1,0 +1,43 @@
+{
+	"nodes":[
+		{"id":"g_f4","type":"group","x":-3200,"y":600,"width":2700,"height":480,"color":"2","label":"F4 — Hand off to recording infrastructure (bounded-context boundary)"},
+		{"id":"g_f3","type":"group","x":-3200,"y":20,"width":2620,"height":400,"color":"3","label":"F3 — Emit scheduling history (audit/search)"},
+		{"id":"g_f2","type":"group","x":-3200,"y":-380,"width":3280,"height":260,"color":"5","label":"F2 — Sync provider users & tokens"},
+		{"id":"g_f1","type":"group","x":-3200,"y":-780,"width":2320,"height":280,"color":"4","label":"F1 — Purge company (GDPR)"},
+		{"id":"act_gdpr","type":"text","text":"🔒 GDPR / offboarding\n(upstream purge-company event)","x":-3180,"y":-720,"width":320,"height":70,"color":"5"},
+		{"id":"act_provider","type":"text","text":"☁️ Provider\n(WebEx token expiry / Zoom user sync)","x":-3180,"y":-320,"width":320,"height":85,"color":"5"},
+		{"id":"act_engine_f3","type":"file","file":"Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md","x":-3180,"y":80,"width":220,"height":60,"color":"1"},
+		{"id":"ds_purge","type":"text","text":"🗄️ DELETE call_scheduler.scheduled_calls\nDELETE calendar_recurring_event\nfor company — no outbound event","x":-1340,"y":-720,"width":400,"height":85,"color":"6"},
+		{"id":"evt_purge","type":"file","file":"Subsystems/Call Scheduling/Canvas/Inbound Topics/PURGE-COMPANY.md","x":-2740,"y":-700,"width":620,"height":50,"color":"2"},
+		{"id":"svc_engine_f2","type":"file","file":"Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md","x":-1680,"y":-285,"width":380,"height":50,"color":"1"},
+		{"id":"evt_sync","type":"file","file":"Subsystems/Call Scheduling/Canvas/Inbound Topics/SYNC-USERS-FROM-WEB-CONFERENCING-PROVIDER.md","x":-2700,"y":-300,"width":720,"height":50,"color":"2"},
+		{"id":"svc_engine_f1","type":"file","file":"Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md","x":-1850,"y":-700,"width":380,"height":50,"color":"1"},
+		{"id":"legend","type":"text","text":"# 🗺️ Event Storming — Operational & Cross-Context (F)\n\nUse cases **F1–F4**: GDPR company purge, provider token sync, scheduling history audit, and the bounded-context hand-off to recording infrastructure. These are the background, cross-cutting, and integration concerns — not directly user-initiated.\n\n**Colour key** — 🟧 Event · 🟦 Command · 🟩 Actor/System · 🟥 Policy · 🟪 Service · ⬛ Data store","x":-3180,"y":-1120,"width":1600,"height":200,"color":"6"},
+		{"id":"svc_prov","type":"file","file":"Subsystems/Call Scheduling/Canvas/Providers/Conferencing-Providers.md","x":-940,"y":-284,"width":400,"height":50,"color":"4"},
+		{"id":"ds_sync","type":"text","text":"Updates provider tokens / user mappings\n(WebEx: refreshes OAuth tokens\nZoom: syncs user list + credentials)\nNo outbound scheduling event","x":-400,"y":-317,"width":400,"height":115,"color":"6"},
+		{"id":"act_engine_f4","type":"file","file":"Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md","x":-3180,"y":660,"width":260,"height":50,"color":"1"},
+		{"id":"evt_history","type":"file","file":"Subsystems/Call Scheduling/Canvas/Inbound Topics/CALL-SCHEDULING-HISTORY.md","x":-2430,"y":105,"width":620,"height":50,"color":"2"},
+		{"id":"ds_s3","type":"file","file":"Subsystems/Call Scheduling/Canvas/Data Stores/DataStore-S3.md","x":-1400,"y":80,"width":300,"height":50,"color":"6"},
+		{"id":"ds_os","type":"file","file":"Subsystems/Call Scheduling/Canvas/Data Stores/DataStore-OpenSearch.md","x":-1540,"y":320,"width":400,"height":50,"color":"6"},
+		{"id":"note_hist","type":"text","text":"CalendarEventsHistoryWriter writes to CALENDAR_EVENTS_HISTORY index.\nUsed for search + summary emails to reps.\n(UC-F3)","x":-1000,"y":155,"width":360,"height":115,"color":"3"},
+		{"id":"ds_consent","type":"text","text":"→ Consent domain\nConsentCallSchedulingUpdatedConsumer\nschedules / cancels pre-call consent email\n→ [[Subsystems/Consent/_dashboard|Consent hub]]","x":-1760,"y":938,"width":460,"height":118,"color":"4"},
+		{"id":"evt_csu","type":"file","file":"Subsystems/Call Scheduling/Canvas/Events/CallSchedulingUpdatedEvent.md","x":-2400,"y":660,"width":460,"height":50,"color":"2"},
+		{"id":"ds_down","type":"file","file":"Subsystems/Call Scheduling/Canvas/Downstream/Recording-Infrastructure.md","x":-1530,"y":660,"width":460,"height":50},
+		{"id":"note_f4","type":"text","text":"**The bounded-context boundary.**\n`call-scheduling-updated` is the **Published Language** (OHS).\nCRUD=NEW → recording enabled.\nCRUD=CANCEL → recording stopped.\nCRUD=UPDATE → recording adjusted.\n\nSee [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map]]","x":-1000,"y":740,"width":440,"height":218,"color":"6"}
+	],
+	"edges":[
+		{"id":"e_gdpr_purge","fromNode":"act_gdpr","fromSide":"right","toNode":"evt_purge","toSide":"left"},
+		{"id":"e_purge_engine","fromNode":"evt_purge","fromSide":"right","toNode":"svc_engine_f1","toSide":"left","label":"consume"},
+		{"id":"e_engine_purge_ds","fromNode":"svc_engine_f1","fromSide":"right","toNode":"ds_purge","toSide":"left"},
+		{"id":"e_prov_sync","fromNode":"act_provider","fromSide":"right","toNode":"evt_sync","toSide":"left"},
+		{"id":"e_sync_engine","fromNode":"evt_sync","fromSide":"right","toNode":"svc_engine_f2","toSide":"left","label":"consume"},
+		{"id":"e_engine_prov","fromNode":"svc_engine_f2","fromSide":"right","toNode":"svc_prov","toSide":"left","label":"call provider API"},
+		{"id":"e_prov_ds","fromNode":"svc_prov","fromSide":"right","toNode":"ds_sync","toSide":"left"},
+		{"id":"e_engine_hist","fromNode":"act_engine_f3","fromSide":"right","toNode":"evt_history","toSide":"left","label":"produce on each scheduling event"},
+		{"id":"e_hist_os","fromNode":"evt_history","fromSide":"right","toNode":"ds_os","toSide":"left","label":"CalendarEventsHistoryWriter"},
+		{"id":"e_hist_s3","fromNode":"evt_history","fromSide":"right","toNode":"ds_s3","toSide":"left","label":"email body store"},
+		{"id":"e_engine_csu","fromNode":"act_engine_f4","fromSide":"right","toNode":"evt_csu","toSide":"left","label":"produce after every lifecycle event"},
+		{"id":"e_csu_down","fromNode":"evt_csu","fromSide":"right","toNode":"ds_down","toSide":"left","label":"recording infrastructure"},
+		{"id":"e_csu_consent","fromNode":"evt_csu","fromSide":"bottom","toNode":"ds_consent","toSide":"top","label":"consent domain"}
+	]
+}
