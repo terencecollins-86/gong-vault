@@ -18,6 +18,22 @@ It lives primarily in **`gong-data-capture`**, with a set of **shared consent co
 honeyfy monolith** that other systems (notably [[Subsystems/Call Scheduling/_dashboard|Call Scheduling]]) call
 into.
 
+## The five consent mechanisms
+
+Gong captures and enforces consent through five mechanisms — a company's DCP controls which ones apply.
+
+| Mechanism | When | How |
+|---|---|---|
+| **Consent page (jump page)** | Before joining — participant clicks the meeting link | Gong-hosted page intercepts the join link; participant accepts or declines before being redirected to Zoom/Teams/Webex |
+| **Audio prompt** | At call start — bot speaks into the meeting | Recording bot plays a verbal recording notice; can be suppressed if consent was already captured via the consent page |
+| **Pre-call consent email** | 10–20 min before the meeting | Sent to external invitees; acts as notice + recording disclosure; participant can still accept/deny via the email landing page |
+| **Confirmation email (LA)** | 24/48/72h before the meeting | Sent for calls ingested via the Gong assistant where the organizer is not a Gong org member; requests permission to record; landing page lets participant cancel recording |
+| **Native Zoom consent** | At recording start / participant join | Zoom shows its own built-in disclaimer; Gong's audio prompt settings do not apply, but all other DCP settings do |
+
+Detailed docs: [[Audio Prompt]] · [[Confirmation Email (LA)]] · [[Jump Page & DCP]] · [[Use Cases/A - Solicit/A2 - Send Pre-Call Consent Email|UC-A2]]
+
+---
+
 ## The mental model (one paragraph)
 
 > Consent settings (per-company / per-user) are managed through the **DCP consent settings API**

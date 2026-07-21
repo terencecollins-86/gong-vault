@@ -19,11 +19,52 @@ aliases:
 
 ## Domain & Business Context
 
+**Q: What are the five ways Gong collects consent? I keep seeing different mechanisms mentioned.**
+
+| Mechanism | Timing | Who sees it |
+|---|---|---|
+| **Consent page (jump page)** | Before joining — participant clicks the meeting link | External participant at join time |
+| **Audio prompt** | At call start — bot plays a verbal notice | Everyone in the call |
+| **Pre-call consent email** | 10–20 min before the meeting | External invitees |
+| **Confirmation email (LA)** | 24/48/72h before the meeting | Calls ingested via assistant with a non-org organiser |
+| **Native Zoom consent** | At recording start / participant join | Zoom handles it; Gong's audio prompt does not apply |
+
+They are not mutually exclusive. A company might use the jump page (gate at join) and the audio prompt (in-call notice) together. See [[00 - Overview]] for the full picture, [[Audio Prompt]] and [[Confirmation Email (LA)]] for the two mechanisms with no dedicated notes previously.
+
+---
+
 **Q: What exactly is "Consent" and why does it exist?**
 
 When a Gong rep records a meeting, some jurisdictions and company policies require that the other participants (customers, prospects) are told they're being recorded *before* the recording starts. Consent's job is to enforce that: intercept the participant before they enter the meeting room, show them a disclosure page, and either let them in (and allow recording) or flag that they declined (and suppress recording).
 
 The subsystem also sends pre-call consent emails — some companies prefer to notify participants by email days before the call rather than at the join link.
+
+---
+
+**Q: What meeting providers does Consent support?**
+
+Consent is provider-aware but not provider-specific. The canonical list lives in
+`WebConferencing/.../identifiers/all/`: Zoom, Microsoft Teams, Cisco WebEx, Google Meet,
+GoToMeeting, BlueJeans, RingCentral (Meetings + Video), Skype for Business, Join.me,
+ClearSlide, Appointlet, Gong hardware device, and a fallback `DummyIdentifier`.
+
+Provider identity flows through the system as a `String` code (via `Identifier.Descriptor#byCode`).
+Two constants exist on `Identifier`: `ZOOM_CLOUD_PROVIDER_CODE` and `WEBEX_CLOUD_PROVIDER_CODE`.
+
+---
+
+**Q: Can a single DCP cover both Zoom and Teams simultaneously?**
+
+Yes. `DcpJumpPageSettings.providers` is a `List<DcpJumpPageSettingsProvider>` — one element per
+supported provider within that profile. Each element has its own `linkType` (PMI/Dynamic/OnlyDynamic)
+and `recordingOptOut` (Explicit/Implicit), so Zoom and Teams can have different consent settings
+within the same company policy.
+
+For multi-provider profiles, `MultipleProviderJumpPageUrlService` generates one jump-page URL per
+provider by appending `?provider=<code>`. When the participant arrives, `JumpPageController` reads
+that query param and loads the correct provider's settings from `DcpJumpPageUrlSettings`.
+
+See [[Meeting Providers & Multi-Provider DCP]] for the full model.
 
 ---
 

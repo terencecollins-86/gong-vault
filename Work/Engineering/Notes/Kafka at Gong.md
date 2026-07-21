@@ -6,6 +6,7 @@ tags:
   - messaging
   - event-driven
   - cheatsheet
+  - devops
 created: 2026-07-20
 aliases:
   - kafka
@@ -230,6 +231,104 @@ The service must be stopped before resetting — Kafka won't allow an offset res
 **Cross-cluster is intentional, not a mistake.** `RecordingConsentTasks` consumes from `CALL_SCHEDULER_V2` (`call-scheduling-updated`) even though it "belongs to" the Consent domain. The cluster follows the event's domain of origin, not the consumer's domain.
 
 ---
+
+## Creating a New Kafka Topic — Infra Process
+
+> [!warning] Two separate concerns
+> **Topic creation** (declaring the topic on MSK) and **module access** (IAM + TLS certs for your service) are two distinct steps handled in two different places.
+
+### Two-track overview
+
+| What you need | Where | How |
+|---|---|---|
+| Create the topic itself on MSK | `honeyfy` monorepo, `KafkaInfra` module | PR with `topics.yaml` |
+| Grant your module access to a cluster | `descriptor.app.yaml` in your subsystem repo | `/infra` PR comment |
+| Provision a new MSK cluster | `infra-config/infra-*/gong-msk*/` | DevOps-only, not self-service |
+
+---
+
+### Track 1 — Declaring a new topic (KafkaInfra YAML)
+
+Topics are defined in YAML files in the `honeyfy` monorepo, not via Crossplane or Terraform:
+
+```
+KafkaIntegration/KafkaInfra/src/main/resources/kafkaTopics/
+  <ClusterName>/
+    <ComponentName>/
+      topics.yaml       ← your new topic goes here
+      fact-topics.yaml  ← reference / "fact" topics
+```
+
+The `KafkaOperations` service reads these at startup and applies them via `AdminClient`. It is **idempotent** — only creates topics that don't already exist.
+
+**Key parameters** (from `Topic.java` in `KafkaIntegration/KafkaInfra/`):
+
+| Parameter | Notes |
+|---|---|
+| `name` | Required. Must be unique within the cluster. |
+| `partitions` | Resolved per-environment via `AppPropertyWithGPEFallbackResolver`; can differ per cell. |
+| `replicationFactor` | Always **3** in production. Never less. |
+| `retentionMs` | Long; defaults to `DEFAULT_RETENTION_MS`. Tiered-storage topics use a separate local-retention field. |
+| `cleanupPolicy` | Defaults to `"delete"`. Set `"compact"` only if you need log compaction. |
+| `minInSyncReplicas` | Defaults to `DEFAULT_MIN_IN_SYNC_REPLICAS`. |
+| `errorTopic` | Boolean. Set `true` to mark as a DLQ/error topic. |
+| `shouldTrack` | Boolean. Opts into monitoring. |
+| `createAclsOnly` | Boolean. Skip topic creation, only manage ACLs. |
+
+**CI validation**: `KafkaTopicsYamlValidationTest` (`Installer/src/test/`) runs automatically and enforces:
+- No duplicate topic names within a cluster.
+- Valid YAML schema.
+- Valid tenant consumer declarations.
+
+**Review**: standard PR to `honeyfy`, reviewed by owning team.
+
+---
+
+### Track 2 — Granting your module access (descriptor.app.yaml + /infra)
+
+This is the self-service path. It generates IAM policies and a TLS client cert for your module per cell.
+
+**Step 1 — Edit your descriptor**
+
+```yaml
+# src/main/resources/descriptors/app/<Module>.yaml  (in your subsystem repo)
+managedByCrossplane: true   # required — without this the pipeline does nothing
+dataSources:
+  kafka:
+    - logicalClusterName: RECORDING_CONSENT   # must exist in cluster-mappings.yaml
+      permissions: READ_WRITE                 # READ_ONLY | WRITE_ONLY | READ_WRITE
+```
+
+**Step 2 — Trigger the pipeline**
+
+Open a PR with the descriptor change, then comment `/infra` on it.
+
+**What happens next (automated):**
+1. GitHub Actions generates an `infra-config` PR with IAM policy + cert workflow entries.
+2. The `infra-config` PR requires approval from **DevOps + original developer**.
+3. After merge: ArgoCD syncs → Crossplane reconciles → `mskcertworkflow` Argo Workflow runs per cell.
+4. TLS client cert stored in Secrets Manager at `/gong/<gcell>/<module>/kafka/<logicalClusterName>/client.crt`.
+5. GitHub Actions posts a completion comment back on your original PR.
+6. `Wait for healthy infra signal` check turns green → you can merge.
+
+**The `logicalClusterName` must exist in `cluster-mappings.yaml`** (in `gong-app-properties` and `infra-config`). If it doesn't, the generator fails with "cluster not found".
+
+---
+
+### Infra gotchas
+
+**Partition count is immutable downward.** You can only increase partitions, never decrease. Get this right before production — think about consumer parallelism headroom now, not later.
+
+**Certs don't appear immediately.** `mskcertworkflow` fires *after* the `infra-config` PR merges and ArgoCD syncs. Don't expect certs at PR-creation time.
+
+**Never hand-edit generated files.** Everything under `infra-config/infra-gpe/gong-module/<module>/` is generated. Edit the descriptor and re-run `/infra`.
+
+**`managedByCrossplane: true` is mandatory.** Without it, `/infra` is a no-op.
+
+**infra-config PR labels are required.** The PR must have `<module>-gpe` or `<module>-gge` labels to trigger GitOps. No labels = no deployment = no cert = stuck check.
+
+**Descriptor filename**: the infra pipeline looks for `src/main/resources/descriptors/app/<module>.yaml` (plain `.yaml`). Some modules also have a `<Module>.gong-app-descriptor.yaml` for the wiring test — these are different files; check your module's existing convention.
+
 
 ## See also
 

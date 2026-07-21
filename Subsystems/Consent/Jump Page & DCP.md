@@ -225,7 +225,7 @@ Written by `AuditMeetingConsentConsumer` (RecordingConsentTasks) consuming `audi
 | `JumpPageUiService` | `gong-data-capture / MeetingFrontEnd` | Renders Thymeleaf templates |
 | `DcpJumpPageRedisService` | `honeyfy / DataCaptureProfile` | Redis read/write for all jump-page state |
 | `JumpPageUrlService` | `honeyfy / AppCommon` | URL construction, parsing, segment constants |
-| `MultipleProviderJumpPageUrlService` | `honeyfy / ComplianceCommon` | Multi-provider URL building |
+| `MultipleProviderJumpPageUrlService` | `honeyfy / ComplianceCommon` | Multi-provider URL building — generates one URL per provider with `?provider=<code>`; see [[Meeting Providers & Multi-Provider DCP]] |
 | `JumpPageService` | `honeyfy / RecordingCompliance` | URL lifecycle hooks (`UserAddOnsBuilder`, `UserUpdateObserver`) |
 | `JumpPageAdminService` | `honeyfy / RecordingCompliance` | Schedule/update/delete one-time meetings; URL key validation |
 | `DcpJumpPageSettings` | `honeyfy / AppCommon` | Core DCP entity |
@@ -237,6 +237,7 @@ Written by `AuditMeetingConsentConsumer` (RecordingConsentTasks) consuming `audi
 
 ## See also
 
+- [[Meeting Providers & Multi-Provider DCP]] — provider enum list, per-provider DCP settings (`DcpJumpPageSettingsProvider`), `?provider=` URL discriminator, user provider default
 - [[03 - Ubiquitous Language]] — full domain glossary including URL-segment constants
 - [[Use Cases/A - Solicit/A1 - Render Jump Page|UC-A1]] — use-case card for rendering the page
 - [[Use Cases/B - Capture/B1 - Accept Recording|UC-B1]] · [[Use Cases/B - Capture/B2 - Skip Or Decline|UC-B2]] — what happens after the participant answers

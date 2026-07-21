@@ -14,7 +14,7 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 
 ## 🚦 Start here (read in order)
 
-1. [[00 - Overview]] — what the sub-system owns, the mental model
+1. [[00 - Overview]] — what the sub-system owns, the mental model, and the **five consent mechanisms**
 2. [[01 - Services & Modules]] — the DCP services, the consent page, and monolith-shared code
 3. [[02 - Data Flow]] — every inbound & outbound point, code-grounded
 4. [[03 - Ubiquitous Language]] — the DDD domain vocabulary (source of truth: the code)
@@ -22,6 +22,15 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 6. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
 7. [[05 - Data Access & Storage]] — code-grounded datasource / DAO / schema map
 8. [[06 - Local Dev Seed Data]] — seed the base + drive the flows to populate owned tables
+
+### Deep-dives by mechanism
+
+- [[Jump Page & DCP]] — consent page internals, DCP settings, PMI vs dynamic, Redis hot path
+- [[Meeting Providers & Multi-Provider DCP]] — provider enum list, multi-provider `DcpJumpPageSettingsProvider`, `?provider=` URL discriminator, user provider default
+- [[Audio Prompt]] — bot verbal notice, Zoom native consent, suppression when jump page already used
+- [[Confirmation Email (LA)]] — assistant-ingested calls with non-org organiser; active-permission flow
+- [[Consent Link Creation]] — four surfaces for creating consent links (Outlook, GCal, API, static copy)
+- [[Consent Email — Default Allow & Outcome Matrix]] — what happens when the pre-call email is ignored
 
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Consent — Data Flow canvas]]
 🧭 **Context map:** [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map — Call Scheduling ⇄ Consent]] (DDD)
