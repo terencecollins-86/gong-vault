@@ -83,17 +83,19 @@ If the row appears, the Call Scheduling → Consent hand-off is working end-to-e
 
 ## Direct Injection (skip Kafka)
 
-To exercise a specific Consent path without producing a real Kafka message, use the **14 troubleshooting controllers** ([[02 - Data Flow]] §"Troubleshooting controllers"). Verified surfaces:
+To exercise a specific Consent path without producing a real Kafka message, use the **13 troubleshooting controllers** (75 endpoints total). The full catalog — grouped by use case, with exact paths, params, and gaps — lives in [[Troubleshooting Endpoints Catalog]].
+
+Quick reference for the most common local-dev tasks:
 
 | Goal | Endpoint | Module:port |
 |---|---|---|
-| Read/inspect a company DCP profile | `POST /troubleshooting/data-capture-profile/read-default-data-capture-profile?company-id=9001` | RecordingConsentApiServer `:7254` |
-| Assign a DCP profile to a user | `POST /troubleshooting/data-capture-profile/set-data-capture-profile-to-appuser?company-id=9001&…` | RecordingConsentApiServer `:7254` |
-| Drive a DCP change-request through its states | `POST /troubleshooting/dcp-change-manager/set-change-request-state?company-id=9001&…` | DcpChangeManager `:8121` |
-| Execute a running change request | `POST /troubleshooting/dcp-change-manager/execute-running-change-request?company-id=9001&…` | DcpChangeManager `:8121` |
-| Consent-email Redis / revision ops | `POST /troubleshooting/consent_email/…` | RecordingConsentTasks `:9095` |
-
-> Endpoints take `@RequestParam` values (e.g. `company-id`), not JSON bodies, and produce `text/plain` or JSON. Enumerate the full set per controller in [[02 - Data Flow]] §Troubleshooting controllers.
+| Warm Redis for a company | `POST /troubleshooting/consent_redis/populate-company-in-redis?company-id=9001&force=true` | RCT `:9095` |
+| Read/inspect a company DCP profile | `POST /troubleshooting/data-capture-profile/read-default-data-capture-profile?company-id=9001` | RCAS `:7254` |
+| Assign a DCP profile to a user | `POST /troubleshooting/data-capture-profile/set-data-capture-profile-to-appuser?company-id=9001&dcp-id=2001&appuser-id=501` | RCAS `:7254` |
+| Drive a DCP change-request through its states | `POST /troubleshooting/dcp-change-manager/set-change-request-state?company-id=9001&change-request-id=…&change-request-state=DONE` | DCM `:8121` |
+| Execute a running change request | `POST /troubleshooting/dcp-change-manager/execute-running-change-request?company-id=9001&change-request-id=…&ignore-exception-and-run-next-request=false` | DCM `:8121` |
+| Seed consent-email Redis for a specific call | `POST /troubleshooting/consent_email/redis/set-consent-email-page-data-by-email-id?company-id=9001&email-id=…` | RCT `:9095` |
+| Replay a consent-email denial (bypasses Kafka) | `POST /troubleshooting/consent_email/send-event-to-consent-email-page-interaction-service?company-id=9001&…` | RCT `:9095` |
 
 ---
 

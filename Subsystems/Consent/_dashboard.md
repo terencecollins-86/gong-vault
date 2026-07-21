@@ -23,6 +23,11 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 7. [[05 - Data Access & Storage]] — code-grounded datasource / DAO / schema map
 8. [[06 - Local Dev Seed Data]] — seed the base + drive the flows to populate owned tables
 
+### Operations & troubleshooting
+
+- [[Troubleshooting Endpoints Catalog]] — all 75 troubleshooter endpoints across 13 controllers, mapped to use cases A–F; gaps noted
+- [[06 - Local Dev Seed Data]] — seed sequence and failure modes
+
 ### Deep-dives by mechanism
 
 - [[Jump Page & DCP]] — consent page internals, DCP settings, PMI vs dynamic, Redis hot path

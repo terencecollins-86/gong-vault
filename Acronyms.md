@@ -166,6 +166,11 @@ Quick-reference glossary of acronyms used across these notes. Each entry links d
 
 ## P
 
+### PMI
+**Personal Meeting ID** — a user's persistent meeting room identifier (Zoom origin, used across providers). In the consent domain it means the rep always uses the same room, so their jump-page URL never changes between calls. A PMI URL has 2 path segments (`profileKey/userKey`); a dynamic (per-meeting) URL has 3 (`profileKey/userKey/meetingKey`). Distinguished at runtime by `JumpPageUrlService.isPmiJumpPageUrl()`.
+→ [[Subsystems/Consent/Jump Page & DCP#PMI vs Dynamic meetings]]
+→ [[Subsystems/Consent/03 - Ubiquitous Language]]
+
 ### PR
 **Pull Request** — a GitHub code review request. Referenced in AI4Dev use cases for the GongReviewer workflow and Claude Code plan-mode integration.
 → [[AI4Dev Use Cases - R&D#Use Case 2: Streamlining PR Fixes Using Claude Code Plan Mode with GongReviewer]]
