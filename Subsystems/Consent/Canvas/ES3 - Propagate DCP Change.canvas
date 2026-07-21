@@ -1,34 +1,28 @@
 {
 	"nodes":[
+		{"id":"g_configure","type":"group","x":-3320,"y":-780,"width":1500,"height":488,"color":"3","label":"D — Configure DCP"},
+		{"id":"g_complete","type":"group","x":1560,"y":-780,"width":700,"height":620,"color":"2","label":"E — Complete & flush cache"},
+		{"id":"g_fanout","type":"group","x":-420,"y":-680,"width":660,"height":640,"color":"2","label":"E1 — Fan out to users"},
+		{"id":"g_initiate","type":"group","x":-1580,"y":-780,"width":660,"height":580,"color":"2","label":"E1 — Initiate change request"},
+		{"id":"g_execute","type":"group","x":680,"y":-740,"width":460,"height":580,"color":"1","label":"E2 — Execute per-user actions"},
 		{"id":"legend","type":"text","text":"# 🗺️ Event Storming — Propagate DCP Change\n\nUse cases **D (Configure)** and **E (Propagate)**. Covers the full lifecycle from an admin changing a DCP setting through the `ChangeRequestLifecycle` state machine to every affected user getting updated and the Redis cache being flushed.\n\n**Colour key** — 🟧 Event · 🟦 Command · 🟩 Actor · 🟥 Policy · 🟪 Service · ⬛ Data store","x":-800,"y":-1080,"width":1600,"height":180,"color":"6"},
-
-		{"id":"g_configure","type":"group","x":-2400,"y":-780,"width":700,"height":420,"color":"3","label":"D — Configure DCP"},
-		{"id":"g_initiate","type":"group","x":-1580,"y":-780,"width":600,"height":420,"color":"2","label":"E1 — Initiate change request"},
-		{"id":"g_fanout","type":"group","x":-860,"y":-780,"width":660,"height":420,"color":"2","label":"E1 — Fan out to users"},
-		{"id":"g_execute","type":"group","x":0,"y":-780,"width":660,"height":420,"color":"1","label":"E2 — Execute per-user actions"},
-		{"id":"g_complete","type":"group","x":780,"y":-780,"width":700,"height":420,"color":"2","label":"E — Complete & flush cache"},
-
-		{"id":"act_admin","type":"file","file":"Subsystems/Consent/Canvas/Actors/ConsentAdmin.md","x":-2380,"y":-720,"width":260,"height":70,"color":"5"},
-		{"id":"cmd_save_dcp","type":"text","text":"**Save DCP settings**\nDcpConsentSettingsController\n#saveUserProviderDefault\n`:7254`","x":-2380,"y":-600,"width":300,"height":90,"color":"3"},
-		{"id":"cmd_assign_dcp","type":"text","text":"**Assign DCP to user**\n/troubleshooting/data-capture-profile\n/set-data-capture-profile-to-appuser","x":-2380,"y":-480,"width":300,"height":90,"color":"3"},
-		{"id":"svc_rcas","type":"file","file":"Subsystems/Consent/Canvas/Core/RecordingConsentApiServer.md","x":-2020,"y":-600,"width":300,"height":70,"color":"1"},
-
-		{"id":"evt_change_req","type":"file","file":"Subsystems/Consent/Canvas/Events/DcpChangeRequestEvent.md","x":-1560,"y":-720,"width":540,"height":90,"color":"2"},
-		{"id":"svc_dcm","type":"file","file":"Subsystems/Consent/Canvas/Core/DcpChangeManager.md","x":-1560,"y":-580,"width":540,"height":80,"color":"1"},
-		{"id":"pol_lifecycle","type":"file","file":"Subsystems/Consent/Canvas/Policies/ChangeRequestLifecycle.md","x":-1560,"y":-460,"width":540,"height":90,"color":"4"},
-
-		{"id":"evt_batch","type":"text","text":"📨 batch-users-change-executor\nDcpChangeRequestEvent (company scope)\n→ BatchUsersChangeExecutorConsumer","x":-840,"y":-720,"width":620,"height":80,"color":"2"},
-		{"id":"evt_single","type":"text","text":"📨 single-user-change-executor\nDcpChangeRequestEvent (per-user)\n→ SingleUserChangeExecutorConsumer","x":-840,"y":-600,"width":620,"height":80,"color":"2"},
-		{"id":"ds_change_req","type":"file","file":"Subsystems/Consent/Canvas/Data Stores/DataStore-DataCaptureDB.md","x":-840,"y":-480,"width":620,"height":80,"color":"6"},
-
-		{"id":"act_cancel","type":"text","text":"🔧 CancelNonCompliantCallsAction\ncancels already-scheduled calls\n(isEnforced just turned on)","x":20,"y":-740,"width":380,"height":90,"color":"1"},
-		{"id":"act_sync_pmi","type":"text","text":"🔧 SyncMeetingPmiAction\nre-registers PMI meeting room\nper provider via MeetingRoomApi","x":20,"y":-620,"width":380,"height":90,"color":"1"},
-		{"id":"act_email_settings","type":"text","text":"🔧 ConsentEmailSettingsChangeAction\nupdates consent email settings\nfor affected users","x":20,"y":-500,"width":380,"height":90,"color":"1"},
-		{"id":"act_reset_provider","type":"text","text":"🔧 ResetUserDefaultProviderAction\nclears user's stale provider default\nwhen provider removed from DCP","x":20,"y":-380,"width":380,"height":90,"color":"1"},
-
-		{"id":"evt_done","type":"text","text":"📨 single-user-change-request-done\nDcpUserChangeRequestDoneEvent\n→ signals one user's changes complete","x":800,"y":-720,"width":660,"height":80,"color":"2"},
-		{"id":"evt_reset_redis","type":"file","file":"Subsystems/Consent/Canvas/Events/ResetConsentRedisEvent.md","x":800,"y":-600,"width":660,"height":80,"color":"2"},
-		{"id":"ds_redis","type":"file","file":"Subsystems/Consent/Canvas/Data Stores/DataStore-RecordingConsentDB.md","x":800,"y":-480,"width":660,"height":80,"color":"6"}
+		{"id":"evt_done","type":"text","text":"📨 single-user-change-request-done\nDcpUserChangeRequestDoneEvent\n→ signals one user's changes complete","x":1580,"y":-720,"width":660,"height":100,"color":"2"},
+		{"id":"ds_redis","type":"file","file":"Subsystems/Consent/Canvas/Data Stores/DataStore-RecordingConsentDB.md","x":1580,"y":-335,"width":660,"height":50,"color":"6"},
+		{"id":"evt_reset_redis","type":"file","file":"Subsystems/Consent/Canvas/Events/ResetConsentRedisEvent.md","x":1580,"y":-500,"width":660,"height":50,"color":"2"},
+		{"id":"act_cancel","type":"text","text":"🔧 CancelNonCompliantCallsAction\ncancels already-scheduled calls\n(isEnforced just turned on)","x":720,"y":-710,"width":380,"height":90,"color":"1"},
+		{"id":"act_sync_pmi","type":"text","text":"🔧 SyncMeetingPmiAction\nre-registers PMI meeting room\nper provider via MeetingRoomApi","x":720,"y":-565,"width":380,"height":90,"color":"1"},
+		{"id":"act_email_settings","type":"text","text":"🔧 ConsentEmailSettingsChangeAction\nupdates consent email settings\nfor affected users","x":720,"y":-450,"width":380,"height":90,"color":"1"},
+		{"id":"act_reset_provider","type":"text","text":"🔧 ResetUserDefaultProviderAction\nclears user's stale provider default\nwhen provider removed from DCP","x":720,"y":-330,"width":380,"height":90,"color":"1"},
+		{"id":"evt_batch","type":"text","text":"📨 batch-users-change-executor\nDcpChangeRequestEvent (company scope)\n→ BatchUsersChangeExecutorConsumer","x":-400,"y":-620,"width":620,"height":85,"color":"2"},
+		{"id":"ds_change_req","type":"file","file":"Subsystems/Consent/Canvas/Data Stores/DataStore-DataCaptureDB.md","x":-400,"y":-200,"width":620,"height":50,"color":"6"},
+		{"id":"evt_single","type":"text","text":"📨 single-user-change-executor\nDcpChangeRequestEvent (per-user)\n→ SingleUserChangeExecutorConsumer","x":-400,"y":-405,"width":620,"height":85,"color":"2"},
+		{"id":"pol_lifecycle","type":"file","file":"Subsystems/Consent/Canvas/Policies/ChangeRequestLifecycle.md","x":-1520,"y":-320,"width":540,"height":55,"color":"4"},
+		{"id":"svc_dcm","type":"file","file":"Subsystems/Consent/Canvas/Core/DcpChangeManager.md","x":-1520,"y":-510,"width":540,"height":50,"color":"1"},
+		{"id":"evt_change_req","type":"file","file":"Subsystems/Consent/Canvas/Events/DcpChangeRequestEvent.md","x":-1520,"y":-700,"width":540,"height":50,"color":"2"},
+		{"id":"svc_rcas","type":"file","file":"Subsystems/Consent/Canvas/Core/RecordingConsentApiServer.md","x":-2400,"y":-600,"width":420,"height":50,"color":"1"},
+		{"id":"act_admin","type":"file","file":"Subsystems/Consent/Canvas/Actors/ConsentAdmin.md","x":-3260,"y":-725,"width":260,"height":50,"color":"5"},
+		{"id":"cmd_assign_dcp","type":"text","text":"**Assign DCP to user**\n/troubleshooting/data-capture-profile\n/set-data-capture-profile-to-appuser","x":-2860,"y":-485,"width":380,"height":145,"color":"3"},
+		{"id":"cmd_save_dcp","type":"text","text":"**Save DCP settings**\nDcpConsentSettingsController\n#saveUserProviderDefault\n`:7254`","x":-2820,"y":-745,"width":300,"height":115,"color":"3"}
 	],
 	"edges":[
 		{"id":"e_admin_save","fromNode":"act_admin","fromSide":"right","toNode":"cmd_save_dcp","toSide":"left"},
@@ -38,13 +32,13 @@
 		{"id":"e_evt_dcm","fromNode":"evt_change_req","fromSide":"bottom","toNode":"svc_dcm","toSide":"top"},
 		{"id":"e_dcm_pol","fromNode":"svc_dcm","fromSide":"bottom","toNode":"pol_lifecycle","toSide":"top"},
 		{"id":"e_pol_batch","fromNode":"pol_lifecycle","fromSide":"right","toNode":"evt_batch","toSide":"left","label":"produce"},
-		{"id":"e_batch_single","fromNode":"evt_batch","fromSide":"right","toNode":"evt_single","toSide":"left","label":"fan out per user"},
+		{"id":"e_batch_single","fromNode":"evt_batch","fromSide":"bottom","toNode":"evt_single","toSide":"top","label":"fan out per user"},
 		{"id":"e_single_cancel","fromNode":"evt_single","fromSide":"right","toNode":"act_cancel","toSide":"left"},
 		{"id":"e_single_pmi","fromNode":"evt_single","fromSide":"right","toNode":"act_sync_pmi","toSide":"left"},
 		{"id":"e_single_email","fromNode":"evt_single","fromSide":"right","toNode":"act_email_settings","toSide":"left"},
 		{"id":"e_single_provider","fromNode":"evt_single","fromSide":"right","toNode":"act_reset_provider","toSide":"left"},
 		{"id":"e_cancel_done","fromNode":"act_cancel","fromSide":"right","toNode":"evt_done","toSide":"left"},
 		{"id":"e_done_reset","fromNode":"evt_done","fromSide":"bottom","toNode":"evt_reset_redis","toSide":"top","label":"all users done"},
-		{"id":"e_reset_ds","fromNode":"evt_reset_redis","fromSide":"right","toNode":"ds_redis","toSide":"left","label":"evict Redis cache"}
+		{"id":"e_reset_ds","fromNode":"evt_reset_redis","fromSide":"bottom","toNode":"ds_redis","toSide":"top","label":"evict Redis cache"}
 	]
 }
