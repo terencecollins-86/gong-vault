@@ -1,0 +1,57 @@
+{
+	"nodes":[
+		{"id":"legend","type":"text","text":"# 🗺️ Event Storming — React to Upstream & Lifecycle Events\n\nUse cases **F1–F5**: how the Consent domain reacts to external triggers — scheduled calls, calendar updates, cache resets, company purges, and feature gates. Consent is a **reactive** subsystem; most work here is initiated by upstream events, not direct user actions.\n\n**Colour key** — 🟧 Event · 🟦 Command · 🟩 Actor/System · 🟥 Policy · 🟪 Service · ⬛ Data store","x":-800,"y":-1080,"width":1600,"height":180,"color":"6"},
+
+		{"id":"g_f1","type":"group","x":-2400,"y":-740,"width":760,"height":360,"color":"5","label":"F1 — React to scheduled / cancelled call"},
+		{"id":"g_f2","type":"group","x":-1520,"y":-740,"width":700,"height":360,"color":"5","label":"F2 — React to calendar update"},
+		{"id":"g_f3","type":"group","x":-700,"y":-740,"width":620,"height":360,"color":"2","label":"F3 — Reset consent cache"},
+		{"id":"g_f4","type":"group","x":-2400,"y":-260,"width":760,"height":340,"color":"4","label":"F4 — Purge company (GDPR)"},
+		{"id":"g_f5","type":"group","x":-1520,"y":-260,"width":700,"height":340,"color":"3","label":"F5 — Gate a consent feature"},
+
+		{"id":"up_cs","type":"file","file":"Subsystems/Consent/Canvas/Upstream/Call-Scheduling.md","x":-2380,"y":-680,"width":300,"height":70,"color":"5"},
+		{"id":"evt_csu","type":"file","file":"Subsystems/Consent/Canvas/Inbound Topics/CALL-SCHEDULING-UPDATED.md","x":-2020,"y":-680,"width":660,"height":70,"color":"2"},
+		{"id":"svc_tasks_f1","type":"text","text":"ConsentCallSchedulingUpdatedConsumer\n(HF/ConsentProfile)\n→ DcpConsentEmailSchedulingService#handleEvent\n→ schedule / cancel pre-call consent email","x":-2020,"y":-560,"width":660,"height":90,"color":"1"},
+		{"id":"ds_cal_event","type":"text","text":"🗄️ recording_consent_settings\n.calendar_event\n(upserted by ConsentMeetingUpdatesDao)","x":-2020,"y":-440,"width":660,"height":70,"color":"6"},
+
+		{"id":"up_cal","type":"file","file":"Subsystems/Consent/Canvas/Upstream/Calendar-Feed.md","x":-1500,"y":-680,"width":300,"height":70,"color":"5"},
+		{"id":"evt_cal_upd","type":"file","file":"Subsystems/Consent/Canvas/Inbound Topics/CALENDAR-UPDATES-FOR-CONSENT.md","x":-1140,"y":-680,"width":600,"height":70,"color":"2"},
+		{"id":"svc_tasks_f2","type":"text","text":"CalendarUpdatesForConsentConsumer\n→ ConsentMeetingUpdatesService#handleUpdate\n→ keeps calendar_event mirror current","x":-1140,"y":-560,"width":600,"height":80,"color":"1"},
+		{"id":"ds_cal_event2","type":"text","text":"🗄️ recording_consent_settings\n.calendar_event","x":-1140,"y":-440,"width":600,"height":70,"color":"6"},
+
+		{"id":"up_dcm","type":"text","text":"🔀 DcpChangeManager\n(after all users done)","x":-680,"y":-680,"width":300,"height":70,"color":"1"},
+		{"id":"evt_reset","type":"file","file":"Subsystems/Consent/Canvas/Events/ResetConsentRedisEvent.md","x":-320,"y":-680,"width":580,"height":70,"color":"2"},
+		{"id":"svc_tasks_f3","type":"text","text":"ResetConsentRedisForCompanyConsumer\n→ DcpJumpPageRedisService\n→ evict company jump-page data","x":-320,"y":-560,"width":580,"height":80,"color":"1"},
+		{"id":"ds_redis_f3","type":"text","text":"⚡ Redis (RECORDING_COMPLIANCE)\neviction — next render picks\nup fresh DCP settings from DB","x":-320,"y":-440,"width":580,"height":80,"color":"6"},
+
+		{"id":"up_gdpr","type":"text","text":"🏢 GDPR / offboarding\n(upstream purge-company event)","x":-2380,"y":-200,"width":300,"height":80,"color":"4"},
+		{"id":"evt_purge","type":"text","text":"📨 PurgeCompany\nTopic: `purge-company`\nCluster: OPERATIONAL_V1\nconcurrency: 1","x":-2020,"y":-200,"width":420,"height":80,"color":"2"},
+		{"id":"svc_tasks_f4","type":"text","text":"RecordingConsentPurgeCompanyConsumer\n(RecordingConsentApiServer)\n→ purges all consent data for company\nconcurrency=1 (no races)","x":-2020,"y":-80,"width":420,"height":90,"color":"1"},
+
+		{"id":"act_ops","type":"text","text":"🔧 Ops / support\n(via troubleshooter)","x":-1500,"y":-200,"width":260,"height":80,"color":"5"},
+		{"id":"cmd_feature","type":"text","text":"**Enable / disable consent feature**\nPOST /troubleshooting/recording-consent-feature\n/enable-feature  /disable-feature\n`:9095`","x":-1180,"y":-200,"width":400,"height":90,"color":"3"},
+		{"id":"svc_feature","type":"text","text":"TroubleshooterRecordingConsentFeatures\n→ ConsentFeatureDao#setFeatureState\n→ consent_feature table upsert\n(RecordingConsentFeatureName.FOR_TEST only)","x":-1180,"y":-80,"width":400,"height":100,"color":"1"},
+		{"id":"ds_feature","type":"text","text":"🗄️ recording_consent_settings\n.consent_feature\n⚡ Guava LoadingCache (5m TTL)\nin JumpPageUrlService.Beans","x":-1180,"y":60,"width":400,"height":90,"color":"6"},
+		{"id":"note_f5","type":"text","text":"⚠️ `RecordingConsentFeatureName` has only `FOR_TEST` — scaffolding, no production features gated yet.","x":-740,"y":-80,"width":300,"height":100,"color":"4"}
+	],
+	"edges":[
+		{"id":"e_cs_evt","fromNode":"up_cs","fromSide":"right","toNode":"evt_csu","toSide":"left","label":"CallSchedulingUpdated"},
+		{"id":"e_csu_svc","fromNode":"evt_csu","fromSide":"bottom","toNode":"svc_tasks_f1","toSide":"top"},
+		{"id":"e_f1_ds","fromNode":"svc_tasks_f1","fromSide":"bottom","toNode":"ds_cal_event","toSide":"top"},
+
+		{"id":"e_cal_evt","fromNode":"up_cal","fromSide":"right","toNode":"evt_cal_upd","toSide":"left","label":"CalendarUpdateEvent"},
+		{"id":"e_cal_svc","fromNode":"evt_cal_upd","fromSide":"bottom","toNode":"svc_tasks_f2","toSide":"top"},
+		{"id":"e_f2_ds","fromNode":"svc_tasks_f2","fromSide":"bottom","toNode":"ds_cal_event2","toSide":"top"},
+
+		{"id":"e_dcm_evt","fromNode":"up_dcm","fromSide":"right","toNode":"evt_reset","toSide":"left"},
+		{"id":"e_reset_svc","fromNode":"evt_reset","fromSide":"bottom","toNode":"svc_tasks_f3","toSide":"top"},
+		{"id":"e_f3_ds","fromNode":"svc_tasks_f3","fromSide":"bottom","toNode":"ds_redis_f3","toSide":"top"},
+
+		{"id":"e_gdpr_evt","fromNode":"up_gdpr","fromSide":"right","toNode":"evt_purge","toSide":"left"},
+		{"id":"e_purge_svc","fromNode":"evt_purge","fromSide":"bottom","toNode":"svc_tasks_f4","toSide":"top"},
+
+		{"id":"e_ops_cmd","fromNode":"act_ops","fromSide":"right","toNode":"cmd_feature","toSide":"left"},
+		{"id":"e_cmd_svc","fromNode":"cmd_feature","fromSide":"bottom","toNode":"svc_feature","toSide":"top"},
+		{"id":"e_svc_ds","fromNode":"svc_feature","fromSide":"bottom","toNode":"ds_feature","toSide":"top"},
+		{"id":"e_ds_note","fromNode":"ds_feature","fromSide":"right","toNode":"note_f5","toSide":"left"}
+	]
+}

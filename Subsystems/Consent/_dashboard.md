@@ -40,6 +40,12 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 🗺️ **10,000-ft view:** [[Subsystems/Call Scheduling/Canvas/Consent/Consent - Data Flow.canvas|Consent — Data Flow canvas]]
 🧭 **Context map:** [[Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas|Bounded Context Map — Call Scheduling ⇄ Consent]] (DDD)
 
+**Event Storming canvases (Actor → Command → Event → Policy → Data):**
+- [[Subsystems/Consent/Canvas/ES1 - Solicit & Capture.canvas|ES1 — Solicit & Capture]] — jump page + consent email participant flows (UCs A+B)
+- [[Subsystems/Consent/Canvas/ES2 - Enforce.canvas|ES2 — Enforce]] — compliance gate + recorder boundary (UCs C + CheckCompliance)
+- [[Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas|ES3 — Propagate DCP Change]] — change-request state machine (UCs D+E)
+- [[Subsystems/Consent/Canvas/ES4 - React to Upstream Events.canvas|ES4 — React to Upstream Events]] — `call-scheduling-updated`, calendar, purge, feature gates (UCs F)
+
 ---
 
 ## 🗺️ At a glance

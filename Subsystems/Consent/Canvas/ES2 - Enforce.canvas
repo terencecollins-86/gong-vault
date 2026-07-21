@@ -1,0 +1,43 @@
+{
+	"nodes":[
+		{"id":"legend","type":"text","text":"# 🗺️ Event Storming — Enforce\n\nUse cases **C1 (Restrict Recording)** and **C2 (Stop Recording)**, plus the **compliance gate** in Call Scheduling that blocks non-compliant calls at scheduling time. Two enforcement seams: pre-call (URL check at schedule time) and in-call (consent decision at join time).\n\n**Colour key** — 🟧 Event · 🟦 Command · 🟩 Actor · 🟥 Policy · 🟪 Service · ⬛ Read model","x":-800,"y":-960,"width":1600,"height":180,"color":"6"},
+
+		{"id":"g_precall","type":"group","x":-2200,"y":-680,"width":1400,"height":480,"color":"3","label":"Pre-call enforcement — scheduling time (gong-call-schedulers)"},
+		{"id":"g_incall","type":"group","x":-2200,"y":-100,"width":1400,"height":400,"color":"1","label":"In-call enforcement — consent decision time (gong-data-capture)"},
+		{"id":"g_postcall","type":"group","x":-600,"y":-100,"width":1000,"height":400,"color":"2","label":"Post-decision — recording boundary"},
+
+		{"id":"act_sched_sys","type":"text","text":"📅 Calendar sync\n/ scheduling pipeline","x":-2180,"y":-620,"width":240,"height":70,"color":"5"},
+		{"id":"cmd_schedule","type":"text","text":"**Schedule a call**\nCallScheduler validation chain fires\n(CheckCompliance is one validator)","x":-1880,"y":-620,"width":380,"height":70,"color":"3"},
+		{"id":"pol_check","type":"file","file":"Subsystems/Consent/Canvas/Policies/CheckCompliance.md","x":-1440,"y":-620,"width":380,"height":100,"color":"4"},
+		{"id":"evt_enforcing","type":"text","text":"📨 Resolution.COMPLIANCE_ENFORCING\n→ call NOT scheduled\ncall-scheduling-updated CANCEL","x":-1000,"y":-640,"width":380,"height":80,"color":"2"},
+		{"id":"evt_warn_email","type":"text","text":"📨 Non-compliant URL warning email\n→ enqueued to rep\n(isEnforced=false path only)","x":-1000,"y":-540,"width":380,"height":80,"color":"2"},
+		{"id":"ds_dcp","type":"text","text":"🗄️ DcpJumpPageSettings\n(isEnabled, isEnforced)\nread by CheckCompliance","x":-1440,"y":-480,"width":380,"height":80,"color":"6"},
+
+		{"id":"act_part","type":"file","file":"Subsystems/Consent/Canvas/Actors/MeetingParticipant.md","x":-2180,"y":-40,"width":260,"height":70,"color":"5"},
+		{"id":"cmd_accept","type":"text","text":"**Accept recording**\nPOST jump page\n`:8098` acceptAnswer","x":-1840,"y":-40,"width":300,"height":70,"color":"3"},
+		{"id":"cmd_decline","type":"text","text":"**Decline recording**\nPOST jump page/skip-answer\n`:8098` skipAnswer","x":-1840,"y":100,"width":300,"height":70,"color":"3"},
+		{"id":"svc_mfe","type":"file","file":"Subsystems/Consent/Canvas/Core/MeetingFrontEnd.md","x":-1460,"y":-40,"width":360,"height":70,"color":"1"},
+
+		{"id":"cmd_restrict","type":"text","text":"**Restrict / allow recording**\nRecordingSupervisorClient#restrictCallRecording\n(sync, inline in acceptAnswer/skipAnswer)","x":-560,"y":-40,"width":420,"height":90,"color":"3"},
+		{"id":"cmd_stop","type":"text","text":"**Stop recording**\narrives as StopRecordingEvent\nfrom recorder infrastructure","x":-560,"y":100,"width":420,"height":80,"color":"3"},
+		{"id":"svc_recorder","type":"file","file":"Subsystems/Consent/Canvas/Outbound/Recording-Supervisor.md","x":-60,"y":-40,"width":360,"height":70},
+		{"id":"evt_stop","type":"file","file":"Subsystems/Consent/Canvas/Events/StopRecordingEvent.md","x":-60,"y":100,"width":360,"height":70,"color":"2"},
+		{"id":"ds_stop_audit","type":"text","text":"🗄️ recording_compliance\n.stop_recording_audit\n← AuditStopRecordingConsumer","x":380,"y":100,"width":380,"height":80,"color":"6"},
+		{"id":"note_caveat","type":"text","text":"⚠️ **Honest caveat**\nNo direct caller of `restrictCallRecording` found inside the four consent packages. The wiring is event-mediated (`StopRecordingEvent` / `audit-stop-recording`) or lives outside those roots. Treat `RecordingSupervisorClient` as the **seam**, not a tight coupling.\n\n→ [[Subsystems/Consent/Use Cases/C - Enforce/C1 - Restrict Recording|UC-C1]]","x":380,"y":-60,"width":380,"height":200,"color":"4"}
+	],
+	"edges":[
+		{"id":"e_sched_cmd","fromNode":"act_sched_sys","fromSide":"right","toNode":"cmd_schedule","toSide":"left"},
+		{"id":"e_cmd_pol","fromNode":"cmd_schedule","fromSide":"right","toNode":"pol_check","toSide":"left","label":"reads DcpJumpPageSettings"},
+		{"id":"e_pol_enforcing","fromNode":"pol_check","fromSide":"right","toNode":"evt_enforcing","toSide":"left","label":"isEnforced=true"},
+		{"id":"e_pol_warn","fromNode":"pol_check","fromSide":"right","toNode":"evt_warn_email","toSide":"left","label":"isEnforced=false"},
+		{"id":"e_pol_dcp","fromNode":"ds_dcp","fromSide":"top","toNode":"pol_check","toSide":"bottom","label":"read"},
+
+		{"id":"e_part_accept","fromNode":"act_part","fromSide":"right","toNode":"cmd_accept","toSide":"left"},
+		{"id":"e_part_decline","fromNode":"act_part","fromSide":"right","toNode":"cmd_decline","toSide":"left"},
+		{"id":"e_accept_mfe","fromNode":"cmd_accept","fromSide":"right","toNode":"svc_mfe","toSide":"left"},
+		{"id":"e_decline_mfe","fromNode":"cmd_decline","fromSide":"right","toNode":"svc_mfe","toSide":"left"},
+		{"id":"e_mfe_restrict","fromNode":"svc_mfe","fromSide":"right","toNode":"cmd_restrict","toSide":"left","label":"sync HTTP call"},
+		{"id":"e_restrict_recorder","fromNode":"cmd_restrict","fromSide":"right","toNode":"svc_recorder","toSide":"left"},
+		{"id":"e_stop_ds","fromNode":"evt_stop","fromSide":"right","toNode":"ds_stop_audit","toSide":"left"}
+	]
+}
