@@ -11,17 +11,14 @@
             "id": "6df622792db23c57",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
-                "viewState": {
-                  "x": -1557.329976489188,
-                  "y": 471.2214706878862,
-                  "zoom": -0.4988492556568777
-                }
+                "file": "PKM/Daily Notes/2026-07-22.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "ES4 - Operational"
+              "icon": "lucide-file",
+              "title": "2026-07-22"
             }
           }
         ]
@@ -216,8 +213,9 @@
   },
   "active": "6df622792db23c57",
   "lastOpenFiles": [
-    "Subsystems/Call Scheduling/Canvas/Inbound Topics/PURGE-COMPANY.md",
     "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
+    "PKM/Daily Notes/2026-07-22.md",
+    "Subsystems/Call Scheduling/Canvas/Inbound Topics/PURGE-COMPANY.md",
     "Subsystems/Call Scheduling/Canvas/ES3 - Restore & Recurring.canvas",
     "Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md",
     "Subsystems/Call Scheduling/Canvas/ES2 - Cancel & Reschedule.canvas",
@@ -257,8 +255,6 @@
     "Subsystems/Consent/Canvas/Policies/ChangeRequestLifecycle.md",
     "Subsystems/Consent/Canvas/Policies/CheckCompliance.md",
     "Subsystems/Consent/Canvas/Policies",
-    "Subsystems/Consent/Canvas/Events/DcpChangeRequestEvent.md",
-    "Subsystems/Consent/Canvas/Events/ConsentEmailPageInteractionEvent.md",
     "Subsystems/Consent/Canvas/Events",
     "Subsystems/Consent/_dashboard.md.tmp.41.0b09d1b0403a",
     "Subsystems/Consent/Jump Page & DCP.md.tmp.41.f4c41ea7fd86",
