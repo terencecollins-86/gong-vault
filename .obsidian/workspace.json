@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PKM/Daily Notes/2026-07-22.md",
+                "file": "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-07-22"
+              "title": "06 - Local Dev Seed Data"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 468.5
+    "width": 322.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -213,8 +213,10 @@
   },
   "active": "6df622792db23c57",
   "lastOpenFiles": [
-    "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
+    "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md.tmp.45.998247c0b056",
     "PKM/Daily Notes/2026-07-22.md",
+    "PKM/Daily Notes/2026-07-21.md",
+    "Subsystems/Call Scheduling/Canvas/ES4 - Operational.canvas",
     "Subsystems/Call Scheduling/Canvas/Inbound Topics/PURGE-COMPANY.md",
     "Subsystems/Call Scheduling/Canvas/ES3 - Restore & Recurring.canvas",
     "Subsystems/Call Scheduling/Canvas/Core/CallScheduler.md",
@@ -253,7 +255,6 @@
     "Subsystems/Consent/Canvas/Actors/MeetingParticipant.md",
     "Subsystems/Consent/Canvas/Actors",
     "Subsystems/Consent/Canvas/Policies/ChangeRequestLifecycle.md",
-    "Subsystems/Consent/Canvas/Policies/CheckCompliance.md",
     "Subsystems/Consent/Canvas/Policies",
     "Subsystems/Consent/Canvas/Events",
     "Subsystems/Consent/_dashboard.md.tmp.41.0b09d1b0403a",

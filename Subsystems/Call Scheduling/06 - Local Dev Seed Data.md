@@ -28,7 +28,7 @@ Once seeded, you can iterate on the scheduling logic, test edge-case resolution 
 
 ## Prerequisites
 
-- `gong-call-schedulers` running in the hybrid env on port **8084**
+- `gong-call-schedulers` running in the hybrid env on port **8091** (set via `-Dserver.port=8091` in `.run/CallScheduler-hybrid.run.xml`)
 - Postgres accessible at `localhost:5432`
   - Operational DB: `honeyfy_dev`
   - Call-scheduler schema: `call_scheduler_dev`
@@ -104,7 +104,7 @@ VALUES (9001, 'zoom', TRUE);
 Use the existing troubleshooting endpoint to inject a `CallSchedulingRequest` directly onto the Kafka topic:
 
 ```
-POST http://localhost:8084/troubleshooting/call-scheduling-requests-consumer/sendEventJson
+POST http://localhost:8091/troubleshooting/call-scheduling-requests-consumer/sendEventJson
 Content-Type: application/json
 ```
 
