@@ -229,3 +229,4 @@ For `appuser` and `company`, those live in `honeyfy_dev` (already populated in l
 - [[Subsystems/Consent/05 - Data Access & Storage]] — Consent DB layout
 - [[Import Prod Data - Calls]] — seeding call data after migration
 - [[gong-java-cheat-sheet]] — general Java patterns at Gong
+- [[Postgres CREATE INDEX CONCURRENTLY]] — deep-dive on `CONCURRENTLY`, `runInTransaction=false`, and the INVALID index risk

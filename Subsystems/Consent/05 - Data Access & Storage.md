@@ -19,7 +19,7 @@ The subsystem talks to up to **7 PostgreSQL logical datasources**, **OpenSearch*
 
 | Datastore (logical) | Access | Owned here? | Physical DB (local) | Accessor |
 |---|---|---|---|---|
-| Postgres `RECORDING_CONSENT` | RW | ✅ **Yes** (4 schemas) | `recording_consent_dev` | `RecordingConsentDb` |
+| Postgres `RECORDING_CONSENT` | RW | ✅ **Yes** (3 schemas) | `recording_consent_dev` | `RecordingConsentDb` |
 | Postgres `DATA_CAPTURE` | RW | ✅ **Yes** (`dcp_change`, `data_capture`) | `data_capture_dev` | `DataCaptureDb` |
 | Postgres `RECORDING_CONSENT_TIMED_EVENTS` | RW | ✅ **Yes** (`event_based_tasks`) | `recording_consent_timed_events_dev` | `RecordingConsentTimedEventsDb` |
 | Postgres `OPERATIONAL` | RW | ❌ shared | `honeyfy_dev` | `OperationalDb` |
@@ -50,28 +50,33 @@ Datasources are declared per-module in the app descriptors (`*/src/main/resource
 
 ## 2. Owned schemas
 
-### 2a. `RECORDING_CONSENT` DB → 4 schemas (monolith-migrated)
+### 2a. `RECORDING_CONSENT` DB → 3 schemas (monolith-migrated)
 
-Flyway-managed from `honeyfy/Schema/src/main/resources/recording_consent/db/migration/`. Accessed via `RecordingConsentDb` beans (`honeyfy/AppCommon/.../db/RecordingConsentDb.java`, maps to `Database.RECORDING_CONSENT`).
+Flyway-managed from `honeyfy/Schema/src/main/resources/recording_consent/db/migration/`. Accessed via `RecordingConsentDb` beans (`honeyfy/AppCommon/.../db/RecordingConsentDb.java`, maps to `Database.RECORDING_CONSENT`). Column-level DDL: [[09 - Schema Reference (columns)#`recording_consent` DB|§ recording_consent DB]].
 
 | Schema | Tables | Created by |
 |---|---|---|
 | `recording_consent_email` | `consent_email`, `audit`, `company_obfuscation`, `consent_email_settings_history` | `V20220714_1030__create_consent_email_schema.sql` |
 | `recording_consent_settings` | `user_settings`, `appuser_consent_settings`, `appuser_static_link`, `calendar_event`, `consent_feature`, `protected_pmi_feature_displayed` | `V20220901_1130__create_consent_settings_schema.sql` |
 | `recording_compliance` | jump-page / stop-recording tables (`jump_page_session`, `jump_page_interaction`, `stop_recording_audit`, `stop_recording_session_audit`) | `V20250915_1230__create_recording_compliance_schema.sql` |
-| `recording_user_consent` | `settings`, `settings_language`, `audit`, `external_attendee_consent_decision` | recording_consent migrations |
+
+> ⚰️ **`recording_user_consent` was dropped**: this schema (`settings`, `settings_language`, `audit`, `external_attendee_consent_decision`) was removed in `V20231220_1532__drop_user_consent_schema.sql` (drops all four tables + the schema). It is **no longer live** — do not expect it in `recording_consent_dev`.
 
 > 🪤 **`recording_compliance` name collision**: a **legacy** `recording_compliance` schema also exists in the **`OPERATIONAL`** DB (`honeyfy/Schema/.../operational/db/migration/2019/V20190205_1152__create_compliance_audit_schema.sql`, and it's in `operational/dev.properties`'s `flyway.schemas`). The **live** jump-page / stop-recording tables that `RecordingComplianceDao` writes are in the **`RECORDING_CONSENT`** DB (the DAO uses `RecordingConsentDb.SingleTenant.WRITER`). Don't confuse the two when browsing schemas.
 
-### 2b. `DATA_CAPTURE` DB → `dcp_change` + `data_capture`
+### 2b. `DATA_CAPTURE` datasource → `dcp_change` + `data_capture` (two physical DBs)
 
-Flyway-managed from `honeyfy/Schema/src/main/resources/data_capture/db/migration/`. Accessed via `DataCaptureDb`.
+Accessed via `DataCaptureDb` (the logical `DATA_CAPTURE` datasource). ⚠️ The two schemas it fronts live in **different physical DBs** — the accessor unifies them, but IntelliJ shows them separately:
 
-| Schema | Tables | Notes |
-|---|---|---|
-| `dcp_change` | `change_request_queue`, `change_request_user`, `change_request_action`, `settings_change`, `user_assignment_change`, `dcp_settings_revision`, `latest_completed_dcp_revision` | DCP change-orchestration state (created by `V20221110_1300__create_dcp_changes_schema.sql`) |
-| `data_capture` | `profile`, `pre_call_email_settings`, `jump_page_settings`, `consent_email_settings` | DCP/consent settings backing store |
-| `webex_integration` | (also created here) `preferences`, `user_lookup`, `user_by_user_credentials`, … | Provider integration — not consent-owned logic |
+| Schema | Physical DB | Flyway source | Tables | Notes |
+|---|---|---|---|---|
+| `dcp_change` | **`data_capture_dev`** | `honeyfy/Schema/.../data_capture/db/migration/` | `change_request_queue`, `change_request_user`, `change_request_action`, `settings_change`, `user_assignment_change`, `dcp_settings_revision`, `latest_completed_dcp_revision` | DCP change-orchestration state (created by `V20221110_1300__create_dcp_changes_schema.sql`) |
+| `data_capture` | **`honeyfy_dev`** (OPERATIONAL) | `honeyfy/Schema/.../operational/db/migration/` | `profile`, `jump_page_settings` (renamed from `consent_settings`), `jump_page_languages`, `jump_page_profile_key`, `jump_page_profile_key_history`, `audio_prompt_settings`, `pre_call_email_settings`, `consent_email_settings` | DCP/consent settings backing store — physically in the OPERATIONAL DB, migrated from `operational/`, KB reports `database=honeyfy` |
+| `webex_integration` | `data_capture_dev` | `honeyfy/Schema/.../data_capture/db/migration/` | `preferences`, `user_lookup`, `user_by_user_credentials`, `user_meeting_site_preferences` | Provider integration — not consent-owned logic |
+
+> ⚰️ **Dropped/renamed legacy `data_capture.*` (operational) tables**: `internal_domain`, `authorized_domain_mapping`, `additional_authorized_domain` (dropped `V20221120_1518`), `sent_pre_call_email` (dropped `V20220302_1451`); `consent_settings` → renamed to `jump_page_settings` (`V20211209_1926`).
+
+> Column-level DDL for both schemas: [[09 - Schema Reference (columns)#`data_capture` DB → schema `dcp_change`|§ dcp_change]] and [[09 - Schema Reference (columns)#`honeyfy` / OPERATIONAL DB → schema `data_capture`|§ data_capture schema]].
 
 ### 2c. `RECORDING_CONSENT_TIMED_EVENTS` DB → `event_based_tasks` (owned in THIS repo)
 
@@ -150,8 +155,8 @@ Local-dev mapping (`honeyfy/DbConfig/src/main/resources/DbConfig/flyway/<name>/d
 
 | Logical DS | Physical DB (IntelliJ) | Schema(s) to expand |
 |---|---|---|
-| `RECORDING_CONSENT` | **`recording_consent_dev`** | `recording_consent_email`, `recording_consent_settings`, `recording_compliance`, `recording_user_consent` |
-| `DATA_CAPTURE` | **`data_capture_dev`** | `dcp_change`, `data_capture`, `webex_integration` |
+| `RECORDING_CONSENT` | **`recording_consent_dev`** | `recording_consent_email`, `recording_consent_settings`, `recording_compliance` (⚰️ `recording_user_consent` dropped) |
+| `DATA_CAPTURE` | **`data_capture_dev`** (`dcp_change`, `webex_integration`) + **`honeyfy_dev`** (`data_capture` schema) | ⚠️ one logical DS spans two physical DBs — see §2b |
 | `RECORDING_CONSENT_TIMED_EVENTS` | **`recording_consent_timed_events_dev`** | `event_based_tasks` |
 | `OPERATIONAL` | **`honeyfy_dev`** | `public` (+ legacy `recording_compliance`) |
 | `SCHEDULED_TASKS_01` / `_02` | **`scheduled_tasks_0{1,2}_dev`** | `public` |

@@ -7,5 +7,7 @@
   "obsidian-minimal-settings",
   "templater-obsidian",
   "omnisearch",
-  "smart-connections"
+  "smart-connections",
+  "obsidian-meta-bind-plugin",
+  "metadata-menu"
 ]

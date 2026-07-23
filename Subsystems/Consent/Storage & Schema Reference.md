@@ -13,8 +13,8 @@ Postgres database, split across three schemas.
 
 > [!note]
 > This is a **subsystem inventory** captured from the breakdown, not a column-level schema dump.
-> For columns / PKs / FKs, run `kb_table(action=schema)` against the specific table — that's the
-> authoritative source.
+> Column-level DDL (columns / types / PKs / indexes) for every owned table is now captured in
+> [[09 - Schema Reference (columns)]]. For anything not there, run `kb_table(action=schema)`.
 
 ---
 
@@ -34,13 +34,16 @@ Postgres database, split across three schemas.
 
 ## What I did not verify
 
-- **Table-level and column-level schemas** within each schema — not captured here; confirm with
-  `kb_table(action=schema)`.
 - The exact Aurora logical-DB ↔ physical-schema mapping for `recording_consent` — confirm via KB
   before a migration or cross-service change.
+
+> Table-level and column-level schemas are now captured in [[09 - Schema Reference (columns)]]
+> (verified against Flyway migrations, 2026-07-22).
 
 ## See also
 
 - [[00 - Overview]]
 - [[01 - Services & Modules]]
+- [[09 - Schema Reference (columns)]] — column-level DDL for every owned table
+- [[05 - Data Access & Storage]] — datasource / DAO / schema map
 - [[Subsystems/Calendar Ingestion/Storage & Schema Reference]] — lists the `RECORDING_CONSENT` connection from the calendar side

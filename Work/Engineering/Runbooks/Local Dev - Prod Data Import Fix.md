@@ -1,5 +1,6 @@
 ---
 title: Local Dev - Prod Data Import Fix
+fileClass: runbook
 type: runbook
 tags: [local-dev, gong-module-run, prod-data, installercli, data-loading, telephony-systems]
 created: 2026-06-23

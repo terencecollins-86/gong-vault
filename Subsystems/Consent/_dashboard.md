@@ -22,6 +22,7 @@ A new engineer should be able to read these notes top-to-bottom and understand *
 6. [[Storage & Schema Reference]] — the `recording_consent` database and its schemas
 7. [[05 - Data Access & Storage]] — code-grounded datasource / DAO / schema map
 8. [[06 - Local Dev Seed Data]] — seed the base + drive the flows to populate owned tables
+9. [[09 - Schema Reference (columns)]] — column-level DDL for every owned table (columns, types, PKs, indexes)
 
 ### Operations & troubleshooting
 

@@ -8,7 +8,7 @@ created: 2026-07-10
 
 > [[Home|← Home]] · Engineering, architecture, research, meetings, tasks, and inbox — everything work-related in one place.
 
-Section hubs: [[Work/Engineering/_dashboard|🟦 Engineering]] · [[Work/Architecture/_dashboard|🟩 Architecture]] · [[Work/Research/_dashboard|🟣 Research]] · [[Work/Meetings/_dashboard|🟥 Meetings]] · [[Work/Tasks/_board|📋 Tasks]]
+Section hubs: [[Work/Engineering/_dashboard|🟦 Engineering]] · [[Work/Architecture/_dashboard|🟩 Architecture]] · [[Work/Research/_dashboard|🟣 Research]] · [[Work/Meetings/_dashboard|🟥 Meetings]] · [[Work/Tasks/_board|📋 Tasks]] · [[Jira/_dashboard|🎫 Jira]]
 
 ---
 

@@ -1,4 +1,6 @@
 ---
+fileClass: runbook
+type: runbook
 tags:
 - gong
 - maven
