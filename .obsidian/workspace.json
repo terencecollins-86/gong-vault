@@ -211,8 +211,9 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "dc57f1721f9458f2",
+  "active": "0bf3a8d71e4e5e3f",
   "lastOpenFiles": [
+    "Subsystems/Call Scheduling/09 - Gong Add-On Meeting Creation Flow.md",
     "Jira/_dashboard.md",
     "Work/Architecture/How Gong Sends Metrics to Datadog.md",
     "PKM/Daily Notes/2026-07-23.md",
@@ -251,7 +252,6 @@
     "Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas",
     "Subsystems/Call Scheduling/_dashboard.md.tmp.41.bb6b6f02a47c",
     "Subsystems/Call Scheduling/Canvas/Data Stores/DataStore-CallSchedulerDB.md",
-    "Subsystems/Call Scheduling/Canvas/Policies/RecurringExpansion.md",
     "Subsystems/Call Scheduling/Canvas/Policies",
     "Subsystems/Call Scheduling/Canvas/Events/CallSchedulingUpdatedEvent.md.tmp.41.427d69da9d88",
     "Subsystems/Call Scheduling/Canvas/Events",
