@@ -32,7 +32,13 @@ The user's Google Calendar is continuously synced by **gong-ingestion** (Calenda
 1. gong-ingestion fetches the updated calendar event
 2. Sees a Zoom URL — a recordable conference
 3. Determines the calendar owner is a Gong user with `should_record=true`
-4. Produces `CallSchedulingRequest` (`callSchedulingEventType=CALENDAR_EVENT`, `callCreationMechanism=CALENDAR_SYNC_EMAIL`) onto **`call-scheduling-requests`** Kafka topic
+4. Produces `CallSchedulingRequest` (`callSchedulingEventType=CALENDAR_EVENT`, `callCreationMechanism=CALENDAR_INGESTER`) onto **`call-scheduling-requests`** Kafka topic
+
+> [!warning] Creation mechanism
+> The calendar ingester **always** sets `CallCreationMechanism.CALENDAR_INGESTER` (`CallSchedulingRequestProducer:55`, hardcoded). `CALENDAR_SYNC_EMAIL` is a **different** entry path — Mailgun invite emails processed by `InviteHandlerWebhooksServer` — not the calendar-sync ingestion flow described here.
+
+> [!note] High vs low priority topic
+> If the meeting starts more than **3 days** out (`shouldSendToLowPriorityTopic`, configurable), the event goes to `call-scheduling-low-priority-requests` instead of `call-scheduling-requests`.
 
 See [[Canvas/Upstream/Calendar-Ingestion]] for the gong-ingestion side.
 
@@ -42,23 +48,28 @@ See [[Canvas/Upstream/Calendar-Ingestion]] for the gong-ingestion side.
 
 ```
 Kafka message consumed (CallSchedulingRequestsConsumer)
-  → Redis distributed lock acquired — prevents duplicate processing for same meeting
+  → Redis distributed lock acquired — key: CallScheduler.{companyId}.{enhancedCalendarEventId}
+                                       (tryLock 15 min; prevents duplicate processing)
   → User loaded from DB by userId (alice, company 9001)
-  → Validation chain:
-      ✓ Provider enabled (zoom/enabled=true in company_recorder_properties)
-      ✓ URL valid (Zoom URL extracted from description)
-      ✓ should_record=true
-      ✓ Not blacklisted, not internal meeting, not do-not-record
+  → Validation (EventValidationFactory — validators vary by creation mechanism):
+      ✓ per-mechanism validators produce a Resolution
   → Resolution = NEW_CALL:
-      → INSERT public.call           (status=SCHEDULED)
-      → INSERT call_scheduler.scheduled_calls
-      → UPDATE public.call SET external_meeting_update_required=TRUE
-      → Zoom upcoming meeting record upserted (maps callId → Zoom meetingId)
-      → Pre-call email queued (FirstRecordedCallEmailType)
+      → INSERT public.call           (status=SCHEDULED, capture_status=SCHEDULED)
+      → INSERT call_scheduler.scheduled_calls  (idempotency: emailinvitecode)
+      → createOrUpdateMeetingProviderUpcomingMeeting(callId → provider meetingId)
+      → Pre-call email — ONLY if this is the user's first-ever recorded call
   → Produce → call-scheduling-updated  (CallSchedulingCalendarEventUpdated, op=NEW)
   → Produce → call-scheduling-history
   → Redis lock released
 ```
+
+> [!important] Where validation actually happens
+> Recordable-URL, blacklist, internal-meeting, private, all-day, and organizer-in-company checks run **on the ingestion side** (`EventFilterService:129-203`) **before** the event is ever produced. The CallScheduler consumer runs a **separate** `EventValidationFactory` set (chosen per creation mechanism) — it is not one flat validation chain, and the events it receives have already passed the ingestion filters.
+
+> [!note] Nuances in the NEW_CALL block
+> - **`external_meeting_update_required` is NOT set on create.** `InsertCallFromCalendar.sql` never touches it; it's only flagged on cancel/reschedule (`SchedulingCallService:194 flagExternalRecordingUpdateRequired`) and opt-in deactivation.
+> - **The upcoming-meeting upsert is provider-generic**, not Zoom-specific — `CallImportService.createOrUpdateMeetingProviderUpcomingMeeting` (`CallBuilder:510`) dispatches to the matching provider (`ZoomService`, `WebExService`, `GoogleMeetService`, …).
+> - **The pre-call email is gated** (`IncomingEventHandler:462-464`): owner active, org-calendar setting satisfied, and `!isPreviousCallsExist(...)` — i.e. only for the user's first recorded call. It is not queued on every call.
 
 The `call-scheduling-updated` event is the **handoff point** — where scheduling ends and recording infrastructure begins.
 
@@ -109,11 +120,12 @@ User saves Google Calendar event with Zoom link
         ▼
 gong-ingestion (Calendar Ingestion)
   · Google push notification → fetch event
-  · Produce → call-scheduling-requests
+  · EventFilterService: recordable URL / blacklist / internal / organizer checks
+  · Produce → call-scheduling-requests (mechanism=CALENDAR_INGESTER)
         │
         ▼
 gong-call-schedulers (CallScheduler)
-  · Validate: provider enabled, URL valid, user should_record
+  · EventValidationFactory validators (per mechanism) → Resolution
   · INSERT public.call (status=SCHEDULED)
   · INSERT call_scheduler.scheduled_calls
   · Produce → call-scheduling-updated (op=NEW)
@@ -136,9 +148,9 @@ Gong UI — recording appears in user's call feed
 
 | Table | What's written |
 |-------|----------------|
-| `public.call` | New row: `status=SCHEDULED`, `callprovidercode=zoom`, `callurl`, `owner_appuser_id`, `emailinvitecode` (the dedup key), `external_meeting_update_required=TRUE` |
+| `public.call` | New row: `status=SCHEDULED`, `capture_status=SCHEDULED`, `callprovidercode=zoom`, `callurl`, `owner_appuser_id`, `emailinvitecode` (the dedup key). Note: `external_meeting_update_required` is **not** set here — only on cancel/reschedule. |
 | `call_scheduler.scheduled_calls` | `enhanced_ical_id` + `company_id` — dedup/idempotency record |
-| `zoom_integration.zoom_upcoming_meetings` (operational) | Maps `callId` → Zoom `meetingId` — used by recording infra to enable cloud recording |
+| provider upcoming-meetings table (operational) | Maps `callId` → provider `meetingId` via `createOrUpdateMeetingProviderUpcomingMeeting` — provider-generic (Zoom/WebEx/etc.), used by recording infra |
 | `public.invitee` | Non-owner attendees linked to the call |
 
 ---

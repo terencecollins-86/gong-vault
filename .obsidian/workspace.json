@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Architecture/How Gong Sends Metrics to Datadog.md",
+                "file": "Subsystems/Call Scheduling/09 - Gong Add-On Meeting Creation Flow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How Gong Sends Metrics to Datadog"
+              "title": "09 - Gong Add-On Meeting Creation Flow"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 322.5
+    "width": 345.5
   },
   "right": {
     "id": "5d1b426a8cfff9eb",
@@ -211,11 +211,13 @@
       "smart-connections:Smart Connections: Open random connection": false
     }
   },
-  "active": "0bf3a8d71e4e5e3f",
+  "active": "dc57f1721f9458f2",
   "lastOpenFiles": [
+    "Subsystems/Call Scheduling/07 - End-to-End User Flow.md",
     "Subsystems/Call Scheduling/09 - Gong Add-On Meeting Creation Flow.md",
-    "Jira/_dashboard.md",
+    "Subsystems/Consent/09 - Schema Reference (columns).md",
     "Work/Architecture/How Gong Sends Metrics to Datadog.md",
+    "Jira/_dashboard.md",
     "PKM/Daily Notes/2026-07-23.md",
     "PKM/Daily Notes/2026-07-24.md",
     "Jira/GONG-138866-Add Purge Index/GONG-138866-purge index.md",
@@ -231,7 +233,6 @@
     "Jira/GONG-138809-Add Purge Index",
     "Subsystems/Call Scheduling/02 - Entry Points (Inbound & Outbound).md",
     "Work/Engineering/Notes/Postgres CREATE INDEX CONCURRENTLY.md",
-    "Subsystems/Consent/09 - Schema Reference (columns).md",
     "Jira/GONG-138866-Add Purge Index",
     "Jira",
     "Subsystems/Call Scheduling/06 - Local Dev Seed Data.md",
@@ -251,7 +252,6 @@
     "Subsystems/Call Scheduling/Canvas/Bounded Context Map - Call Scheduling & Consent.canvas",
     "Subsystems/Consent/Canvas/ES3 - Propagate DCP Change.canvas",
     "Subsystems/Call Scheduling/_dashboard.md.tmp.41.bb6b6f02a47c",
-    "Subsystems/Call Scheduling/Canvas/Data Stores/DataStore-CallSchedulerDB.md",
     "Subsystems/Call Scheduling/Canvas/Policies",
     "Subsystems/Call Scheduling/Canvas/Events/CallSchedulingUpdatedEvent.md.tmp.41.427d69da9d88",
     "Subsystems/Call Scheduling/Canvas/Events",
