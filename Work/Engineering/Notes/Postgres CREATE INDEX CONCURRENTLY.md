@@ -16,7 +16,7 @@ aliases:
 # Postgres CREATE INDEX CONCURRENTLY
 
 > [!note] TL;DR
-> `CREATE INDEX CONCURRENTLY` builds an index without blocking reads or writes, at the cost of two full table scans and a longer build time. Required when adding indexes to live production tables. Cannot run inside a transaction — Flyway migrations need `-- runInTransaction=false`.
+> `CREATE INDEX CONCURRENTLY` builds an index without blocking reads or writes, at the cost of two full table scans and a longer build time. Required when adding indexes to live production tables. Cannot run inside a transaction — Flyway migrations need `-- flyway:nonTransactional`.
 
 ---
 
@@ -78,7 +78,7 @@ ERROR: CREATE INDEX CONCURRENTLY cannot run inside a transaction block
 Flyway wraps every migration in a transaction by default. To opt out, add this as the **first line** of the migration file:
 
 ```sql
--- runInTransaction=false
+-- flyway:nonTransactional
 CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_my_index
     ON public.my_table (company_id, some_column);
 ```
@@ -159,6 +159,6 @@ Full investigation notes: [[Jira/GONG-138866-Add Purge Index/GONG-138866-purge i
 
 ## See also
 
-- [[Flyway Migrations at Gong]] — `runInTransaction=false`, migration conventions, local dev workflow
+- [[Flyway Migrations at Gong]] — `flyway:nonTransactional`, migration conventions, local dev workflow
 - [[Jira/GONG-138866-Add Purge Index/GONG-138866-purge index]] — worked example with full EXPLAIN output
 - [[gong-java-cheat-sheet]] — general Postgres/Java patterns at Gong

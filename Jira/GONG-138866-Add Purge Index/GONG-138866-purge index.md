@@ -1,12 +1,14 @@
 ---
 title: "GONG-138866 — Purge index on stop_recording_request"
-fileClass: purge-index-ticket
+fileClass: jira-ticket
 type: engineering
 status: active
 jira: GONG-138866
 jira_url: "https://gongio.atlassian.net/browse/GONG-138866"
 parent_epic: GONG-131727
 workflow_status: pr
+priority: P0.5
+assignee: Terence Collins
 pr_url: "https://github.com/Honeyfy/honeyfy/pull/100018"
 repo: honeyfy
 table: public.stop_recording_request
@@ -23,6 +25,22 @@ tags: [jira, engineering, postgres, index, purge, gong-recorders, Q1FY27]
 > **Status:** `Ready for Development` · **Priority:** `P0.5`
 > **Assignee:** Terence Collins · **Reporter:** Nikol Mor Ribalchenko
 > **Label:** `Q1FY27_Operational_Load`
+
+---
+
+## Quick Edit
+
+**Status:** `INPUT[inlineSelect(option(todo), option(doing), option(pr), option(done)):workflow_status]`
+
+**Priority:** `INPUT[inlineSelect(option(P0), option(P0.5), option(P1), option(P2), option(P3)):priority]`
+
+**Type:** `INPUT[inlineSelect(option(engineering), option(bug), option(feature), option(spike), option(refactor), option(chore)):type]`
+
+**Assignee:** `INPUT[text:assignee]`
+
+**Repo:** `INPUT[suggester(option(honeyfy), option(gong-purging), option(gong-recorders), option(gong-data-capture), option(gong-ingestion), option(gong-web-ui), option(gong-design-system), option(gong-ai4dev), option(gong-ai4devops), option(gong-ai4product)):repo]`
+
+**PR URL:** `INPUT[text:pr_url]`
 
 ---
 
@@ -137,7 +155,7 @@ Without an index, Postgres applies the `call_id` match as a filter after the ful
 **Filename:** `V20260723_1000__add_stop_recording_request_company_purge_index.sql`
 
 ```sql
--- runInTransaction=false
+-- flyway:nonTransactional
 CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_stop_recording_request_company_purge
     ON public.stop_recording_request (company_id, call_id);
 ```
@@ -146,7 +164,7 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_stop_recording_request_company_purge
 > Mirrors sibling migration `V20260718_1300__add_call_stream_company_purge_index.sql` (same parent epic GONG-131727). `IF NOT EXISTS` for idempotency. `call_id` is the PK — the composite index lets Postgres satisfy `WHERE company_id = :companyId LIMIT :limit` with an index range scan.
 
 > [!warning] Flyway + CONCURRENTLY
-> `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- runInTransaction=false` on line 1 is required. See [[Postgres CREATE INDEX CONCURRENTLY]].
+> `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- flyway:nonTransactional` on line 1 is required. See [[Postgres CREATE INDEX CONCURRENTLY]].
 
 ### Explain Plan — After Index
 
@@ -213,7 +231,7 @@ Execution Time: 0.078 ms
 
 - Migration belongs in **`honeyfy/Schema`** — the `operational` schema is centralised there (the ticket says gong-recorders; that is incorrect).
 - `call_id` is the table's PRIMARY KEY — confirmed in `V20220403_1620__create_stop_recording_request_table.sql`.
-- `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- runInTransaction=false` required as the first line.
+- `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- flyway:nonTransactional` required as the first line.
 - Part of the broader purge-index audit (GONG-131727) — check sibling sub-tasks for conventions.
 
 ---
@@ -232,6 +250,6 @@ Execution Time: 0.078 ms
 ## Related Notes
 
 - [[Jira/GONG-138809-Add Purge Index/GONG-138809-purge index]] — sibling ticket, same pattern
-- [[Postgres CREATE INDEX CONCURRENTLY]] — CONCURRENTLY deep-dive, runInTransaction=false, INVALID index risk
+- [[Postgres CREATE INDEX CONCURRENTLY]] — CONCURRENTLY deep-dive, flyway:nonTransactional, INVALID index risk
 - [[Flyway Migrations at Gong]] — Flyway conventions and local dev workflow
 - [[Subsystems/_dashboard]]

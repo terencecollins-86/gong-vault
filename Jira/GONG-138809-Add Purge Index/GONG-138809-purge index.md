@@ -1,12 +1,14 @@
 ---
 title: "GONG-138809 — Purge index on onetime_meeting_jump_page_to_call"
-fileClass: purge-index-ticket
+fileClass: jira-ticket
 type: engineering
 status: active
 jira: GONG-138809
 jira_url: "https://gongio.atlassian.net/browse/GONG-138809"
 parent_epic: GONG-131727
 workflow_status: pr
+priority: P0.5
+assignee: Terence Collins
 pr_url: "https://github.com/Honeyfy/honeyfy/pull/100021"
 repo: honeyfy
 table: public.onetime_meeting_jump_page_to_call
@@ -23,6 +25,22 @@ tags: [jira, engineering, postgres, index, purge, gong-data-capture, Q1FY27]
 > **Status:** `Ready for Development` · **Priority:** `P0.5`
 > **Assignee:** Terence Collins · **Reporter:** Nikol Mor Ribalchenko
 > **Label:** `Q1FY27_Operational_Load`
+
+---
+
+## Quick Edit
+
+**Status:** `INPUT[inlineSelect(option(todo), option(doing), option(pr), option(done)):workflow_status]`
+
+**Priority:** `INPUT[inlineSelect(option(P0), option(P0.5), option(P1), option(P2), option(P3)):priority]`
+
+**Type:** `INPUT[inlineSelect(option(engineering), option(bug), option(feature), option(spike), option(refactor), option(chore)):type]`
+
+**Assignee:** `INPUT[text:assignee]`
+
+**Repo:** `INPUT[suggester(option(honeyfy), option(gong-purging), option(gong-recorders), option(gong-data-capture), option(gong-ingestion), option(gong-web-ui), option(gong-design-system), option(gong-ai4dev), option(gong-ai4devops), option(gong-ai4product)):repo]`
+
+**PR URL:** `INPUT[text:pr_url]`
 
 ---
 
@@ -148,7 +166,7 @@ The outer delete uses `Index Scan on onetime_meeting_jump_page_to_call_pkey` but
 **Filename:** `V20260723_1001__add_onetime_meeting_jump_page_to_call_company_purge_index.sql`
 
 ```sql
--- runInTransaction=false
+-- flyway:nonTransactional
 CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_onetime_meeting_jump_page_to_call_company_purge
     ON public.onetime_meeting_jump_page_to_call (company_id, onetime_meeting_jump_page_id, call_id);
 ```
@@ -157,7 +175,7 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_onetime_meeting_jump_page_to_call_co
 > Mirrors sibling migrations from GONG-131727. Leading `company_id` satisfies the filter. Trailing `(onetime_meeting_jump_page_id, call_id)` match the CTE's projected columns, enabling `Index Only Scan` (0 heap fetches). `IF NOT EXISTS` for idempotency.
 
 > [!warning] Flyway + CONCURRENTLY
-> `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- runInTransaction=false` on line 1 is required. See [[Postgres CREATE INDEX CONCURRENTLY]].
+> `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- flyway:nonTransactional` on line 1 is required. See [[Postgres CREATE INDEX CONCURRENTLY]].
 
 ### Explain Plan — After Index
 
@@ -225,7 +243,7 @@ Execution Time: 0.024 ms
 - Pagination columns: **`(onetime_meeting_jump_page_id, call_id)`** — confirmed by reading the purge script.
 - The PRIMARY KEY `(onetime_meeting_jump_page_id, call_id)` covers the delete join but cannot satisfy `WHERE company_id = :companyId` — the new index is required.
 - Migration belongs in **`honeyfy/Schema`** — the `operational` schema is centralised there, not in `gong-data-capture`.
-- `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- runInTransaction=false` required as the first line.
+- `CREATE INDEX CONCURRENTLY` cannot run inside a transaction — `-- flyway:nonTransactional` required as the first line.
 - Part of the broader purge-index audit (GONG-131727) — check sibling sub-tasks for conventions.
 
 ---
@@ -244,6 +262,6 @@ Execution Time: 0.024 ms
 ## Related Notes
 
 - [[Jira/GONG-138866-Add Purge Index/GONG-138866-purge index]] — sibling ticket, already completed
-- [[Postgres CREATE INDEX CONCURRENTLY]] — CONCURRENTLY deep-dive, runInTransaction=false, INVALID index risk
+- [[Postgres CREATE INDEX CONCURRENTLY]] — CONCURRENTLY deep-dive, flyway:nonTransactional, INVALID index risk
 - [[Flyway Migrations at Gong]] — Flyway conventions and local dev workflow
 - [[Subsystems/_dashboard]]

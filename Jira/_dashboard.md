@@ -1,12 +1,12 @@
 ---
 cssclasses: eng
-tags: [jira, dashboard, purge, Q1FY27]
+tags: [jira, dashboard]
 created: 2026-07-23
 ---
 
 # 🎫 Jira Tickets — Dashboard
 
-> [[Work/_dashboard|← Work]] · Tracks all Jira sub-tasks assigned to me, with kanban-style workflow status and quick links to PRs.
+> [[Work/_dashboard|← Work]] · Tracks all Jira tickets I own — engineering work, bugs, features, spikes, refactors, chores. Kanban-style workflow status with quick links to PRs.
 
 **Workflow statuses:** `todo` → `doing` → `pr` → `done`
 
@@ -17,7 +17,8 @@ created: 2026-07-23
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
+  priority AS "Pri",
   choice(workflow_status = "todo",   "⬜ Todo",
   choice(workflow_status = "doing",  "🔵 Doing",
   choice(workflow_status = "pr",     "🟡 PR Open",
@@ -36,7 +37,8 @@ SORT choice(workflow_status = "doing", 0, choice(workflow_status = "pr", 1, choi
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
+  priority AS "Pri",
   file.mtime AS "Updated"
 FROM "Jira"
 WHERE jira != null AND workflow_status = "todo"
@@ -50,7 +52,8 @@ SORT file.mtime DESC
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
+  priority AS "Pri",
   file.mtime AS "Updated"
 FROM "Jira"
 WHERE jira != null AND workflow_status = "doing"
@@ -64,7 +67,7 @@ SORT file.mtime DESC
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
   choice(pr_url != "" AND pr_url != null, link(pr_url, "View PR ↗"), "—") AS "PR",
   file.mtime AS "Updated"
 FROM "Jira"
@@ -79,7 +82,7 @@ SORT file.mtime DESC
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
   choice(pr_url != "" AND pr_url != null, link(pr_url, "PR ↗"), "—") AS "PR",
   file.mtime AS "Updated"
 FROM "Jira"
@@ -111,7 +114,7 @@ SORT choice(workflow_status = "doing", 0, choice(workflow_status = "pr", 1, choi
 ```dataview
 TABLE WITHOUT ID
   link(file.link, jira) AS "Ticket",
-  table AS "Table",
+  type AS "Type",
   workflow_status AS "Status",
   repo AS "Repo",
   created AS "Created"
@@ -122,8 +125,21 @@ SORT created DESC
 
 ---
 
+## 🏷️ By type
+
+```dataview
+TABLE WITHOUT ID
+  type AS "Type",
+  length(rows) AS "Count"
+FROM "Jira"
+WHERE jira != null
+GROUP BY type
+SORT length(rows) DESC
+```
+
+---
+
 ## See also
 
-- [[_templates/purge-index-ticket]] — template for new purge index tickets
-- [[Postgres CREATE INDEX CONCURRENTLY]] — CONCURRENTLY deep-dive
-- [[Flyway Migrations at Gong]] — migration conventions
+- [[_templates/jira-ticket]] — generic Jira ticket template
+- [[_fileClasses/jira-ticket]] — typed field schema (Metadata Menu)
